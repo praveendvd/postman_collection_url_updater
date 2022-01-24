@@ -13,5 +13,13 @@
   },
   "bin": {
     "postman-collection-url-updater": "./index.js"
-  }
+  },
+  "keywords": [
+    "postman",
+    "collection",
+    "updater",
+    "url",
+    "bulk",
+    "update"
+  ]
 }
