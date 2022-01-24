@@ -15,4 +15,8 @@ This is a command line utility that helps you to update request URLs in your col
 | --with_url_part| -w| The value to replace the matching URL part with| v2 or {{baseURL}}/{{path}} or localhost:8888/| |
 | --save_as| -s | (Optional) Path to output collection file, DEFAULT: new_collection.json. If no value provided then the file will be saved by prefixing new to current collection name  | modifiedCollection.json or project/modifiedCollection.json|
 
+## Limitation 
+
+In current version Path variables represnted by ':' eg https://localhost/v1/:PATH/2  will be converted to its actual value
+
 
