@@ -36,5 +36,5 @@ try {
 }
 
 function urlReplacer(currentUrl, urlToReplace, urlToReplaceWith) {
-    return currentUrl.replace(urlToReplace, urlToReplaceWith)
+    return currentUrl.replaceAll(urlToReplace, urlToReplaceWith)
 }
