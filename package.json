@@ -1,6 +1,6 @@
 {
   "name": "postman-collection-url-updater",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This project helps in updating request URLs in collection files in bulk",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,6 +20,7 @@
     "updater",
     "url",
     "bulk",
-    "update"
+    "update",
+    "newman"
   ]
 }
