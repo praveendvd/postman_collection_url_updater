@@ -8,7 +8,7 @@ This is a command line utility that helps you to update request URLs in your col
  
 in case of PATH variables:
 
-    npx postman-collection-url-updater -c "collection.json" -r "https://{{test}}/:test/test" -w "https://localhost/newpath/;test"
+    npx postman-collection-url-updater -c "collection.json" -r "https://{{test}}/:test/test" -w "https://localhost/newpath/:test"
 
 retains the path variable 
 
