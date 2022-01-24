@@ -28,8 +28,9 @@ try {
         requestItem.request.url.update(newURL)
     })
 
-    const destination_ = OPTIONS.save_as === DEFAULTS.save_as ? `${COLLECTIONDIR}/new_${COLLECTIONFILE}` : OPTIONS.save_as
+    const destination_ = PATH.resolve(OPTIONS.save_as === DEFAULTS.save_as ? `${COLLECTIONDIR}/new_${COLLECTIONFILE}` : OPTIONS.save_as)
     FS.writeFileSync(destination_, JSON.stringify(sourceCollection.toJSON(), null, 2))
+    console.log(`File saved to : ${destination_}`)
 } catch (e) {
      if(!e.errno === 4058) throw Error(e)
      console.log(e.message) 
