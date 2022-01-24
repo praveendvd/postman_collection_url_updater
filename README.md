@@ -5,6 +5,19 @@
 This is a command line utility that helps you to update request URLs in your collection files in a bulk. for instance, let say your URLs where in the form  https://localhost:23456/api/v1/{{path}} and you wanted modify all the requests as {{baseURL}}/{{path}} you can do it as
 
     npx postman-collection-url-updater -c "collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}" -s "new_collection.json"
+ 
+in case of PATH variables:
+
+    npx postman-collection-url-updater -c "collection.json" -r "https://{{test}}/:test/test" -w "https://localhost/newpath/;test"
+
+retains the path variable 
+
+    npx postman-collection-url-updater -c "collection.json" -r "https://{{test}} -w "https://localhost/newpath"
+
+makes the changes and if any other path variable is there then it will be retained
+
+eg , output would be https://localhost/newpath/:test/new , if path variable exists else https://localhost/newpath/new
+
 
 ## CLI Options
 
@@ -14,11 +27,4 @@ This is a command line utility that helps you to update request URLs in your col
 | --replace_url_part| -r | The part of the URL to modify | v1 or https://localhost:23456/api/v1/ or localhost:23456/|
 | --with_url_part| -w| The value to replace the matching URL part with| v2 or {{baseURL}}/{{path}} or localhost:8888/| |
 | --save_as| -s | (Optional) Path to output collection file, DEFAULT: new_collection.json. If no value provided then the file will be saved by prefixing new to current collection name  | modifiedCollection.json or project/modifiedCollection.json|
-
-## Limitation 
-
-In current version Path variables represented by ':', eg https://localhost/v1/:PATH/2 ,  will be converted to its actual value provided.
-
-so if :PATH has value {{path}}; then after parsing, the url will be https://localhost/v1/{{path}}/2 , instead of  https://localhost/v1/:PATH/2
-
 
