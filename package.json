@@ -1,0 +1,17 @@
+{
+  "name": "postman_collection_url_updater",
+  "version": "1.0.0",
+  "description": "This project helps in updating request URLs in collection files in bulk",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "postman-collection": "^4.1.1",
+    "yargs": "^17.3.1"
+  },
+  "bin": {
+    "postman_collection_url_updater": "./index.js"
+  }
+}
