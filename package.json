@@ -1,6 +1,6 @@
 {
   "name": "postman-collection-url-updater",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This project helps in updating request URLs in collection files in bulk",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,5 +22,9 @@
     "bulk",
     "update",
     "newman"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/praveendvd/postman_collection_url_updater"
+  }
 }
