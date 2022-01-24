@@ -17,7 +17,8 @@ This is a command line utility that helps you to update request URLs in your col
 
 ## Limitation 
 
-In current version Path variables represnted by ':' eg https://localhost/v1/:PATH/2  will be converted to its actual value provided
-so if :PATH has value {{path}} then after parsing the url will be https://localhost/v1/{{path}}/2 instead of  https://localhost/v1/:PATH/2
+In current version Path variables represented by ':', eg https://localhost/v1/:PATH/2 ,  will be converted to its actual value provided.
+
+so if :PATH has value {{path}}; then after parsing, the url will be https://localhost/v1/{{path}}/2 , instead of  https://localhost/v1/:PATH/2
 
 
