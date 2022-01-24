@@ -1,3 +1,5 @@
+![logo](https://github.com/praveendvd/postman_collection_url_updater/blob/master/logo/logo.png)
+
 # postman_collection_url_updater
 
 This is a command line utility that helps you to update request URLs in your collection files in a bulk. for instance, let say your URLs where in the form  https://localhost:23456/api/v1/{{path}} and you wanted modify all the requests as {{baseURL}}/{{path}} you can do it as
