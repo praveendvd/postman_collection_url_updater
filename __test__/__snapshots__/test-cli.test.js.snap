@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Validate index.js Validate cli output messages Should show file not found error if collection doesnt exists 1`] = `""`;
+
+exports[`Validate index.js Validate cli output messages Should show file not found error if collection doesnt exists 2`] = `
+"ENOENT: no such file or directory, open 'test/collection/collection.json'
+"
+`;
+
+exports[`Validate index.js Validate cli output messages Should show file saved message correctly with custom path 1`] = `""`;
+
+exports[`Validate index.js Validate cli output messages Should show file saved message correctly with custom path 2`] = `
+"File saved to : D:\\\\MyProjects\\\\collection_updater\\\\__test__\\\\collection\\\\output\\\\new.json
+"
+`;
+
+exports[`Validate index.js Validate cli output messages Should show file saved message correctly with default path 1`] = `""`;
+
+exports[`Validate index.js Validate cli output messages Should show file saved message correctly with default path 2`] = `
+"File saved to : D:\\\\MyProjects\\\\collection_updater\\\\__test__\\\\collection\\\\new_collection.json
+"
+`;
+
+exports[`Validate index.js Validate cli output messages Should show help if -c argument is missing 1`] = `
+"Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
+\\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+
+Options:
+      --help              Show help                                    [boolean]
+      --version           Show version number                          [boolean]
+  -c, --collection_path   Path to Collection file            [string] [required]
+  -r, --replace_url_part  Replaces only the matching part of the URL
+                                                             [string] [required]
+  -w, --with_url_part     Replaces the matching part of the URL with provided
+                          value                              [string] [required]
+  -s, --save_as           path to save new collection
+                           [string] [default: \\"root/new_<collection_name>.json\\"]
+
+Missing required argument: r
+"
+`;
+
+exports[`Validate index.js Validate cli output messages Should show help if -c argument is missing 2`] = `""`;
+
+exports[`Validate index.js Validate cli output messages Should show help if -r argument is missing 1`] = `
+"Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
+\\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+
+Options:
+      --help              Show help                                    [boolean]
+      --version           Show version number                          [boolean]
+  -c, --collection_path   Path to Collection file            [string] [required]
+  -r, --replace_url_part  Replaces only the matching part of the URL
+                                                             [string] [required]
+  -w, --with_url_part     Replaces the matching part of the URL with provided
+                          value                              [string] [required]
+  -s, --save_as           path to save new collection
+                           [string] [default: \\"root/new_<collection_name>.json\\"]
+
+Missing required argument: r
+"
+`;
+
+exports[`Validate index.js Validate cli output messages Should show help if -r argument is missing 2`] = `""`;
+
+exports[`Validate index.js Validate cli output messages Should show help if -w argument is missing 1`] = `
+"Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
+\\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+
+Options:
+      --help              Show help                                    [boolean]
+      --version           Show version number                          [boolean]
+  -c, --collection_path   Path to Collection file            [string] [required]
+  -r, --replace_url_part  Replaces only the matching part of the URL
+                                                             [string] [required]
+  -w, --with_url_part     Replaces the matching part of the URL with provided
+                          value                              [string] [required]
+  -s, --save_as           path to save new collection
+                           [string] [default: \\"root/new_<collection_name>.json\\"]
+
+Missing required argument: w
+"
+`;
+
+exports[`Validate index.js Validate cli output messages Should show help if -w argument is missing 2`] = `""`;
+
+exports[`Validate index.js Validate cli output messages Should show help if arguments are missing 1`] = `
+"Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
+\\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+
+Options:
+      --help              Show help                                    [boolean]
+      --version           Show version number                          [boolean]
+  -c, --collection_path   Path to Collection file            [string] [required]
+  -r, --replace_url_part  Replaces only the matching part of the URL
+                                                             [string] [required]
+  -w, --with_url_part     Replaces the matching part of the URL with provided
+                          value                              [string] [required]
+  -s, --save_as           path to save new collection
+                           [string] [default: \\"root/new_<collection_name>.json\\"]
+
+Missing required arguments: c, r, w
+"
+`;

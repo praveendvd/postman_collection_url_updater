@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "738641d0-80bf-4ad1-92cc-b947f0bf6c56",
+		"name": "collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "folder1",
+			"item": [
+				{
+					"name": "request1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.testdomain.ie/testpath/:pathvariable/path/request1",
+							"protocol": "https",
+							"host": [
+								"www",
+								"testdomain",
+								"ie"
+							],
+							"path": [
+								"testpath",
+								":pathvariable",
+								"path",
+								"request1"
+							],
+							"variable": [
+								{
+									"key": "pathvariable",
+									"value": "{{testpathvalue}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "folder2",
+			"item": [
+				{
+					"name": "New Folder",
+					"item": [
+						{
+							"name": "New Folder",
+							"item": [
+								{
+									"name": "New Folder",
+									"item": [
+										{
+											"name": "New Folder",
+											"item": [
+												{
+													"name": "New Folder",
+													"item": [
+														{
+															"name": "final",
+															"item": [
+																{
+																	"name": "requestn",
+																	"request": {
+																		"method": "GET",
+																		"header": [],
+																		"url": {
+																			"raw": "https://www.testdomain.ie/testpath/:pathvariable/path/requestn",
+																			"protocol": "https",
+																			"host": [
+																				"www",
+																				"testdomain",
+																				"ie"
+																			],
+																			"path": [
+																				"testpath",
+																				":pathvariable",
+																				"path",
+																				"requestn"
+																			],
+																			"variable": [
+																				{
+																					"key": "pathvariable",
+																					"value": "{{testpathvalue}}"
+																				}
+																			]
+																		}
+																	},
+																	"response": []
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "request0",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pre-request script content"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"test script content"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "12345",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "X-API-Key",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "header",
+						"value": "headervalue1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key\": \"value\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.testdomain.ie/testpath/:pathvariable/path/request0?query1=queryvalue1",
+					"protocol": "https",
+					"host": [
+						"www",
+						"testdomain",
+						"ie"
+					],
+					"path": [
+						"testpath",
+						":pathvariable",
+						"path",
+						"request0"
+					],
+					"query": [
+						{
+							"key": "query1",
+							"value": "queryvalue1"
+						}
+					],
+					"variable": [
+						{
+							"key": "pathvariable",
+							"value": "{{testpathvalue}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request0-1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.testdomain0.ie/testpath/:pathvariable/path/request0-1",
+					"protocol": "https",
+					"host": [
+						"www",
+						"testdomain0",
+						"ie"
+					],
+					"path": [
+						"testpath",
+						":pathvariable",
+						"path",
+						"request0-1"
+					],
+					"variable": [
+						{
+							"key": "pathvariable",
+							"value": "{{testpathvalue}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "testpathvalue",
+			"value": "resolvedvalue",
+			"type": "string"
+		},
+		{
+			"key": "collectionvar",
+			"value": "collectionvarvalue",
+			"type": "string"
+		}
+	]
+}
