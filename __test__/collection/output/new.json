@@ -1,0 +1,253 @@
+{
+  "_": {
+    "postman_id": "738641d0-80bf-4ad1-92cc-b947f0bf6c56"
+  },
+  "item": [
+    {
+      "id": "055cf5ec-adeb-48e1-8aee-ce5ccc827da1",
+      "name": "folder1",
+      "item": [
+        {
+          "id": "33454bba-10c2-45b0-a0c0-4af0510da234",
+          "name": "request1",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "testpath",
+                ":pathvariable",
+                "path",
+                "request1"
+              ],
+              "host": [
+                "www",
+                "testdomain",
+                "ie"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "type": "any",
+                  "value": "{{testpathvalue}}",
+                  "key": "pathvariable"
+                }
+              ]
+            },
+            "method": "GET"
+          },
+          "response": [],
+          "event": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f03525a7-69ec-4df0-a97d-76458b1152dd",
+      "name": "folder2",
+      "item": [
+        {
+          "id": "07648aa8-8f7c-4895-affe-4656e196efa3",
+          "name": "New Folder",
+          "item": [
+            {
+              "id": "29e37e5d-9d95-4dfd-85e4-bea1ffd5d9b2",
+              "name": "New Folder",
+              "item": [
+                {
+                  "id": "a1a1305d-6867-448a-97ad-19a5bcde7d58",
+                  "name": "New Folder",
+                  "item": [
+                    {
+                      "id": "1254c8dc-0437-4e00-9677-63c5f81881a7",
+                      "name": "New Folder",
+                      "item": [
+                        {
+                          "id": "7fbffae7-bb71-4c50-99a4-1f848ce699f6",
+                          "name": "New Folder",
+                          "item": [
+                            {
+                              "id": "d6f7edbf-320d-408d-a6fb-f4326bad8371",
+                              "name": "final",
+                              "item": [
+                                {
+                                  "id": "8aa6a242-f8a8-487a-830d-96bb118222d3",
+                                  "name": "requestn",
+                                  "request": {
+                                    "url": {
+                                      "protocol": "https",
+                                      "path": [
+                                        "testpath",
+                                        ":pathvariable",
+                                        "path",
+                                        "requestn"
+                                      ],
+                                      "host": [
+                                        "www",
+                                        "testdomain",
+                                        "ie"
+                                      ],
+                                      "query": [],
+                                      "variable": [
+                                        {
+                                          "type": "any",
+                                          "value": "{{testpathvalue}}",
+                                          "key": "pathvariable"
+                                        }
+                                      ]
+                                    },
+                                    "method": "GET"
+                                  },
+                                  "response": [],
+                                  "event": []
+                                }
+                              ],
+                              "event": []
+                            }
+                          ],
+                          "event": []
+                        }
+                      ],
+                      "event": []
+                    }
+                  ],
+                  "event": []
+                }
+              ],
+              "event": []
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e4d2072e-0e01-4c94-9b40-ff120d608a97",
+      "name": "request0",
+      "request": {
+        "url": {
+          "protocol": "https",
+          "path": [
+            "testpath",
+            ":pathvariable",
+            "path",
+            "request0"
+          ],
+          "host": [
+            "www",
+            "testdomain",
+            "ie"
+          ],
+          "query": [
+            {
+              "key": "query1",
+              "value": "queryvalue1"
+            }
+          ],
+          "variable": [
+            {
+              "type": "any",
+              "value": "{{testpathvalue}}",
+              "key": "pathvariable"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "header",
+            "value": "headervalue1"
+          }
+        ],
+        "method": "GET",
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"key\": \"value\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "type": "string",
+              "value": "12345",
+              "key": "value"
+            },
+            {
+              "type": "string",
+              "value": "X-API-Key",
+              "key": "key"
+            }
+          ]
+        }
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "b8c3c3ca-6686-4e93-8fd2-393c8dcf50c5",
+            "type": "text/javascript",
+            "exec": [
+              "pre-request script content"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "904bcd2c-ed36-4bcf-9142-9291bc90f93d",
+            "type": "text/javascript",
+            "exec": [
+              "test script content"
+            ]
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "6c9c9256-351c-4026-8c7f-51c6b5c3550f",
+      "name": "request0-1",
+      "request": {
+        "url": {
+          "protocol": "https",
+          "path": [
+            "testpath",
+            ":pathvariable",
+            "path",
+            "request0-1"
+          ],
+          "host": [
+            "www",
+            "testdomain0",
+            "ie"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "type": "any",
+              "value": "{{testpathvalue}}",
+              "key": "pathvariable"
+            }
+          ]
+        },
+        "method": "GET"
+      },
+      "response": [],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [],
+  "info": {
+    "_postman_id": "738641d0-80bf-4ad1-92cc-b947f0bf6c56",
+    "name": "collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  }
+}
