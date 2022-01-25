@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 let sourceCollection;
 
-const YARGS = require('YARGS'),
+const YARGS = require('yargs'),
     FS = require('fs-extra'),
     SDK = require('postman-collection'),
     DEFAULTS = {
