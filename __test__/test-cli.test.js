@@ -36,13 +36,13 @@ describe('Validate index.js', () => {
     it('Should show file saved message correctly with default path', async () => {
       const commandResponse = exec('node "index.js" -c "__test__/collection/collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}"', { silent: true });
       expect(commandResponse.stderr).toMatch('');
-      expect(commandResponse.stdout).toMatch(/File saved to: .*\\__test__\\collection\\new_collection.json/g);
+      expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]__test__[\\|\/]collection[\\|\/]new_collection.json/g);
     });
 
     it('Should show file saved message correctly with custom path', async () => {
       const commandResponse = exec('node "index.js" -c "__test__/collection/collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}" -s "__test__/collection/output/new.json"', { silent: true });
       expect(commandResponse.stderr).toMatch('');
-      expect(commandResponse.stdout).toMatch(/File saved to: .*\\__test__\\collection\\output\\new.json/g);
+      expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]__test__[\\|\/]collection[\\|\/]output[\\|\/]new\.json/g);
     });
   })
 
