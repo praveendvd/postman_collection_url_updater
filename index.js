@@ -36,7 +36,7 @@ try {
 
     const destination_ = PATH.resolve(OPTIONS.save_as === DEFAULTS.save_as ? `${COLLECTIONDIR}/new_${COLLECTIONFILE}` : OPTIONS.save_as)
     FS.outputFileSync(destination_, JSON.stringify(sourceCollection.toJSON(), null, 2))
-    console.log(`File saved to : ${destination_}`)
+    console.log(`File saved to: ${destination_}`)
 } catch (e) {
     if (!e.errno === 4058) throw Error(e)
     console.log(e.message)

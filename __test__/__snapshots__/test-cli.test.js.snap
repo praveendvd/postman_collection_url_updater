@@ -7,20 +7,6 @@ exports[`Validate index.js Validate cli output messages Should show file not fou
 "
 `;
 
-exports[`Validate index.js Validate cli output messages Should show file saved message correctly with custom path 1`] = `""`;
-
-exports[`Validate index.js Validate cli output messages Should show file saved message correctly with custom path 2`] = `
-"File saved to : D:\\\\MyProjects\\\\collection_updater\\\\__test__\\\\collection\\\\output\\\\new.json
-"
-`;
-
-exports[`Validate index.js Validate cli output messages Should show file saved message correctly with default path 1`] = `""`;
-
-exports[`Validate index.js Validate cli output messages Should show file saved message correctly with default path 2`] = `
-"File saved to : D:\\\\MyProjects\\\\collection_updater\\\\__test__\\\\collection\\\\new_collection.json
-"
-`;
-
 exports[`Validate index.js Validate cli output messages Should show help if -c argument is missing 1`] = `
 "Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"

@@ -35,14 +35,14 @@ describe('Validate index.js', () => {
 
     it('Should show file saved message correctly with default path', async () => {
       const commandResponse = exec('node "index.js" -c "__test__/collection/collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}"', { silent: true });
-      expect(commandResponse.stderr).toMatchSnapshot();
-      expect(commandResponse.stdout).toMatchSnapshot();
+      expect(commandResponse.stderr).toMatch('');
+      expect(commandResponse.stdout).toMatch(/File saved to: .*\\__test__\\collection\\new_collection.json/g);
     });
 
     it('Should show file saved message correctly with custom path', async () => {
       const commandResponse = exec('node "index.js" -c "__test__/collection/collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}" -s "__test__/collection/output/new.json"', { silent: true });
-      expect(commandResponse.stderr).toMatchSnapshot();
-      expect(commandResponse.stdout).toMatchSnapshot();
+      expect(commandResponse.stderr).toMatch('');
+      expect(commandResponse.stdout).toMatch(/File saved to: .*\\__test__\\collection\\output\\new.json/g);
     });
   })
 
@@ -169,8 +169,6 @@ describe('Validate index.js', () => {
 
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
 
-      console.log(sourceCollection.item[0].item[0].request.url.query)
-      console.log(outputCollection.item[0].item[0].request.url.query)
       expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
       expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
         .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
@@ -199,8 +197,6 @@ describe('Validate index.js', () => {
 
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
 
-      console.log(sourceCollection.item[0].item[0].request.url.query)
-      console.log(outputCollection.item[0].item[0].request.url.query)
       expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
       expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
         .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
