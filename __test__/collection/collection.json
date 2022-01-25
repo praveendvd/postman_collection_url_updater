@@ -9,27 +9,95 @@
 			"name": "folder1",
 			"item": [
 				{
-					"name": "request1",
+					"name": "request1-1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pre-request script content 1-1"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"test script content 1-1"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "in",
+									"value": "query",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "123451-1",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "X-API-Key-1-1",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "header",
+								"value": "headervalue1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"key1-1\": \"value1-1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "https://www.testdomain.ie/testpath/:pathvariable/path/request1",
+							"raw": "https://www.testdomain0.ie/testpath/:pathvariable1-1/path/request1-1?query1-1-0=queryvalue1-1-0&query1-1-1=queryvalue1-1-1",
 							"protocol": "https",
 							"host": [
 								"www",
-								"testdomain",
+								"testdomain0",
 								"ie"
 							],
 							"path": [
 								"testpath",
-								":pathvariable",
+								":pathvariable1-1",
 								"path",
-								"request1"
+								"request1-1"
+							],
+							"query": [
+								{
+									"key": "query1-1-0",
+									"value": "queryvalue1-1-0"
+								},
+								{
+									"key": "query1-1-1",
+									"value": "queryvalue1-1-1"
+								}
 							],
 							"variable": [
 								{
-									"key": "pathvariable",
+									"key": "pathvariable1-1",
 									"value": "{{testpathvalue}}"
 								}
 							]
@@ -61,27 +129,86 @@
 															"name": "final",
 															"item": [
 																{
-																	"name": "requestn",
+																	"name": "requestn-1",
+																	"event": [
+																		{
+																			"listen": "prerequest",
+																			"script": {
+																				"exec": [
+																					"pre-request script content n-1"
+																				],
+																				"type": "text/javascript"
+																			}
+																		},
+																		{
+																			"listen": "test",
+																			"script": {
+																				"exec": [
+																					"test script content n-1"
+																				],
+																				"type": "text/javascript"
+																			}
+																		}
+																	],
+																	"protocolProfileBehavior": {
+																		"disableBodyPruning": true
+																	},
 																	"request": {
+																		"auth": {
+																			"type": "apikey",
+																			"apikey": [
+																				{
+																					"key": "value",
+																					"value": "12345n-1",
+																					"type": "string"
+																				},
+																				{
+																					"key": "key",
+																					"value": "X-API-Key-n-1",
+																					"type": "string"
+																				}
+																			]
+																		},
 																		"method": "GET",
-																		"header": [],
+																		"header": [
+																			{
+																				"key": "header",
+																				"value": "headervalue1",
+																				"type": "text"
+																			}
+																		],
+																		"body": {
+																			"mode": "raw",
+																			"raw": "{\r\n    \"keyn-1\": \"valuen-1\"\r\n}",
+																			"options": {
+																				"raw": {
+																					"language": "json"
+																				}
+																			}
+																		},
 																		"url": {
-																			"raw": "https://www.testdomain.ie/testpath/:pathvariable/path/requestn",
+																			"raw": "https://www.testdomain0.ie/testpath/:pathvariablen-1/path/requestn-1?queryn-1=queryvaluen-1",
 																			"protocol": "https",
 																			"host": [
 																				"www",
-																				"testdomain",
+																				"testdomain0",
 																				"ie"
 																			],
 																			"path": [
 																				"testpath",
-																				":pathvariable",
+																				":pathvariablen-1",
 																				"path",
-																				"requestn"
+																				"requestn-1"
+																			],
+																			"query": [
+																				{
+																					"key": "queryn-1",
+																					"value": "queryvaluen-1"
+																				}
 																			],
 																			"variable": [
 																				{
-																					"key": "pathvariable",
+																					"key": "pathvariablen-1",
 																					"value": "{{testpathvalue}}"
 																				}
 																			]
@@ -104,13 +231,13 @@
 			]
 		},
 		{
-			"name": "request0",
+			"name": "request0-1",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"pre-request script content"
+							"pre-request script content 0-1"
 						],
 						"type": "text/javascript"
 					}
@@ -119,7 +246,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"test script content"
+							"test script content 0-1"
 						],
 						"type": "text/javascript"
 					}
@@ -133,13 +260,13 @@
 					"type": "apikey",
 					"apikey": [
 						{
-							"key": "value",
-							"value": "12345",
+							"key": "key",
+							"value": "X-API-Key-0-1",
 							"type": "string"
 						},
 						{
-							"key": "key",
-							"value": "X-API-Key",
+							"key": "value",
+							"value": "123450-1",
 							"type": "string"
 						}
 					]
@@ -147,14 +274,14 @@
 				"method": "GET",
 				"header": [
 					{
-						"key": "header",
-						"value": "headervalue1",
+						"key": "header0-1",
+						"value": "headervalue0-1",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"key\": \"value\"\r\n}",
+					"raw": "{\r\n    \"key0-1\": \"value0-1\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -162,42 +289,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://www.testdomain.ie/testpath/:pathvariable/path/request0?query1=queryvalue1",
-					"protocol": "https",
-					"host": [
-						"www",
-						"testdomain",
-						"ie"
-					],
-					"path": [
-						"testpath",
-						":pathvariable",
-						"path",
-						"request0"
-					],
-					"query": [
-						{
-							"key": "query1",
-							"value": "queryvalue1"
-						}
-					],
-					"variable": [
-						{
-							"key": "pathvariable",
-							"value": "{{testpathvalue}}"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "request0-1",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://www.testdomain0.ie/testpath/:pathvariable/path/request0-1",
+					"raw": "https://www.testdomain0.ie/testpath/:pathvariable0-1/path/request0-1?query0-1=queryvalue0-1",
 					"protocol": "https",
 					"host": [
 						"www",
@@ -206,14 +298,108 @@
 					],
 					"path": [
 						"testpath",
-						":pathvariable",
+						":pathvariable0-1",
 						"path",
 						"request0-1"
 					],
+					"query": [
+						{
+							"key": "query0-1",
+							"value": "queryvalue0-1"
+						}
+					],
 					"variable": [
 						{
-							"key": "pathvariable",
+							"key": "pathvariable0-1",
 							"value": "{{testpathvalue}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request0-2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pre-request script content 0-2"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"test script content 0-2"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "X-API-Key-0-2",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "123450-2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "header0-2",
+						"value": "headervalue0-2",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key0-2\": \"value0-2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.testdomain0-.ie/testpath/:pathvariable0-2/path/request0-2?query0-2=queryvalue0-2",
+					"protocol": "https",
+					"host": [
+						"www",
+						"testdomain0-",
+						"ie"
+					],
+					"path": [
+						"testpath",
+						":pathvariable0-2",
+						"path",
+						"request0-2"
+					],
+					"query": [
+						{
+							"key": "query0-2",
+							"value": "queryvalue0-2"
+						}
+					],
+					"variable": [
+						{
+							"key": "pathvariable0-2",
+							"value": "pathvalue0-2"
 						}
 					]
 				}

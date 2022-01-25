@@ -51,10 +51,161 @@ describe('Validate index.js', () => {
       outputCollectionPath = '__test__/collection/output/new.json';
 
     it('validate no changes happens when there is no match', async () => {
-      sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString()));
-      const commandResponse = exec(`node "index.js" -c "${collectionPath}" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}" -s "new_collection.json" -s "${outputCollectionPath}"`, { silent: true });
-      outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString()));
-      expect(sourceCollection).toStrictEqual(outputCollection)
+
+      const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
+      const commandResponse = exec(`node "index.js" -c "${collectionPath}" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
+      const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
+      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
+      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
+        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
+      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
+      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+    });
+
+    it('validate change happens only for urls other properties remains the same', async () => {
+
+      function updatedRequestObject(source, depthID, postionID) {
+        source.request.url.host = ["{{baseURL}}"];
+        source.request.url.path = [
+          "{{path}}",
+          "testpath",
+          `:pathvariable${depthID}-${postionID}`,
+          "path",
+          `request${depthID}-${postionID}`,
+        ];
+        delete source.request.url.protocol
+      }
+
+      const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
+      const commandResponse = exec(`node "index.js" -c "${collectionPath}" -r "https://www.testdomain0.ie" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
+      const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
+
+      updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
+      updatedRequestObject(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0], 'n', 1);
+      updatedRequestObject(sourceCollection.item[2], 0, 1);
+
+      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
+      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
+        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
+      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
+      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+    });
+
+    it('validate change protocol is shown if not removed', async () => {
+
+      function updatedRequestObject(source, depthID, postionID) {
+        source.request.url.host = ["{{baseURL}}"];
+        source.request.url.path = [
+          "{{path}}",
+          "testpath",
+          `:pathvariable${depthID}-${postionID}`,
+          "path",
+          `request${depthID}-${postionID}`,
+        ];
+      }
+
+      const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
+      const commandResponse = exec(`node "index.js" -c "${collectionPath}" -r "www.testdomain0.ie" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
+      const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
+
+      updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
+      updatedRequestObject(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0], 'n', 1);
+      updatedRequestObject(sourceCollection.item[2], 0, 1);
+
+      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
+      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
+        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
+      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
+      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+    });
+
+
+    it('validate path varaible is removed if replaced', async () => {
+
+      function updatedRequestObject(source, depthID, postionID) {
+        source.request.url.host = ["{{baseURL}}"];
+        source.request.url.path = [
+          "{{path}}",
+          "path",
+          `request${depthID}-${postionID}`,
+        ];
+        source.request.url.variable = []
+      }
+
+      const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
+      const commandResponse = exec(`node "index.js" -c "${collectionPath}" -r "www.testdomain0.ie/testpath/:pathvariable1-1" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
+      const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
+
+      updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
+
+      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
+      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
+        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
+      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
+      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+    });
+
+
+    it('validate query parameters are updated', async () => {
+
+      function updatedRequestObject(source, depthID, postionID) {
+        source.request.url.path = [
+          "testpath",
+          `:pathvariable${depthID}-${postionID}`,
+          "path",
+          `request${depthID}-${postionID}`,
+        ];
+        source.request.url.query = [
+          { key: 'query1-1-0', value: 'queryvalue1-1-0-0' },
+          { key: 'test', value: 'queryvalue1-1-0' },
+          { key: 'query1-1-1', value: 'queryvalue1-1-1' }
+        ]
+
+      }
+
+      const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
+      const commandResponse = exec(`node "index.js" -c "${collectionPath}" -r "/:pathvariable1-1/path/request1-1?query1-1-0" -w "/:pathvariable1-1/path/request1-1?query1-1-0=queryvalue1-1-0-0&test" -s "${outputCollectionPath}"`, { silent: true });
+      const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
+
+      updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
+
+      console.log(sourceCollection.item[0].item[0].request.url.query)
+      console.log(outputCollection.item[0].item[0].request.url.query)
+      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
+      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
+        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
+      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
+      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+    });
+
+
+    it('validate query and path variables are removed if replaced completely', async () => {
+
+      function updatedRequestObject(source, depthID, postionID) {
+        source.request.url.path = [
+          'v1',
+          '{{path}}'
+        ];
+        source.request.url.variable = [];
+        source.request.url.query = [];
+        source.request.url.host = ["{{baseURL}}"];
+        source.request.url.protocol = "{{protocol}}";
+
+      }
+
+      const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
+      const commandResponse = exec(`node "index.js" -c "${collectionPath}" -r "https://www.testdomain0.ie/testpath/:pathvariable1-1/path/request1-1?query1-1-0=queryvalue1-1-0&query1-1-1=queryvalue1-1-1" -w "{{protocol}}://{{baseURL}}/v1/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
+      const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
+
+      updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
+
+      console.log(sourceCollection.item[0].item[0].request.url.query)
+      console.log(outputCollection.item[0].item[0].request.url.query)
+      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
+      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
+        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
+      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
+      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
     });
 
   })
