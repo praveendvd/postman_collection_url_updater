@@ -1,4 +1,5 @@
 node_modules
 package-lock.json
-__test_/collection/output
-__test__/collection/new_collection
+__test__/collection/output
+__test__/collection/new_collection.json
+__test__/*copy*
