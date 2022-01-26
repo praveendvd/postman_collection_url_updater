@@ -9,7 +9,7 @@ This is a command line utility that helps you to update request URLs in your col
 
 npx postman-collection-url-updater -c "collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}" -s "new_collection.json"
 
-**in case of PATH and Query variables:**
+## in case of PATH and Query variables:**
 
     npx postman-collection-url-updater -c "collection.json" -r "https://{{test}}/:test/test" -w "https://localhost/newpath/:test/:test2""
 
@@ -25,7 +25,7 @@ makes the changes and removes :test if it doesn't exists in remaining part and r
 
 eg , output would be https://localhost/newpath/:test/new , if path variable exists else https://localhost/newpath/new
 
-**in case of REGEx match:**
+## in case of REGEx match:
 
     npx postman-collection-url-updater -c "collection.json" -r "(.*)\?(.*)" -w "$1?newquery=newvalue&$2" -p 
 
