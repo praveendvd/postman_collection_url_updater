@@ -18,8 +18,16 @@ jobs:
       contents: read
       packages: write
     steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Checkout node setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
       - name: Install production dependencies
         run: npm i --production
-      - name: see if test works
-        run: npm test
+      - name: Publish npm
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
 
