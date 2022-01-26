@@ -1,4 +1,5 @@
 #! /usr/bin/env node
+
 let sourceCollection;
 
 const YARGS = require('yargs'),
@@ -7,13 +8,15 @@ const YARGS = require('yargs'),
     DEFAULTS = {
         replace_url_part: 'all',
         save_as: 'root/new_<collection_name>.json',
+        use_regex_pattern: false
     },
     OPTIONS = YARGS
         .usage('Usage: -c "root/collection_name.json" -r "{{Baseurl}}/path1/path2" -w "{{Baseurl}}/{{path}}" -s "root/new_collection_name.json"')
         .option('c', { alias: 'collection_path', describe: 'Path to Collection file', type: 'string', demandOption: true })
         .option('r', { alias: 'replace_url_part', describe: 'Replaces only the matching part of the URL', type: 'string', demandOption: true })
         .option('w', { alias: 'with_url_part', describe: 'Replaces the matching part of the URL with provided value', type: 'string', demandOption: true })
-        .option('s', { alias: 'save_as', describe: 'path to save new collection', type: 'string', demandOption: false, default: DEFAULTS.save_as })
+        .option('s', { alias: 'save_as', describe: 'Path to save new collection', type: 'string', demandOption: false, default: DEFAULTS.save_as })
+        .option('p', { alias: 'use_regex_pattern', describe: 'Flag to enable matching url using regex', demandOption: false, default: DEFAULTS.use_regex_pattern,type:"boolean" })
         .argv,
     PATH = require('path'),
     COLLECTIONFILE = PATH.parse(OPTIONS.collection_path).base,
@@ -28,7 +31,9 @@ try {
         requestItem.request.url.variables.clear()
         let currentURL_ = requestItem.request.url.toString()
 
-        const newURL = urlReplacer(currentURL_, OPTIONS.replace_url_part, OPTIONS.with_url_part)
+        const newURL = urlReplacer(currentURL_, OPTIONS.replace_url_part, OPTIONS.with_url_part, OPTIONS.use_regex_pattern)
+
+        console.log(newURL)
 
         //add varaibles back if required and update the collection
         updateCollection(requestItem, variables_, newURL)
@@ -42,8 +47,9 @@ try {
     console.log(e.message)
 }
 
-function urlReplacer(currentUrl, urlToReplace, urlToReplaceWith) {
-    return currentUrl.replaceAll(urlToReplace, urlToReplaceWith)
+function urlReplacer(currentUrl, urlToReplace, urlToReplaceWith, pattern=true) {
+    return currentUrl.replaceAll( pattern ? new RegExp(urlToReplace,'g') : urlToReplace,
+        urlToReplaceWith)
 }
 
 function updateCollection(requestItem, variables, newURL) {
