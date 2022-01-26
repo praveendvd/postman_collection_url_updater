@@ -1,5 +1,7 @@
 ![logo](https://github.com/praveendvd/postman_collection_url_updater/raw/master/logo/logo.png)
 
+[![Change validator](https://github.com/praveendvd/postman_collection_url_updater/actions/workflows/changeValidator.yml/badge.svg?branch=master)](https://github.com/praveendvd/postman_collection_url_updater/actions/workflows/changeValidator.yml)
+
 Github page: https://praveendvd.github.io/postman_collection_url_updater/
 
 # postman-collection-url-updater
