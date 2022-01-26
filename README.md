@@ -1,4 +1,4 @@
-![logo](https://github.com/praveendvd/postman_collection_url_updater/blob/master/logo/logo.png)
+![logo](https://github.com/praveendvd/postman_collection_url_updater/raw/master/logo/logo.png)
 
 # postman-collection-url-updater
 
