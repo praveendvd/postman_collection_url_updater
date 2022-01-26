@@ -32,9 +32,6 @@ try {
         let currentURL_ = requestItem.request.url.toString()
 
         const newURL = urlReplacer(currentURL_, OPTIONS.replace_url_part, OPTIONS.with_url_part, OPTIONS.use_regex_pattern)
-
-        console.log(newURL)
-
         //add varaibles back if required and update the collection
         updateCollection(requestItem, variables_, newURL)
     })
@@ -47,8 +44,8 @@ try {
     console.log(e.message)
 }
 
-function urlReplacer(currentUrl, urlToReplace, urlToReplaceWith, pattern) {
-    return currentUrl.replaceAll( pattern ? new RegExp(urlToReplace,'g') : urlToReplace,
+function urlReplacer(currentUrl, urlToReplace, urlToReplaceWith, usePattern) {
+    return currentUrl.replaceAll( usePattern ? new RegExp(urlToReplace,'g') : urlToReplace,
         urlToReplaceWith)
 }
 
