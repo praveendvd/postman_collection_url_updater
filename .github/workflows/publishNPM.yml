@@ -10,7 +10,7 @@ on:
 
 jobs:
   call_build_workflow:
-    uses: praveendvd/postman_collection_url_updater/blob/master/.github/workflows/changeValidator.yml@latest
+    uses: ./postman_collection_url_updater/blob/master/.github/workflows/changeValidator.yml
   publish-npm:
     needs: call_build_workflow
     runs-on: ubuntu-latest
