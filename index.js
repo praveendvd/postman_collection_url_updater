@@ -47,7 +47,7 @@ try {
     console.log(e.message)
 }
 
-function urlReplacer(currentUrl, urlToReplace, urlToReplaceWith, pattern=true) {
+function urlReplacer(currentUrl, urlToReplace, urlToReplaceWith, pattern) {
     return currentUrl.replaceAll( pattern ? new RegExp(urlToReplace,'g') : urlToReplace,
         urlToReplaceWith)
 }
