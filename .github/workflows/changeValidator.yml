@@ -15,10 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout actions
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+        uses: actions/checkout@v2
+      - name: Checkout node setup
+        uses: actions/setup-node@v2
         with:
           node-version: 16
+      - name: Setup project
+        run: npm i
       - name: Run unit tests
-      - run: npm i
-      - run: npm test
+        run: npm test
