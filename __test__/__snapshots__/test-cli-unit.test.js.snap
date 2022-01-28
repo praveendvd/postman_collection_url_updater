@@ -86,15 +86,17 @@ exports[`Validate index.js unit tests Validate cli output messages Should show h
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
 
 Options:
-      --help              Show help                                    [boolean]
-      --version           Show version number                          [boolean]
-  -c, --collection_path   Path to Collection file            [string] [required]
-  -r, --replace_url_part  Replaces only the matching part of the URL
+      --help               Show help                                   [boolean]
+      --version            Show version number                         [boolean]
+  -c, --collection_path    Path to Collection file           [string] [required]
+  -r, --replace_url_part   Replaces only the matching part of the URL
                                                              [string] [required]
-  -w, --with_url_part     Replaces the matching part of the URL with provided
-                          value                              [string] [required]
-  -s, --save_as           path to save new collection
-                           [string] [default: \\"root/new_<collection_name>.json\\"]",
+  -w, --with_url_part      Replaces the matching part of the URL with provided
+                           value                             [string] [required]
+  -s, --save_as            Path to save new collection
+                           [string] [default: \\"root/new_<collection_name>.json\\"]
+  -p, --use_regex_pattern  Flag to enable matching url using regex
+                                                      [boolean] [default: false]",
     ],
     Array [],
     Array [
@@ -146,15 +148,17 @@ exports[`Validate index.js unit tests Validate cli output messages Should show h
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
 
 Options:
-      --help              Show help                                    [boolean]
-      --version           Show version number                          [boolean]
-  -c, --collection_path   Path to Collection file            [string] [required]
-  -r, --replace_url_part  Replaces only the matching part of the URL
+      --help               Show help                                   [boolean]
+      --version            Show version number                         [boolean]
+  -c, --collection_path    Path to Collection file           [string] [required]
+  -r, --replace_url_part   Replaces only the matching part of the URL
                                                              [string] [required]
-  -w, --with_url_part     Replaces the matching part of the URL with provided
-                          value                              [string] [required]
-  -s, --save_as           path to save new collection
-                           [string] [default: \\"root/new_<collection_name>.json\\"]",
+  -w, --with_url_part      Replaces the matching part of the URL with provided
+                           value                             [string] [required]
+  -s, --save_as            Path to save new collection
+                           [string] [default: \\"root/new_<collection_name>.json\\"]
+  -p, --use_regex_pattern  Flag to enable matching url using regex
+                                                      [boolean] [default: false]",
     ],
     Array [],
     Array [
@@ -206,15 +210,17 @@ exports[`Validate index.js unit tests Validate cli output messages Should show h
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
 
 Options:
-      --help              Show help                                    [boolean]
-      --version           Show version number                          [boolean]
-  -c, --collection_path   Path to Collection file            [string] [required]
-  -r, --replace_url_part  Replaces only the matching part of the URL
+      --help               Show help                                   [boolean]
+      --version            Show version number                         [boolean]
+  -c, --collection_path    Path to Collection file           [string] [required]
+  -r, --replace_url_part   Replaces only the matching part of the URL
                                                              [string] [required]
-  -w, --with_url_part     Replaces the matching part of the URL with provided
-                          value                              [string] [required]
-  -s, --save_as           path to save new collection
-                           [string] [default: \\"root/new_<collection_name>.json\\"]",
+  -w, --with_url_part      Replaces the matching part of the URL with provided
+                           value                             [string] [required]
+  -s, --save_as            Path to save new collection
+                           [string] [default: \\"root/new_<collection_name>.json\\"]
+  -p, --use_regex_pattern  Flag to enable matching url using regex
+                                                      [boolean] [default: false]",
     ],
     Array [],
     Array [
@@ -266,15 +272,17 @@ exports[`Validate index.js unit tests Validate cli output messages Should show h
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
 
 Options:
-      --help              Show help                                    [boolean]
-      --version           Show version number                          [boolean]
-  -c, --collection_path   Path to Collection file            [string] [required]
-  -r, --replace_url_part  Replaces only the matching part of the URL
+      --help               Show help                                   [boolean]
+      --version            Show version number                         [boolean]
+  -c, --collection_path    Path to Collection file           [string] [required]
+  -r, --replace_url_part   Replaces only the matching part of the URL
                                                              [string] [required]
-  -w, --with_url_part     Replaces the matching part of the URL with provided
-                          value                              [string] [required]
-  -s, --save_as           path to save new collection
-                           [string] [default: \\"root/new_<collection_name>.json\\"]",
+  -w, --with_url_part      Replaces the matching part of the URL with provided
+                           value                             [string] [required]
+  -s, --save_as            Path to save new collection
+                           [string] [default: \\"root/new_<collection_name>.json\\"]
+  -p, --use_regex_pattern  Flag to enable matching url using regex
+                                                      [boolean] [default: false]",
     ],
     Array [],
     Array [
