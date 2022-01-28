@@ -37,14 +37,24 @@ makes the changes and if any other path variable is there then it will be retain
 
 eg , output would be https://localhost/newpath/:test/new , if path variable exists else https://localhost/newpath/new
  
-## [1.0.8 - 1.0.11] - 2022-01-24
- 
+[1.0.8 - 1.0.11] - 2022-01-24
+
 ### Added
 
- Added unit tests and add git actions yaml
+Added unit tests and add git actions yaml
 
- Updated gitignore file
+Updated gitignore file
 
 ### Fixed
  
+## [1.0.12] - 2022-01-28
  
+### Added
+
+ Added unit tests , integration tests and add git actions yaml
+
+ Updated gitignore file
+ 
+ Added coverage test
+
+### Fixed
