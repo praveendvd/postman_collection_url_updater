@@ -300,6 +300,4 @@ Options:
 
 exports[`Validate index.js unit tests Validate cli output messages Should show help if arguments are missing 4`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should throw error if exception thrown doesnt contain errono 4058 1`] = `"Error: Custom error"`;
-
-exports[`Validate index.js unit tests Validate cli output messages Should throw error if exception thrown doesnt contain errono property 1`] = `"Error"`;
+exports[`Validate index.js unit tests Validate cli output messages Should throw error if exception thrown doesnt contain error code ENOENT 1`] = `"Error: Custom error"`;

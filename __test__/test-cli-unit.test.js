@@ -121,19 +121,11 @@ describe('Validate index.js unit tests', () => {
       expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./__test__/collection/output/new_collection.json')}`);
     });
 
-    it('Should throw error if exception thrown doesnt contain errono 4058', async () => {
+    it('Should throw error if exception thrown doesnt contain error code ENOENT', async () => {
       resetAndReimportUrlUpdator({ c: "__test__/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "new_collection.json", p: undefined });
       postman_url_updater = require('../index.js')
       jest.clearAllMocks()
       mockConsoleLog.mockImplementation(() => { throw new CustomError(256) });
-      expect(postman_url_updater.startConvert).toThrowErrorMatchingSnapshot()
-    });
-
-    it('Should throw error if exception thrown doesnt contain errono property', async () => {
-      resetAndReimportUrlUpdator({ c: "__test__/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "new_collection.json", p: undefined });
-      postman_url_updater = require('../index.js')
-      jest.clearAllMocks()
-      mockConsoleLog.mockImplementation(() => { throw new Error() });
       expect(postman_url_updater.startConvert).toThrowErrorMatchingSnapshot()
     });
   })

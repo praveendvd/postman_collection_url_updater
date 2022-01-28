@@ -22,7 +22,7 @@ Options:
   -s, --save_as           path to save new collection
                            [string] [default: \\"root/new_<collection_name>.json\\"]
 
-Missing required arguments: c, r
+Missing required argument: c
 "
 `;
 

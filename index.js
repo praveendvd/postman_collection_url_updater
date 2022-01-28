@@ -39,7 +39,7 @@ function startConvert() {
         FS.outputFileSync(destination_, JSON.stringify(sourceCollection.toJSON(), null, 2))
         console.log(`File saved to: ${destination_}`)
     } catch (e) {
-        if (!(e.errno === -4058)) throw Error(e)
+        if (!(e.code === 'ENOENT')) throw Error(e)
         console.error(e.message)
         process.exit()
     }

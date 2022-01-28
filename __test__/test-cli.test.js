@@ -10,7 +10,7 @@ describe('Validate index.js system test', () => {
     });
 
     it('Should show help if -c argument is missing', async () => {
-      const commandResponse = exec('node "bin/main.js" -w "{{baseURL}}/{{path}}" -s "new_collection.json"', { silent: true });
+      const commandResponse = exec('node "bin/main.js" -r "test" -w "{{baseURL}}/{{path}}" -s "new_collection.json"', { silent: true });
       expect(commandResponse.stderr).toMatchSnapshot();
       expect(commandResponse.stdout).toMatchSnapshot();
     });
