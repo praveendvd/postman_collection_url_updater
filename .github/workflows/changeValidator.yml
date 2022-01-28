@@ -23,8 +23,8 @@ jobs:
           node-version: 16
       - name: Setup project
         run: npm i
-      - name: Run unit tests
-        run: npm test
+      - name: Run unit tests and system test
+        run: npm test -- --coverage
   windows:
     runs-on: windows-latest
     steps:
@@ -36,8 +36,8 @@ jobs:
           node-version: 16
       - name: Setup project
         run: npm i
-      - name: Run unit tests
-        run: npm test
+      - name: Run unit tests and system test
+        run: npm test -- --coverage
   mac:
     runs-on: macos-latest
     steps:
@@ -49,5 +49,5 @@ jobs:
           node-version: 16
       - name: Setup project
         run: npm i
-      - name: Run unit tests
-        run: npm test
+      - name: Run unit tests and system test
+        run: npm test -- --coverage
