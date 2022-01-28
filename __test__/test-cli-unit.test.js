@@ -1,3 +1,5 @@
+const path = require('path');
+
 const exec = require('shelljs').exec,
   sdk = require('postman-collection'),
   fs = require('fs'), 
@@ -98,12 +100,11 @@ describe('Validate index.js unit tests', () => {
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
       expect(mockConsoleError).toMatchSnapshot();
-      expect(mockConsoleLog).toBeCalled();
-      expect(mockConsoleLog).toMatchSnapshot();
+      expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./__test__/collection/new_collection.json')}`);
     });
 
     it('Should show file saved message correctly with custom path', async () => {
-      resetAndReimportUrlUpdator({ c: "__test__/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "new_collection.json", p: undefined });
+      resetAndReimportUrlUpdator({ c: "__test__/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "__test__/collection/output/new_collection.json", p: undefined });
       postman_url_updater = require('../index.js')
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
@@ -117,8 +118,7 @@ describe('Validate index.js unit tests', () => {
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
       expect(mockConsoleError).toMatchSnapshot();
-      expect(mockConsoleLog).toBeCalled();
-      expect(mockConsoleLog).toMatchSnapshot();
+      expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./__test__/collection/output/new_collection.json')}`);
     });
 
     it('Should throw error if exception thrown doesnt contain errono 4058', async () => {

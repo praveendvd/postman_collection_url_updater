@@ -50,22 +50,6 @@ exports[`Validate index.js unit tests Validate cli output messages Should show f
 
 exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with custom path 5`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with custom path 6`] = `
-[MockFunction] {
-  "calls": Array [
-    Array [
-      "File saved to: D:\\\\MyProjects\\\\collection_updater\\\\new_collection.json",
-    ],
-  ],
-  "results": Array [
-    Object {
-      "type": "return",
-      "value": undefined,
-    },
-  ],
-}
-`;
-
 exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with default path 1`] = `[MockFunction]`;
 
 exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with default path 2`] = `[MockFunction]`;
@@ -75,22 +59,6 @@ exports[`Validate index.js unit tests Validate cli output messages Should show f
 exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with default path 4`] = `[MockFunction]`;
 
 exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with default path 5`] = `[MockFunction]`;
-
-exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with default path 6`] = `
-[MockFunction] {
-  "calls": Array [
-    Array [
-      "File saved to: D:\\\\MyProjects\\\\collection_updater\\\\__test__\\\\collection\\\\new_collection.json",
-    ],
-  ],
-  "results": Array [
-    Object {
-      "type": "return",
-      "value": undefined,
-    },
-  ],
-}
-`;
 
 exports[`Validate index.js unit tests Validate cli output messages Should show help if -c argument is missing 1`] = `"exit"`;
 
