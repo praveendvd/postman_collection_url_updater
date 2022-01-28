@@ -1,4 +1,3 @@
-#! /usr/bin/env node
 let sourceCollection;
 
 const YARGS = require('yargs'),
@@ -19,28 +18,33 @@ const YARGS = require('yargs'),
     COLLECTIONFILE = PATH.parse(OPTIONS.collection_path).base,
     COLLECTIONDIR = PATH.resolve(PATH.parse(OPTIONS.collection_path).dir);
 
-try {
-    sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(OPTIONS.collection_path).toString()));
-    //forEachItem has all request details irrespective of folder structure
-    sourceCollection.forEachItem((requestItem) => {
-        //stops path variable from resolving
-        let variables_ = requestItem.request.url.variables.all()
-        requestItem.request.url.variables.clear()
-        let currentURL_ = requestItem.request.url.toString()
 
-        const newURL = urlReplacer(currentURL_, OPTIONS.replace_url_part, OPTIONS.with_url_part)
+function startConvert() {
+    try {
+        sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(OPTIONS.collection_path).toString()));
+        //forEachItem has all request details irrespective of folder structure
+        sourceCollection.forEachItem((requestItem) => {
+            //stops path variable from resolving
+            let variables_ = requestItem.request.url.variables.all()
+            requestItem.request.url.variables.clear()
+            let currentURL_ = requestItem.request.url.toString()
 
-        //add varaibles back if required and update the collection
-        updateCollection(requestItem, variables_, newURL)
-    })
+            const newURL = urlReplacer(currentURL_, OPTIONS.replace_url_part, OPTIONS.with_url_part)
 
-    const destination_ = PATH.resolve(OPTIONS.save_as === DEFAULTS.save_as ? `${COLLECTIONDIR}/new_${COLLECTIONFILE}` : OPTIONS.save_as)
-    FS.outputFileSync(destination_, JSON.stringify(sourceCollection.toJSON(), null, 2))
-    console.log(`File saved to: ${destination_}`)
-} catch (e) {
-    if (!e.errno === 4058) throw Error(e)
-    console.log(e.message)
+            //add varaibles back if required and update the collection
+            updateCollection(requestItem, variables_, newURL)
+        })
+
+        const destination_ = PATH.resolve(OPTIONS.save_as === DEFAULTS.save_as ? `${COLLECTIONDIR}/new_${COLLECTIONFILE}` : OPTIONS.save_as)
+        FS.outputFileSync(destination_, JSON.stringify(sourceCollection.toJSON(), null, 2))
+        console.log(`File saved to: ${destination_}`)
+    } catch (e) {
+        if (!(e.errno === -4058)) throw Error(e)
+        console.error(e.message)
+        process.exit()
+    }
 }
+
 
 function urlReplacer(currentUrl, urlToReplace, urlToReplaceWith) {
     return currentUrl.replaceAll(urlToReplace, urlToReplaceWith)
@@ -54,3 +58,5 @@ function updateCollection(requestItem, variables, newURL) {
     })
     requestItem.request.url.variables.repopulate(variables)
 }
+
+module.exports = {startConvert}
