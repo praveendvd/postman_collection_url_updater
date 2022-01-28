@@ -1,6 +1,6 @@
 {
   "name": "postman-collection-url-updater",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "This project helps in updating request URLs in collection files in bulk",
   "scripts": {
     "test": "jest"
