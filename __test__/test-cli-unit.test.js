@@ -2,7 +2,7 @@ const path = require('path');
 
 const exec = require('shelljs').exec,
   sdk = require('postman-collection'),
-  fs = require('fs'), 
+  fs = require('fs'),
   { resetAndReimportUrlUpdator, CustomError } = require('./utils/helperMethods.js');
 
 
@@ -288,6 +288,7 @@ describe('Validate index.js unit tests', () => {
 
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
+      //expect only first request is modified 
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
 
       expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
@@ -295,6 +296,56 @@ describe('Validate index.js unit tests', () => {
         .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
       expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
       expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+    });
+
+    it('validate query parameters are updated using regex if p flag used ', async () => {
+
+      function updatedRequestObject(source) {
+        source.request.url.query.unshift({
+          "key": "querynew",
+          "value": "valuenew",
+        })
+      }
+
+      const sourceCollection = new sdk.Collection(JSON.parse(fs.readFileSync(collectionPath).toString())).toJSON();
+      resetAndReimportUrlUpdator({ c: collectionPath, r: "^(.*?)(?:\\?(.*))?$", w: "$1?querynew=valuenew&$2", s: outputCollectionPath, p: true });
+      require('../index.js').startConvert();
+      const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
+
+      //expect that new query parameter is added as first parameter
+      updatedRequestObject(sourceCollection.item[0].item[0]);
+      updatedRequestObject(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0]);
+      updatedRequestObject(sourceCollection.item[2]);
+      updatedRequestObject(sourceCollection.item[3]);
+      updatedRequestObject(sourceCollection.item[4]);
+
+      sourceCollection.item[4].request.url.query.push({
+        "key": "",
+        "value": null,
+      })
+
+      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
+      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
+        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
+      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
+      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection.item[4].request).toStrictEqual(sourceCollection.item[4].request);
+    });
+
+    it('validate regex have no effect if p flag is not used ', async () => {
+
+      const sourceCollection = new sdk.Collection(JSON.parse(fs.readFileSync(collectionPath).toString())).toJSON();
+      resetAndReimportUrlUpdator({ c: collectionPath, r: "^(.*?)(?:\\?(.*))?$", w: "$1?querynew=valuenew&$2", s: outputCollectionPath, p: undefined });
+      require('../index.js').startConvert();
+      const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
+
+      //expect source and output are the same
+      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
+      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
+        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
+      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
+      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection.item[4].request).toStrictEqual(sourceCollection.item[4].request);
     });
 
   })

@@ -1,4 +1,5 @@
 
+
 ![logo](https://github.com/praveendvd/postman_collection_url_updater/raw/master/logo/logo.png)
 
 Github page: https://praveendvd.github.io/postman_collection_url_updater/
@@ -27,13 +28,21 @@ eg , output would be https://localhost/newpath/:test/new , if path variable exis
 
 ## in case of REGEx match:
 
+Pass the regex as -r parameter and replace it with -w parameter. -w parameter will have the capture group available:
+
+For example:
+
     npx postman-collection-url-updater -c "collection.json" -r "(.*)\?(.*)" -w "$1?newquery=newvalue&$2" -p 
 
 or
 
     npx postman-collection-url-updater -c "collection.json" -r "(.*)\?(.*)" -w "$1?newquery=newvalue&$2" -p true
 
-This will replace all urls having query parameter with to the form  \<path\>?newquery=newvalue&\<remaining query>
+This will replace all urls having query parameter to the form  \<path\>?newquery=newvalue&\<remaining query>
+
+If you want to add query parameter to all URLs irrespective of whether the query parameter exists or not, then use :
+
+    npx postman-collection-url-updater -c "collection.json" -r "^(.*?)(?:\?(.*))?$" -w "$1?newquery=newvalue&$2" -p true
 
 
 ## CLI Options
