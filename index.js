@@ -1,14 +1,16 @@
 let sourceCollection;
 
-const YARGS = require('yargs'),
-    FS = require('fs-extra'),
-    SDK = require('postman-collection'),
+const yargs = require('yargs'),
+    fs = require('fs-extra'),
+    sdk = require('postman-collection'),
     DEFAULTS = {
         replace_url_part: 'all',
         save_as: 'root/new_<collection_name>.json',
         use_regex_pattern: false
     },
-    OPTIONS = YARGS
+    path = require('path'),
+    chalk = require('chalk'),
+    OPTIONS = yargs
         .usage('Usage: -c "root/collection_name.json" -r "{{Baseurl}}/path1/path2" -w "{{Baseurl}}/{{path}}" -s "root/new_collection_name.json"')
         .option('c', { alias: 'collection_path', describe: 'Path to Collection file', type: 'string', demandOption: true })
         .option('r', { alias: 'replace_url_part', describe: 'Replaces only the matching part of the URL', type: 'string', demandOption: true })
@@ -16,14 +18,13 @@ const YARGS = require('yargs'),
         .option('s', { alias: 'save_as', describe: 'Path to save new collection', type: 'string', demandOption: false, default: DEFAULTS.save_as })
         .option('p', { alias: 'use_regex_pattern', describe: 'Flag to enable matching url using regex', demandOption: false, default: DEFAULTS.use_regex_pattern,type:"boolean" })
         .argv,
-    PATH = require('path'),
-    COLLECTIONFILE = PATH.parse(OPTIONS.collection_path).base,
-    COLLECTIONDIR = PATH.resolve(PATH.parse(OPTIONS.collection_path).dir);
+    COLLECTIONFILE = path.parse(OPTIONS.collection_path).base,
+    COLLECTIONDIR = path.resolve(path.parse(OPTIONS.collection_path).dir);
 
 
 function startConvert() {
     try {
-        sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(OPTIONS.collection_path).toString()));
+        sourceCollection = new sdk.Collection(JSON.parse(fs.readFileSync(OPTIONS.collection_path).toString()));
         //forEachItem has all request details irrespective of folder structure
         sourceCollection.forEachItem((requestItem) => {
             //stops path variable from resolving
@@ -37,12 +38,12 @@ function startConvert() {
             updateCollection(requestItem, variables_, newURL)
         })
 
-        const destination_ = PATH.resolve(OPTIONS.save_as === DEFAULTS.save_as ? `${COLLECTIONDIR}/new_${COLLECTIONFILE}` : OPTIONS.save_as)
-        FS.outputFileSync(destination_, JSON.stringify(sourceCollection.toJSON(), null, 2))
-        console.log(`File saved to: ${destination_}`)
+        const destination_ = path.resolve(OPTIONS.save_as === DEFAULTS.save_as ? `${COLLECTIONDIR}/new_${COLLECTIONFILE}` : OPTIONS.save_as)
+        fs.outputFileSync(destination_, JSON.stringify(sourceCollection.toJSON(), null, 2))
+        console.log(chalk.green('File saved to: ')+ chalk.yellowBright(destination_))
     } catch (e) {
         if (!(e.code === 'ENOENT')) throw Error(e)
-        console.error(e.message)
+        console.error(chalk.red(e.message))
         process.exit()
     }
 }
