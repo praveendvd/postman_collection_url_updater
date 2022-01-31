@@ -1,6 +1,4 @@
-const path = require('path');
-
-const exec = require('shelljs').exec,
+const path = require('path'),
   sdk = require('postman-collection'),
   fs = require('fs'), 
   { resetAndReimportUrlUpdator, CustomError } = require('./utils/helperMethods.js');
