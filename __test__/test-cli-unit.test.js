@@ -1,5 +1,5 @@
 const path = require('path');
-
+const chalk = require('chalk');
 const exec = require('shelljs').exec,
   sdk = require('postman-collection'),
   fs = require('fs'), 
@@ -24,7 +24,7 @@ describe('Validate index.js unit tests', () => {
 
     it('Should show help if arguments are missing', async () => {
       resetAndReimportUrlUpdator({ c: undefined, r: undefined, w: undefined, s: undefined, p: undefined });
-      expect(() => { require('../index.js') }).toThrowErrorMatchingSnapshot()
+      expect(() => { require('../src/index.js') }).toThrowErrorMatchingSnapshot()
       expect(mockProcessExit).toBeCalled();
       expect(mockConsoleError).toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
@@ -35,7 +35,7 @@ describe('Validate index.js unit tests', () => {
 
     it('Should show help if -c argument is missing', async () => {
       resetAndReimportUrlUpdator({ c: undefined, r: "{{baseURL}}/{{path}}", w: "new_collection.json", s: undefined, p: undefined });
-      expect(() => { require('../index.js') }).toThrowErrorMatchingSnapshot()
+      expect(() => { require('../src/index.js') }).toThrowErrorMatchingSnapshot()
       expect(mockProcessExit).toBeCalled();
       expect(mockConsoleError).toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
@@ -46,7 +46,7 @@ describe('Validate index.js unit tests', () => {
 
     it('Should show help if -r argument is missing', async () => {
       resetAndReimportUrlUpdator({ c: "test/collection/collection.json", r: undefined, w: "new_collection.json", s: undefined, p: undefined });
-      expect(() => { require('../index.js') }).toThrowErrorMatchingSnapshot()
+      expect(() => { require('../src/index.js') }).toThrowErrorMatchingSnapshot()
       expect(mockProcessExit).toBeCalled();
       expect(mockConsoleError).toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
@@ -57,7 +57,7 @@ describe('Validate index.js unit tests', () => {
 
     it('Should show help if -w argument is missing', async () => {
       resetAndReimportUrlUpdator({ c: "test/collection/collection.json", r: "{{baseURL}}/{{path}}", w: undefined, s: "new_collection.json", p: undefined });
-      expect(() => { require('../index.js') }).toThrowErrorMatchingSnapshot()
+      expect(() => { require('../src/index.js') }).toThrowErrorMatchingSnapshot()
       expect(mockProcessExit).toBeCalled();
       expect(mockConsoleError).toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
@@ -68,7 +68,7 @@ describe('Validate index.js unit tests', () => {
 
     it('Should show file not found error if collection doesnt exists', async () => {
       resetAndReimportUrlUpdator({ c: "test/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "new_collection.json", p: undefined });
-      postman_url_updater = require('../index.js')
+      postman_url_updater = require('../src/index.js')
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
@@ -87,7 +87,7 @@ describe('Validate index.js unit tests', () => {
 
     it('Should show file saved message correctly with default path', async () => {
       resetAndReimportUrlUpdator({ c: "__test__/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: undefined, p: undefined });
-      postman_url_updater = require('../index.js')
+      postman_url_updater = require('../src/index.js')
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
@@ -100,12 +100,12 @@ describe('Validate index.js unit tests', () => {
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
       expect(mockConsoleError).toMatchSnapshot();
-      expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./__test__/collection/new_collection.json')}`);
+      expect(mockConsoleLog).toBeCalledWith(`${chalk.green('File saved to: ')}${chalk.yellowBright(path.resolve('./__test__/collection/new_collection.json'))}`);
     });
 
     it('Should show file saved message correctly with custom path', async () => {
       resetAndReimportUrlUpdator({ c: "__test__/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "__test__/collection/output/new_collection.json", p: undefined });
-      postman_url_updater = require('../index.js')
+      postman_url_updater = require('../src/index.js')
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
@@ -118,12 +118,12 @@ describe('Validate index.js unit tests', () => {
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
       expect(mockConsoleError).toMatchSnapshot();
-      expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./__test__/collection/output/new_collection.json')}`);
+      expect(mockConsoleLog).toBeCalledWith(`${chalk.green('File saved to: ')}${chalk.yellowBright(path.resolve('./__test__/collection/output/new_collection.json'))}`);
     });
 
     it('Should throw error if exception thrown doesnt contain error code ENOENT', async () => {
       resetAndReimportUrlUpdator({ c: "__test__/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "new_collection.json", p: undefined });
-      postman_url_updater = require('../index.js')
+      postman_url_updater = require('../src/index.js')
       jest.clearAllMocks()
       mockConsoleLog.mockImplementation(() => { throw new CustomError(256) });
       expect(postman_url_updater.startConvert).toThrowErrorMatchingSnapshot()
@@ -137,7 +137,7 @@ describe('Validate index.js unit tests', () => {
     it('validate no changes happens when there is no match', async () => {
       const sourceCollection = new sdk.Collection(JSON.parse(fs.readFileSync(collectionPath).toString())).toJSON();
       resetAndReimportUrlUpdator({ c: collectionPath, r: "https://localhost:23456/api/v1/{{path}}", w: "{{baseURL}}/{{path}}", s: outputCollectionPath, p: undefined });
-      require('../index.js').startConvert();
+      require('../src/index.js').startConvert();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
       expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
       expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
@@ -161,7 +161,7 @@ describe('Validate index.js unit tests', () => {
 
       const sourceCollection = new sdk.Collection(JSON.parse(fs.readFileSync(collectionPath).toString())).toJSON();
       resetAndReimportUrlUpdator({ c: collectionPath, r: "https://www.testdomain0.ie", w: "{{baseURL}}/{{path}}", s: outputCollectionPath, p: undefined });
-      require('../index.js').startConvert();
+      require('../src/index.js').startConvert();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
@@ -190,7 +190,7 @@ describe('Validate index.js unit tests', () => {
 
       const sourceCollection = new sdk.Collection(JSON.parse(fs.readFileSync(collectionPath).toString())).toJSON();
       resetAndReimportUrlUpdator({ c: collectionPath, r: "www.testdomain0.ie", w: "{{baseURL}}/{{path}}", s: outputCollectionPath, p: undefined });
-      require('../index.js').startConvert();
+      require('../src/index.js').startConvert();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
@@ -219,7 +219,7 @@ describe('Validate index.js unit tests', () => {
 
       const sourceCollection = new sdk.Collection(JSON.parse(fs.readFileSync(collectionPath).toString())).toJSON();
       resetAndReimportUrlUpdator({ c: collectionPath, r: "www.testdomain0.ie/testpath/:pathvariable1-1", w: "{{baseURL}}/{{path}}", s: outputCollectionPath, p: undefined });
-      require('../index.js').startConvert();
+      require('../src/index.js').startConvert();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
@@ -251,7 +251,7 @@ describe('Validate index.js unit tests', () => {
 
       const sourceCollection = new sdk.Collection(JSON.parse(fs.readFileSync(collectionPath).toString())).toJSON();
       resetAndReimportUrlUpdator({ c: collectionPath, r: "/:pathvariable1-1/path/request1-1?query1-1-0", w: "/:pathvariable1-1/path/request1-1?query1-1-0=queryvalue1-1-0-0&test", s: outputCollectionPath, p: undefined });
-      require('../index.js').startConvert();
+      require('../src/index.js').startConvert();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
@@ -284,7 +284,7 @@ describe('Validate index.js unit tests', () => {
         r: "https://www.testdomain0.ie/testpath/:pathvariable1-1/path/request1-1?query1-1-0=queryvalue1-1-0&query1-1-1=queryvalue1-1-1",
         w: "{{protocol}}://{{baseURL}}/v1/{{path}}", s: outputCollectionPath, p: undefined
       });
-      require('../index.js').startConvert();
+      require('../src/index.js').startConvert();
 
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
