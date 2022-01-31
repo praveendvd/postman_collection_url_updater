@@ -3,7 +3,8 @@ const path = require('path');
 const exec = require('shelljs').exec,
   sdk = require('postman-collection'),
   fs = require('fs'), 
-  { resetAndReimportUrlUpdator, CustomError } = require('./utils/helperMethods.js');
+  { resetAndReimportUrlUpdator, CustomError } = require('./utils/helperMethods.js'),
+  chalk = require('chalk');
 
 
 let postman_url_updater,
@@ -100,7 +101,7 @@ describe('Validate index.js unit tests', () => {
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
       expect(mockConsoleError).toMatchSnapshot();
-      expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./__test__/collection/new_collection.json')}`);
+      expect(mockConsoleLog).toBeCalledWith(`${chalk.green('File saved to: ')}${chalk.yellowBright(path.resolve('./__test__/collection/new_collection.json'))}`);
     });
 
     it('Should show file saved message correctly with custom path', async () => {
@@ -118,7 +119,7 @@ describe('Validate index.js unit tests', () => {
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
       expect(mockConsoleError).toMatchSnapshot();
-      expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./__test__/collection/output/new_collection.json')}`);
+      expect(mockConsoleLog).toBeCalledWith(`${chalk.green('File saved to: ')}${chalk.yellowBright(path.resolve('./__test__/collection/output/new_collection.json'))}`);
     });
 
     it('Should throw error if exception thrown doesnt contain error code ENOENT', async () => {
