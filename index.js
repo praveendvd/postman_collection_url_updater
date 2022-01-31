@@ -41,7 +41,7 @@ function startConvert() {
         console.log(chalk.green('File saved to: ')+ chalk.yellowBright(destination_))
     } catch (e) {
         if (!(e.code === 'ENOENT')) throw Error(e)
-        console.error(chalk.red(e.message))
+        console.error(chalk.redBright(e.message))
         process.exit()
     }
 }
