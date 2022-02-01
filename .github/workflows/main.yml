@@ -1,0 +1,32 @@
+name: test
+
+on: 
+  workflow_call:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: Node setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: Setup project
+        run: npm i
+      - name: Create Package
+        run: npm pack
+      - name: Extract version
+        id: packageVersion
+        uses: Saionaro/extract-package-version@v1.0.6
+      # From now you can access the version
+      - name: Install package locally
+        run: npm install ./postman-collection-url-updater-${{steps.packageVersion.outputs.version}}.tgz
+      - name: Run unit tests and system test
+        run: npm test -- --coverage
