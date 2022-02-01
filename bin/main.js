@@ -1,3 +1,3 @@
 #! /usr/bin/env node
-let { startConvert } = require('../index.js')
+let { startConvert } = require('../src/index.js')
 startConvert()

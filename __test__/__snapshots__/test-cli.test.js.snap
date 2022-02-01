@@ -8,19 +8,26 @@ exports[`Validate index.js system test Validate cli output messages Should show 
 exports[`Validate index.js system test Validate cli output messages Should show file not found error if collection doesnt exists 2`] = `""`;
 
 exports[`Validate index.js system test Validate cli output messages Should show help if -c argument is missing 1`] = `
-"Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
+"
+Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+
+or
+
+Usage: -i
 
 Options:
       --help               Show help                                   [boolean]
       --version            Show version number                         [boolean]
+  -i, --interactive        Pass -i to enter Interactive mode
+                                                      [boolean] [default: false]
   -c, --collection_path    Path to Collection file           [string] [required]
   -r, --replace_url_part   Replaces only the matching part of the URL
                                                              [string] [required]
   -w, --with_url_part      Replaces the matching part of the URL with provided
                            value                             [string] [required]
-  -s, --save_as            Path to save new collection
-                           [string] [default: \\"root/new_<collection_name>.json\\"]
+  -s, --save_as            path to save new collection
+           [string] [default: \\"<collectionDirectory>/new_<collectionName>.json\\"]
   -p, --use_regex_pattern  Flag to enable matching url using regex
                                                       [boolean] [default: false]
 
@@ -31,19 +38,26 @@ Missing required argument: c
 exports[`Validate index.js system test Validate cli output messages Should show help if -c argument is missing 2`] = `""`;
 
 exports[`Validate index.js system test Validate cli output messages Should show help if -r argument is missing 1`] = `
-"Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
+"
+Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+
+or
+
+Usage: -i
 
 Options:
       --help               Show help                                   [boolean]
       --version            Show version number                         [boolean]
+  -i, --interactive        Pass -i to enter Interactive mode
+                                                      [boolean] [default: false]
   -c, --collection_path    Path to Collection file           [string] [required]
   -r, --replace_url_part   Replaces only the matching part of the URL
                                                              [string] [required]
   -w, --with_url_part      Replaces the matching part of the URL with provided
                            value                             [string] [required]
-  -s, --save_as            Path to save new collection
-                           [string] [default: \\"root/new_<collection_name>.json\\"]
+  -s, --save_as            path to save new collection
+           [string] [default: \\"<collectionDirectory>/new_<collectionName>.json\\"]
   -p, --use_regex_pattern  Flag to enable matching url using regex
                                                       [boolean] [default: false]
 
@@ -54,19 +68,26 @@ Missing required argument: r
 exports[`Validate index.js system test Validate cli output messages Should show help if -r argument is missing 2`] = `""`;
 
 exports[`Validate index.js system test Validate cli output messages Should show help if -w argument is missing 1`] = `
-"Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
+"
+Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+
+or
+
+Usage: -i
 
 Options:
       --help               Show help                                   [boolean]
       --version            Show version number                         [boolean]
+  -i, --interactive        Pass -i to enter Interactive mode
+                                                      [boolean] [default: false]
   -c, --collection_path    Path to Collection file           [string] [required]
   -r, --replace_url_part   Replaces only the matching part of the URL
                                                              [string] [required]
   -w, --with_url_part      Replaces the matching part of the URL with provided
                            value                             [string] [required]
-  -s, --save_as            Path to save new collection
-                           [string] [default: \\"root/new_<collection_name>.json\\"]
+  -s, --save_as            path to save new collection
+           [string] [default: \\"<collectionDirectory>/new_<collectionName>.json\\"]
   -p, --use_regex_pattern  Flag to enable matching url using regex
                                                       [boolean] [default: false]
 
@@ -77,19 +98,26 @@ Missing required argument: w
 exports[`Validate index.js system test Validate cli output messages Should show help if -w argument is missing 2`] = `""`;
 
 exports[`Validate index.js system test Validate cli output messages Should show help if arguments are missing 1`] = `
-"Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
+"
+Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+
+or
+
+Usage: -i
 
 Options:
       --help               Show help                                   [boolean]
       --version            Show version number                         [boolean]
+  -i, --interactive        Pass -i to enter Interactive mode
+                                                      [boolean] [default: false]
   -c, --collection_path    Path to Collection file           [string] [required]
   -r, --replace_url_part   Replaces only the matching part of the URL
                                                              [string] [required]
   -w, --with_url_part      Replaces the matching part of the URL with provided
                            value                             [string] [required]
-  -s, --save_as            Path to save new collection
-                           [string] [default: \\"root/new_<collection_name>.json\\"]
+  -s, --save_as            path to save new collection
+           [string] [default: \\"<collectionDirectory>/new_<collectionName>.json\\"]
   -p, --use_regex_pattern  Flag to enable matching url using regex
                                                       [boolean] [default: false]
 
