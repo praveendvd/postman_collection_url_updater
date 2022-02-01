@@ -58,3 +58,15 @@ Updated gitignore file
  Added coverage test
 
 ### Fixed
+
+## [1.0.13] - 2022-02-01
+ 
+### Added
+
+ Added unit tests , integration tests 
+
+ Add inquirer support to allow interactive use (commandline arguments still supported)
+ 
+ Added coverage test
+
+### Fixed

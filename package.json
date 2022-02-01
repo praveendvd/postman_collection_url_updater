@@ -1,6 +1,6 @@
 {
   "name": "postman-collection-url-updater",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "This project helps in updating request URLs in collection files in bulk",
   "scripts": {
     "test": "jest"
@@ -10,6 +10,7 @@
   "dependencies": {
     "chalk": "^4.1.2",
     "fs-extra": "^10.0.0",
+    "inquirer": "^8.2.0",
     "postman-collection": "^4.1.1",
     "yargs": "^17.3.1"
   },
@@ -52,7 +53,7 @@
     "verbose": true,
     "maxWorkers": 1,
     "collectCoverageFrom": [
-      "index.js"
+      "src/**/index.js"
     ]
   }
 }
