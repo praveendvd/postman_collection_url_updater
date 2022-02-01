@@ -87,7 +87,7 @@ Added capability to replace content using Regex
 
 Fixed Package.json file property
 
-## [2.0.1 -2.0.3] - 2022-02-01
+## [2.0.2] - 2022-02-01
  
 ### Added
 
