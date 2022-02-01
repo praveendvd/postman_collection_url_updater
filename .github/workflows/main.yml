@@ -27,6 +27,6 @@ jobs:
         uses: Saionaro/extract-package-version@v1.0.6
       # From now you can access the version
       - name: Install package locally
-        run: echo ${{ steps.packageVersion.outputs.version }} 
+        run: npm install ./postman-collection-url-updater-${{steps.packageVersion.outputs.version}}.tgz
       - name: Run unit tests and system test
         run: npm test -- --coverage
