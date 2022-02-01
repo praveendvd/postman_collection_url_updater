@@ -24,6 +24,6 @@ jobs:
         run: npm pack
         id: packageVersion
       - name: Install package
-        run: echo ${{steps.random-number-generator.outputs}}
+        run: echo ${{steps.packageVersion.outputs}}
       - name: Run unit tests and system test
         run: npm test -- --coverage
