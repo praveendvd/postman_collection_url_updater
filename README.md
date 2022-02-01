@@ -20,6 +20,12 @@ makes the changes and if any other path variable is there then it will be retain
 
 eg , output would be https://localhost/newpath/:test/new , if path variable exists else https://localhost/newpath/new
 
+## Interactive Option
+
+You can also pass arguments interactively by passing i flag
+
+`npx postman-collection-url-updater -i`
+
 
 ## CLI Options
 
@@ -29,4 +35,5 @@ eg , output would be https://localhost/newpath/:test/new , if path variable exis
 | --replace_url_part| -r | The part of the URL to modify | v1 or https://localhost:23456/api/v1/ or localhost:23456/|
 | --with_url_part| -w| The value to replace the matching URL part with| v2 or {{baseURL}}/{{path}} or localhost:8888/| |
 | --save_as| -s | (Optional) Path to output collection file, DEFAULT: new_collection.json. If no value provided then the file will be saved by prefixing new to current collection name  | modifiedCollection.json or project/modifiedCollection.json|
+| --interactive| -i | (Optional) Allows to pass arguments interactively, DEFAULT: false.| npx postman-collection-url-updater -i |
 
