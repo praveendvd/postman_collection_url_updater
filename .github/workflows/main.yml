@@ -22,6 +22,8 @@ jobs:
         run: npm i
       - name: Create Package
         run: npm pack
+      - name: Extract Package Version
+        uses: Saionaro/extract-package-version@v1.1.1
         id: packageVersion
       - name: Install package
         run: echo ${{steps.packageVersion.outputs.*}}
