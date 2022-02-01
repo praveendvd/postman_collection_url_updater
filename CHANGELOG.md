@@ -78,3 +78,11 @@ Updated gitignore file
 Added capability to replace content using Regex
 
 ### Fixed
+
+## [2.0.1] - 2022-02-01
+ 
+### Added
+
+### Fixed
+
+Fixed Package.json file property
