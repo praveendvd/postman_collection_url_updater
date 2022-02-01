@@ -20,6 +20,9 @@
   },
   "files": [
     "src",
+    "READMe.md",
+    "bin",
+    "logo",
     "CHANGELOG.md"
   ],
   "keywords": [

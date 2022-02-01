@@ -86,3 +86,4 @@ Added capability to replace content using Regex
 ### Fixed
 
 Fixed Package.json file property
+
