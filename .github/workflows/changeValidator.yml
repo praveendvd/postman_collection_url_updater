@@ -23,6 +23,8 @@ jobs:
           node-version: 16
       - name: Setup project
         run: npm i
+      - name: Create package
+        run: npm pack
       - name: Run unit tests and system test
         run: npm test -- --coverage
   windows:
