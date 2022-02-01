@@ -23,8 +23,14 @@ jobs:
           node-version: 16
       - name: Setup project
         run: npm i
-      - name: Create package
+      - name: Create Package
         run: npm pack
+      - name: Extract version
+        id: packageVersion
+        uses: Saionaro/extract-package-version@v1.0.6
+      # From now you can access the version
+      - name: Install package locally
+        run: npm install ./postman-collection-url-updater-${{steps.packageVersion.outputs.version}}.tgz
       - name: Run unit tests and system test
         run: npm test -- --coverage
   windows:
@@ -38,6 +44,14 @@ jobs:
           node-version: 16
       - name: Setup project
         run: npm i
+      - name: Create Package
+        run: npm pack
+      - name: Extract version
+        id: packageVersion
+        uses: Saionaro/extract-package-version@v1.0.6
+      # From now you can access the version
+      - name: Install package locally
+        run: npm install ./postman-collection-url-updater-${{steps.packageVersion.outputs.version}}.tgz
       - name: Run unit tests and system test
         run: npm test -- --coverage
   mac:
@@ -51,5 +65,13 @@ jobs:
           node-version: 16
       - name: Setup project
         run: npm i
+      - name: Create Package
+        run: npm pack
+      - name: Extract version
+        id: packageVersion
+        uses: Saionaro/extract-package-version@v1.0.6
+      # From now you can access the version
+      - name: Install package locally
+        run: npm install ./postman-collection-url-updater-${{steps.packageVersion.outputs.version}}.tgz
       - name: Run unit tests and system test
         run: npm test -- --coverage
