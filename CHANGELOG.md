@@ -111,3 +111,12 @@ Updated Read me to add SEO keywords
 
 Updated speling mistakes
 
+## [2.0.4] - 2022-02-01
+ 
+### Added
+
+Added ability to reject unrecognized commandline arguments
+
+### Fixed
+
+

@@ -1,9 +1,10 @@
 function resetAndReimportUrlUpdator({ c, r, w, s, i, p }) {
     jest.resetModules()
     let { c: mockc, r: mockr, w: mockw, s: mocks, i: mocki, p: mockp } = { c, r, w, s, i, p }
-    while (process.argv.length > 3) {
+    while (process.argv.length > 2) {
         process.argv.pop();
     }
+    
     if (c) process.argv.push('-c', c);
     if (r) process.argv.push('-r', r);
     if (w) process.argv.push('-w', w);
