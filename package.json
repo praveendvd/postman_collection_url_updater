@@ -53,7 +53,7 @@
     "verbose": true,
     "maxWorkers": 1,
     "collectCoverageFrom": [
-      "index.js"
+      "src/**/*.js"
     ]
   }
 }

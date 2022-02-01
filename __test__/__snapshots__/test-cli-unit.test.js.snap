@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file not found error if collection doesnt exists 1`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file not found error if collection doesnt exists 1`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file not found error if collection doesnt exists 2`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file not found error if collection doesnt exists 2`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file not found error if collection doesnt exists 3`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file not found error if collection doesnt exists 3`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file not found error if collection doesnt exists 4`] = `"exit"`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file not found error if collection doesnt exists 4`] = `"exit"`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file not found error if collection doesnt exists 5`] = `
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file not found error if collection doesnt exists 5`] = `
 [MockFunction] {
   "calls": Array [
     Array [],
@@ -22,11 +22,11 @@ exports[`Validate index.js unit tests Validate cli output messages Should show f
 }
 `;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file not found error if collection doesnt exists 6`] = `
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file not found error if collection doesnt exists 6`] = `
 [MockFunction] {
   "calls": Array [
     Array [
-      "[31mENOENT: no such file or directory, open 'test/collection/collection.json'[39m",
+      "ENOENT: no such file or directory, open 'test/collection/collection.json'",
     ],
   ],
   "results": Array [
@@ -38,31 +38,37 @@ exports[`Validate index.js unit tests Validate cli output messages Should show f
 }
 `;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file not found error if collection doesnt exists 7`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file not found error if collection doesnt exists 7`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with custom path 1`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with custom path 1`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with custom path 2`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with custom path 2`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with custom path 3`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with custom path 3`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with custom path 4`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with custom path 4`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with custom path 5`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with custom path 5`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with default path 1`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default path 1`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with default path 2`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default path 2`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with default path 3`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default path 3`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with default path 4`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default path 4`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show file saved message correctly with default path 5`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default path 5`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if -c argument is missing 1`] = `"exit"`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -c argument is missing 1`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if -c argument is missing 2`] = `
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -c argument is missing 2`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -c argument is missing 3`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -c argument is missing 4`] = `"exit"`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -c argument is missing 5`] = `
 [MockFunction] {
   "calls": Array [
     Array [
@@ -78,23 +84,30 @@ exports[`Validate index.js unit tests Validate cli output messages Should show h
 }
 `;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if -c argument is missing 3`] = `
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -c argument is missing 6`] = `
 [MockFunction] {
   "calls": Array [
     Array [
-      "Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
+      "
+Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+
+or
+
+Usage: -i
 
 Options:
       --help              Show help                                    [boolean]
       --version           Show version number                          [boolean]
+  -i, --interactive       Pass -i to enter Interactive mode
+                                                      [boolean] [default: false]
   -c, --collection_path   Path to Collection file            [string] [required]
   -r, --replace_url_part  Replaces only the matching part of the URL
                                                              [string] [required]
   -w, --with_url_part     Replaces the matching part of the URL with provided
                           value                              [string] [required]
   -s, --save_as           path to save new collection
-                           [string] [default: \\"root/new_<collection_name>.json\\"]",
+           [string] [default: \\"<collectionDirectory>/new_<collectionName>.json\\"]",
     ],
     Array [],
     Array [
@@ -118,11 +131,17 @@ Options:
 }
 `;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if -c argument is missing 4`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -c argument is missing 7`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if -r argument is missing 1`] = `"exit"`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -r argument is missing 1`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if -r argument is missing 2`] = `
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -r argument is missing 2`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -r argument is missing 3`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -r argument is missing 4`] = `"exit"`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -r argument is missing 5`] = `
 [MockFunction] {
   "calls": Array [
     Array [
@@ -138,23 +157,30 @@ exports[`Validate index.js unit tests Validate cli output messages Should show h
 }
 `;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if -r argument is missing 3`] = `
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -r argument is missing 6`] = `
 [MockFunction] {
   "calls": Array [
     Array [
-      "Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
+      "
+Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+
+or
+
+Usage: -i
 
 Options:
       --help              Show help                                    [boolean]
       --version           Show version number                          [boolean]
+  -i, --interactive       Pass -i to enter Interactive mode
+                                                      [boolean] [default: false]
   -c, --collection_path   Path to Collection file            [string] [required]
   -r, --replace_url_part  Replaces only the matching part of the URL
                                                              [string] [required]
   -w, --with_url_part     Replaces the matching part of the URL with provided
                           value                              [string] [required]
   -s, --save_as           path to save new collection
-                           [string] [default: \\"root/new_<collection_name>.json\\"]",
+           [string] [default: \\"<collectionDirectory>/new_<collectionName>.json\\"]",
     ],
     Array [],
     Array [
@@ -178,11 +204,17 @@ Options:
 }
 `;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if -r argument is missing 4`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -r argument is missing 7`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if -w argument is missing 1`] = `"exit"`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -w argument is missing 1`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if -w argument is missing 2`] = `
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -w argument is missing 2`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -w argument is missing 3`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -w argument is missing 4`] = `"exit"`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -w argument is missing 5`] = `
 [MockFunction] {
   "calls": Array [
     Array [
@@ -198,23 +230,30 @@ exports[`Validate index.js unit tests Validate cli output messages Should show h
 }
 `;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if -w argument is missing 3`] = `
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -w argument is missing 6`] = `
 [MockFunction] {
   "calls": Array [
     Array [
-      "Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
+      "
+Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+
+or
+
+Usage: -i
 
 Options:
       --help              Show help                                    [boolean]
       --version           Show version number                          [boolean]
+  -i, --interactive       Pass -i to enter Interactive mode
+                                                      [boolean] [default: false]
   -c, --collection_path   Path to Collection file            [string] [required]
   -r, --replace_url_part  Replaces only the matching part of the URL
                                                              [string] [required]
   -w, --with_url_part     Replaces the matching part of the URL with provided
                           value                              [string] [required]
   -s, --save_as           path to save new collection
-                           [string] [default: \\"root/new_<collection_name>.json\\"]",
+           [string] [default: \\"<collectionDirectory>/new_<collectionName>.json\\"]",
     ],
     Array [],
     Array [
@@ -238,11 +277,17 @@ Options:
 }
 `;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if -w argument is missing 4`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if -w argument is missing 7`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if arguments are missing 1`] = `"exit"`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if arguments are missing 1`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if arguments are missing 2`] = `
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if arguments are missing 2`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if arguments are missing 3`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if arguments are missing 4`] = `"exit"`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if arguments are missing 5`] = `
 [MockFunction] {
   "calls": Array [
     Array [
@@ -258,23 +303,30 @@ exports[`Validate index.js unit tests Validate cli output messages Should show h
 }
 `;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if arguments are missing 3`] = `
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if arguments are missing 6`] = `
 [MockFunction] {
   "calls": Array [
     Array [
-      "Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
+      "
+Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+
+or
+
+Usage: -i
 
 Options:
       --help              Show help                                    [boolean]
       --version           Show version number                          [boolean]
+  -i, --interactive       Pass -i to enter Interactive mode
+                                                      [boolean] [default: false]
   -c, --collection_path   Path to Collection file            [string] [required]
   -r, --replace_url_part  Replaces only the matching part of the URL
                                                              [string] [required]
   -w, --with_url_part     Replaces the matching part of the URL with provided
                           value                              [string] [required]
   -s, --save_as           path to save new collection
-                           [string] [default: \\"root/new_<collection_name>.json\\"]",
+           [string] [default: \\"<collectionDirectory>/new_<collectionName>.json\\"]",
     ],
     Array [],
     Array [
@@ -298,6 +350,6 @@ Options:
 }
 `;
 
-exports[`Validate index.js unit tests Validate cli output messages Should show help if arguments are missing 4`] = `[MockFunction]`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if arguments are missing 7`] = `[MockFunction]`;
 
-exports[`Validate index.js unit tests Validate cli output messages Should throw error if exception thrown doesnt contain error code ENOENT 1`] = `"Error: Custom error"`;
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should throw error if exception thrown doesnt contain error code ENOENT 1`] = `"Error: Custom error"`;
