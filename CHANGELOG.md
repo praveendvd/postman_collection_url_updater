@@ -103,7 +103,7 @@ Updated Read me to add SEO keywords
 
 ### Fixed
 
-## [2.0.3] - 2022-02-01
+## [2.0.4] - 2022-02-01
  
 ### Added
 
