@@ -12,7 +12,6 @@
     "fs-extra": "^10.0.0",
     "inquirer": "^8.2.0",
     "postman-collection": "^4.1.1",
-    "postman-collection-url-updater": "file:postman-collection-url-updater-2.0.1.tgz",
     "yargs": "^17.3.1"
   },
   "bin": {
