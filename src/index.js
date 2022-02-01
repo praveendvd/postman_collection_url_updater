@@ -16,7 +16,7 @@ const yargs = require('yargs'),
 let OPTIONS = yargs
     .usage('\nUsage: -c "root/collection_name.json" -r "{{Baseurl}}/path1/path2" -w "{{Baseurl}}/{{path}}" -s "root/new_collection_name.json"')
     .usage('\nor\n\nUsage: -i')
-    .strictCommands()
+    .strict()
     .option('i', { alias: 'interactive', describe: 'Pass -i to enter Interactive mode', type: 'boolean', default: false })
     .option('c', { alias: 'collection_path', describe: 'Path to Collection file', type: 'string' })
     .option('r', { alias: 'replace_url_part', describe: 'Replaces only the matching part of the URL', type: 'string' })
