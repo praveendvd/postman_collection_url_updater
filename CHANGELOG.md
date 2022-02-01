@@ -95,3 +95,11 @@ system test to verify npx command works as expected
 
 ### Fixed
 
+## [2.0.3] - 2022-02-01
+ 
+### Added
+
+Updated Read me to add SEO keywords
+
+### Fixed
+
