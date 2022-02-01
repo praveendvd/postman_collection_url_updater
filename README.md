@@ -6,7 +6,7 @@ Github page: https://praveendvd.github.io/postman_collection_url_updater/
 
 # postman-collection-url-updater
 
-Postman collection url updater is a command line utility project that can update urls across multiple postamn requests in your postman collection. It allows update postman reqeust urls in buld inside your postman collection.
+Postman collection url updater (postman-collection-url-updater) is a command line utility project that can update urls across multiple postman requests in your postman collection. It allows update postman request urls in buld inside your postman collection.
 
 for instance, let say your Postman request URLs where in the form https://localhost:23456/api/v1/{{path}} and you wanted modify all the requests inside your postman collection as {{baseURL}}/{{path}} you can do it as:
 
