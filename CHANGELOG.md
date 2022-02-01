@@ -87,3 +87,11 @@ Added capability to replace content using Regex
 
 Fixed Package.json file property
 
+## [2.0.1 -2.0.3] - 2022-02-01
+ 
+### Added
+
+system test to verify npx command works as expected
+
+### Fixed
+
