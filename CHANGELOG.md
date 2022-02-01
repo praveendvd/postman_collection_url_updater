@@ -87,11 +87,36 @@ Added capability to replace content using Regex
 
 Fixed Package.json file property
 
-## [2.0.1 -2.0.3] - 2022-02-01
+## [2.0.2] - 2022-02-01
  
 ### Added
 
 system test to verify npx command works as expected
 
 ### Fixed
+
+## [2.0.3] - 2022-02-01
+ 
+### Added
+
+Updated Read me to add SEO keywords
+
+### Fixed
+
+## [2.0.4] - 2022-02-01
+ 
+### Added
+
+### Fixed
+
+Updated speling mistakes
+
+## [2.0.4] - 2022-02-01
+ 
+### Added
+
+Added ability to reject unrecognized commandline arguments
+
+### Fixed
+
 
