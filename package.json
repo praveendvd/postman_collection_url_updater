@@ -1,6 +1,6 @@
 {
   "name": "postman-collection-url-updater",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "This project helps in updating request URLs in collection files in bulk",
   "scripts": {
     "test": "jest"
@@ -18,10 +18,10 @@
     "postman-collection-url-updater": "./bin/main.js"
   },
   "files": [
-    "src/**/*",
+    "src",
     "READMe.md",
-    "bin/**/*",
-    "logo/*",
+    "bin",
+    "logo",
     "CHANGELOG.md"
   ],
   "keywords": [

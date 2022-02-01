@@ -5,3 +5,4 @@ __test__/collection/new_collection.json
 __test__/*copy*
 coverage
 new_collection.json
+*.tgz
