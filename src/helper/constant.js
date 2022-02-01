@@ -1,3 +1,5 @@
+const { boolean } = require("yargs");
+
 function validate(answer, message) {
     if (answer.length < 1) {
         return message;
@@ -13,6 +15,15 @@ module.exports = (defaults) => {
             type: 'string',
             suffix: " [Example: root/collection_name.json]",
             validate: (answer) => validate(answer, "Please provided the path to source Collection file (.json)")
+        },
+        {
+            name: 'use_regex_pattern',
+            message: 'Are you using regex pattern for matching url part',
+            type: 'list',
+            default: defaults.use_regex_pattern,
+            choices: ['true', 'false'],
+            filter: (answer) => JSON.parse(answer)
+        
         },
         {
             name: 'replace_url_part',

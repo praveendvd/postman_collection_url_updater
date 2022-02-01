@@ -9,6 +9,7 @@ const yargs = require('yargs'),
     DEFAULTS = {
         replace_url_part: 'all',
         save_as: '<collectionDirectory>/new_<collectionName>.json',
+        use_regex_pattern: false
     },
     QUESTIONS = require('./helper/constant')(DEFAULTS);
 
@@ -21,6 +22,7 @@ let OPTIONS = yargs
     .option('r', { alias: 'replace_url_part', describe: 'Replaces only the matching part of the URL', type: 'string' })
     .option('w', { alias: 'with_url_part', describe: 'Replaces the matching part of the URL with provided value', type: 'string' })
     .option('s', { alias: 'save_as', describe: 'path to save new collection', type: 'string', default: DEFAULTS.save_as })
+    .option('p', { alias: 'use_regex_pattern', describe: 'Flag to enable matching url using regex', demandOption: false, default: DEFAULTS.use_regex_pattern, type: "boolean" })
 
 if (!OPTIONS.parse().i) {
     OPTIONS.demandOption(['c', 'r', 'w'])
@@ -42,7 +44,7 @@ async function startConvert() {
             requestItem.request.url.variables.clear()
             let currentURL_ = requestItem.request.url.toString()
 
-            const newURL = urlReplacer(currentURL_, OPTIONS.replace_url_part, OPTIONS.with_url_part)
+            const newURL = urlReplacer(currentURL_, OPTIONS.replace_url_part, OPTIONS.with_url_part, OPTIONS.use_regex_pattern)
 
             //add varaibles back if required and update the collection
             updateCollection(requestItem, variables_, newURL)
@@ -56,8 +58,9 @@ async function startConvert() {
     }
 }
 
-function urlReplacer(currentUrl, urlToReplace, urlToReplaceWith) {
-    return currentUrl.replaceAll(urlToReplace, urlToReplaceWith)
+function urlReplacer(currentUrl, urlToReplace, urlToReplaceWith, usePattern) {
+    return currentUrl.replaceAll(usePattern ? new RegExp(urlToReplace, 'g') : urlToReplace,
+        urlToReplaceWith)
 }
 
 function updateCollection(requestItem, variables, newURL) {

@@ -1,6 +1,6 @@
-function resetAndReimportUrlUpdator({ c, r, w, s, i }) {
+function resetAndReimportUrlUpdator({ c, r, w, s, i, p }) {
     jest.resetModules()
-    let { c: mockc, r: mockr, w: mockw, s: mocks, i: mocki } = { c, r, w, s, i }
+    let { c: mockc, r: mockr, w: mockw, s: mocks, i: mocki, p: mockp } = { c, r, w, s, i, p }
     while (process.argv.length > 3) {
         process.argv.pop();
     }
@@ -9,8 +9,9 @@ function resetAndReimportUrlUpdator({ c, r, w, s, i }) {
     if (w) process.argv.push('-w', w);
     if (s) process.argv.push('-s', s);
     if (i) process.argv.push('-i', i);
+    if (p) process.argv.push('-i', p);
 
-    return jest.mock('inquirer').requireMock('inquirer').prompt = jest.fn(async function () { return { collection_path: mockc, replace_url_part: mockr, with_url_part: mockw, save_as: mocks } });
+    return jest.mock('inquirer').requireMock('inquirer').prompt = jest.fn(async function () { return { collection_path: mockc, replace_url_part: mockr, with_url_part: mockw, save_as: mocks, use_regex_pattern:mockp, interactive:mocki } });
 }
 
 

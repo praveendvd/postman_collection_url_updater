@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "738641d0-80bf-4ad1-92cc-b947f0bf6c56",
+		"_postman_id": "71900852-b0b1-4329-9120-bb0a2a4340b5",
 		"name": "collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -395,6 +395,88 @@
 							"key": "query0-2",
 							"value": "queryvalue0-2"
 						}
+					],
+					"variable": [
+						{
+							"key": "pathvariable0-2",
+							"value": "pathvalue0-2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request0-3",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pre-request script content 0-2"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"test script content 0-2"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "key",
+							"value": "X-API-Key-0-2",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "123450-2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "header0-2",
+						"value": "headervalue0-2",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"key0-2\": \"value0-2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.testdomain0-.ie/testpath/:pathvariable0-2/path/request0-2",
+					"protocol": "https",
+					"host": [
+						"www",
+						"testdomain0-",
+						"ie"
+					],
+					"path": [
+						"testpath",
+						":pathvariable0-2",
+						"path",
+						"request0-2"
 					],
 					"variable": [
 						{

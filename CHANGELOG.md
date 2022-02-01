@@ -70,3 +70,11 @@ Updated gitignore file
  Added coverage test
 
 ### Fixed
+
+## [2.0.0] - 2022-02-01
+ 
+### Added
+
+Added capability to replace content using Regex
+
+### Fixed
