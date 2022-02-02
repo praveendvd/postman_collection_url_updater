@@ -163,6 +163,7 @@ describe('Validate index.js unit tests', () => {
       jest.clearAllMocks()
       mockConsoleLog.mockImplementation(() => { throw new CustomError(256) });
       await expect(postman_url_updater.createNewCollection).rejects.toThrowErrorMatchingSnapshot()
+      expect(process.exit).not.toBeCalled()
     });
 
     it('Should throw invalid collection if a valid collection is not provided', async () => {
@@ -170,6 +171,7 @@ describe('Validate index.js unit tests', () => {
       postman_url_updater = require('../src/index.js')
       jest.clearAllMocks()
       await expect(postman_url_updater.createNewCollection).rejects.toThrowErrorMatchingSnapshot()
+      expect(console.error).toBeCalledWith(`Invalid/corrupted collection provided. Please provide path to valid source collection`);
     });
 
   })
