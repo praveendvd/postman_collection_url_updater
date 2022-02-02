@@ -34,21 +34,21 @@ describe('Validate index.js system test', () => {
     });
 
     it('Should show file saved message correctly with default path', async () => {
-      const commandResponse = exec('npx postman-collection-url-updater -c "__test__/collection/collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}"', { silent: true });
+      const commandResponse = exec('npx postman-collection-url-updater -c "__test__/url_replacer_test/collection/collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}"', { silent: true });
       expect(commandResponse.stderr).toMatch('');
-      expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]__test__[\\|\/]collection[\\|\/]new_collection.json/g);
+      expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]__test__[\\|\/]url_replacer_test[\\|\/]collection[\\|\/]new_collection.json/g);
     });
 
     it('Should show file saved message correctly with custom path', async () => {
-      const commandResponse = exec('npx postman-collection-url-updater -c "__test__/collection/collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}" -s "__test__/collection/output/new.json"', { silent: true });
+      const commandResponse = exec('npx postman-collection-url-updater -c "__test__/url_replacer_test/collection/collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}" -s "__test__/url_replacer_test/collection/output/new.json"', { silent: true });
       expect(commandResponse.stderr).toMatch('');
-      expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]__test__[\\|\/]collection[\\|\/]output[\\|\/]new\.json/g);
+      expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]__test__[\\|\/]url_replacer_test[\\|\/]collection[\\|\/]output[\\|\/]new\.json/g);
     });
   })
 
   describe('Validate collection changes', () => {
-    let collectionPath = '__test__/collection/collection.json',
-      outputCollectionPath = '__test__/collection/output/new.json';
+    let collectionPath = '__test__/url_replacer_test/collection/collection.json',
+      outputCollectionPath = '__test__/url_replacer_test/collection/output/new.json';
 
     it('validate no changes happens when there is no match', async () => {
 

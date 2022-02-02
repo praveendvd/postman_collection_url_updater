@@ -7,7 +7,7 @@ function validate(answer, message) {
     return true;
 }
 
-module.exports = (defaults) => {
+exports.urlReplacerQuestionaire = (defaults) => {
     let questions = [
         {
             name: 'collection_path',
@@ -48,6 +48,54 @@ module.exports = (defaults) => {
         },
     ];
 
+    return questions
+};
+
+
+exports.collectionAggregatorQuestionaire = (defaults) => {
+    let questions = [
+        {
+            name: 'new_collection_name',
+            message: 'Please provided the name for new collection',
+            type: 'string',
+            suffix: " [Example: aggregated_collection]",
+            validate: (answer) => validate(answer, "Please provided a name")
+        },
+        {
+            name: 'using_collection_directory',
+            message: 'Do you want to provide directory containing all collections or manually provide the path to each collection file',
+            type:'list',
+            choices: ['Providing directory', 'Manually entring path'],
+        
+        },
+        {
+            when    : function ( answers ) {
+                return answers.using_collection_directory === 'Manually entring path';
+            },
+            name: 'collection_list',
+            message: 'Provide relative or absolute collection file paths separated by comma',
+            suffix: "[Example: test/collection_name1.json,test/collection_name2.json,test/collection name3.json]",
+            filter: answer => answer.split(',')
+        
+        },
+        {
+            when    : function ( answers ) {
+                return answers.using_collection_directory === 'Providing directory';
+            },
+            name: 'collection_directory',
+            message: 'Directory containing all collection files',
+            type: 'string',
+            suffix: " [Example: www.test.com/path1/path2]",
+            validate: (answer) => validate(answer, "Please provide a string to replace"),
+        },
+        {
+            name: 'save_as',
+            message: 'Please provide a custom path to save the new output collection',
+            type: 'string',
+            default: defaults.save_as,
+            suffix: " [Example: output/new_collection_name.json]"
+        },
+    ];
     return questions
 };
 

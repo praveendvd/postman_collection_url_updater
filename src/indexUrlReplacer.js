@@ -11,7 +11,7 @@ const yargs = require('yargs'),
         save_as: '<collectionDirectory>/new_<collectionName>.json',
         use_regex_pattern: false
     },
-    QUESTIONS = require('./helper/constant')(DEFAULTS);
+    URL_REPLACER_QUESTIONS = require('./helper/constant').urlReplacerQuestionaire(DEFAULTS);
 
 let OPTIONS = yargs
     .usage('\nUsage: -c "root/collection_name.json" -r "{{Baseurl}}/path1/path2" -w "{{Baseurl}}/{{path}}" -s "root/new_collection_name.json"')
@@ -30,7 +30,7 @@ if (!OPTIONS.parse().i) {
 
 async function startConvert() {
 
-    OPTIONS = OPTIONS.argv.i ? await inquirer.prompt(QUESTIONS) : OPTIONS.argv;
+    OPTIONS = OPTIONS.argv.i ? await inquirer.prompt(URL_REPLACER_QUESTIONS) : OPTIONS.argv;
 
     const COLLECTIONFILE = path.parse(OPTIONS.collection_path).base,
         COLLECTIONDIR = path.resolve(path.parse(OPTIONS.collection_path).dir),

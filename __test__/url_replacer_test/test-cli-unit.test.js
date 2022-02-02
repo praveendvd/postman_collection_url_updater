@@ -22,7 +22,7 @@ describe('Validate index.js unit tests', () => {
     it('Should show help if arguments are missing', async () => {
       resetAndReimportUrlUpdator({ c: undefined, r: undefined, w: undefined, s: undefined, p: undefined, i: undefined });
 
-      expect(() => { require('../src/index.js') }).not.toThrowError()
+      expect(() => { require('../../src/indexUrlReplacer.js') }).not.toThrowError()
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
@@ -30,7 +30,7 @@ describe('Validate index.js unit tests', () => {
       expect(mockConsoleLog).not.toBeCalled();
       expect(mockConsoleLog).toMatchSnapshot();
 
-      await expect(async () => { await require('../src/index.js').createNewCollection() }).rejects.toThrowErrorMatchingSnapshot()
+      await expect(async () => { await require('../../src/indexUrlReplacer.js').createNewCollection() }).rejects.toThrowErrorMatchingSnapshot()
       expect(mockProcessExit).toBeCalled();
       expect(mockConsoleError).toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
@@ -42,7 +42,7 @@ describe('Validate index.js unit tests', () => {
     it('Should show help if -c argument is missing', async () => {
       resetAndReimportUrlUpdator({ c: undefined, r: "{{baseURL}}/{{path}}", w: "new_collection.json", s: undefined, p: undefined, i: undefined });
 
-      expect(() => { require('../src/index.js') }).not.toThrowError()
+      expect(() => { require('../../src/indexUrlReplacer.js') }).not.toThrowError()
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
@@ -50,7 +50,7 @@ describe('Validate index.js unit tests', () => {
       expect(mockConsoleLog).not.toBeCalled();
       expect(mockConsoleLog).toMatchSnapshot();
 
-      await expect(async () => { await require('../src/index.js').createNewCollection() }).rejects.toThrowErrorMatchingSnapshot()
+      await expect(async () => { await require('../../src/indexUrlReplacer.js').createNewCollection() }).rejects.toThrowErrorMatchingSnapshot()
 
       expect(mockProcessExit).toBeCalled();
       expect(mockConsoleError).toBeCalled();
@@ -63,7 +63,7 @@ describe('Validate index.js unit tests', () => {
     it('Should show help if -r argument is missing', async () => {
       resetAndReimportUrlUpdator({ c: "test/collection/collection.json", r: undefined, w: "new_collection.json", s: undefined, p: undefined, i: undefined });
 
-      expect(() => { require('../src/index.js') }).not.toThrowError()
+      expect(() => { require('../../src/indexUrlReplacer.js') }).not.toThrowError()
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
@@ -71,7 +71,7 @@ describe('Validate index.js unit tests', () => {
       expect(mockConsoleLog).not.toBeCalled();
       expect(mockConsoleLog).toMatchSnapshot();
 
-      await expect(async () => { await require('../src/index.js').createNewCollection() }).rejects.toThrowErrorMatchingSnapshot()
+      await expect(async () => { await require('../../src/indexUrlReplacer.js').createNewCollection() }).rejects.toThrowErrorMatchingSnapshot()
 
       expect(mockProcessExit).toBeCalled();
       expect(mockConsoleError).toBeCalled();
@@ -84,7 +84,7 @@ describe('Validate index.js unit tests', () => {
     it('Should show help if -w argument is missing', async () => {
       resetAndReimportUrlUpdator({ c: "test/collection/collection.json", r: "{{baseURL}}/{{path}}", w: undefined, s: "new_collection.json", p: undefined, i: undefined });
 
-      expect(() => { require('../src/index.js') }).not.toThrowError()
+      expect(() => { require('../../src/indexUrlReplacer.js') }).not.toThrowError()
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
@@ -92,7 +92,7 @@ describe('Validate index.js unit tests', () => {
       expect(mockConsoleLog).not.toBeCalled();
       expect(mockConsoleLog).toMatchSnapshot();
 
-      await expect(async () => { await require('../src/index.js').createNewCollection() }).rejects.toThrowErrorMatchingSnapshot()
+      await expect(async () => { await require('../../src/indexUrlReplacer.js').createNewCollection() }).rejects.toThrowErrorMatchingSnapshot()
 
       expect(mockProcessExit).toBeCalled();
       expect(mockConsoleError).toBeCalled();
@@ -104,7 +104,7 @@ describe('Validate index.js unit tests', () => {
 
     it('Should show file not found error if collection doesnt exists', async () => {
       resetAndReimportUrlUpdator({ c: "test/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "new_collection.json", p: undefined, i: undefined });
-      postman_url_updater = require('../src/index.js')
+      postman_url_updater = require('../../src/indexUrlReplacer.js')
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
@@ -122,8 +122,8 @@ describe('Validate index.js unit tests', () => {
     });
 
     it('Should show file saved message correctly with default path', async () => {
-      resetAndReimportUrlUpdator({ c: "__test__/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: undefined, p: undefined, i: undefined });
-      postman_url_updater = require('../src/index.js')
+      resetAndReimportUrlUpdator({ c: "__test__/url_replacer_test/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: undefined, p: undefined, i: undefined });
+      postman_url_updater = require('../../src/indexUrlReplacer.js')
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
@@ -136,12 +136,12 @@ describe('Validate index.js unit tests', () => {
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
       expect(mockConsoleError).toMatchSnapshot();
-      expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./__test__/collection/new_collection.json')}`);
+      expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./__test__/url_replacer_test/collection/new_collection.json')}`);
     });
 
     it('Should show file saved message correctly with custom path', async () => {
-      resetAndReimportUrlUpdator({ c: "__test__/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "__test__/collection/output/new_collection.json", p: undefined, i: undefined });
-      postman_url_updater = require('../src/index.js')
+      resetAndReimportUrlUpdator({ c: "__test__/url_replacer_test/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "__test__/url_replacer_test/collection/output/new_collection.json", p: undefined, i: undefined });
+      postman_url_updater = require('../../src/indexUrlReplacer.js')
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
@@ -154,12 +154,12 @@ describe('Validate index.js unit tests', () => {
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
       expect(mockConsoleError).toMatchSnapshot();
-      expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./__test__/collection/output/new_collection.json')}`);
+      expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./__test__/url_replacer_test/collection/output/new_collection.json')}`);
     });
 
     it('Should throw error if exception thrown doesnt contain error code ENOENT', async () => {
-      resetAndReimportUrlUpdator({ c: "__test__/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "new_collection.json", p: undefined, i: undefined });
-      postman_url_updater = require('../src/index.js')
+      resetAndReimportUrlUpdator({ c: "__test__/url_replacer_test/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "new_collection.json", p: undefined, i: undefined });
+      postman_url_updater = require('../../src/indexUrlReplacer.js')
       jest.clearAllMocks()
       mockConsoleLog.mockImplementation(() => { throw new CustomError(256) });
       await expect(postman_url_updater.createNewCollection).rejects.toThrowErrorMatchingSnapshot()
@@ -167,8 +167,8 @@ describe('Validate index.js unit tests', () => {
     });
 
     it('Should throw invalid collection if a valid collection is not provided', async () => {
-      resetAndReimportUrlUpdator({ c: "__test__/__snapshots__/test-cli-unit.test.js.snap", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "new_collection.json", p: undefined, i: undefined });
-      postman_url_updater = require('../src/index.js')
+      resetAndReimportUrlUpdator({ c: "__test__/url_replacer_test/__snapshots__/test-cli-unit.test.js.snap", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "new_collection.json", p: undefined, i: undefined });
+      postman_url_updater = require('../../src/indexUrlReplacer.js')
       jest.clearAllMocks()
       await expect(postman_url_updater.createNewCollection).rejects.toThrowErrorMatchingSnapshot()
       expect(console.error).toBeCalledWith(`Invalid/corrupted collection provided. Please provide path to valid source collection`);
@@ -187,27 +187,27 @@ describe('Validate index.js unit tests', () => {
     })
 
     it('Should call inquirer if i not provided', async () => {
-      let inquirerSpy = resetAndReimportUrlUpdator({ c: "__test__/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "__test__/collection/output/new_collection.json", p: undefined, i: true });
-      await require('../src/index.js').createNewCollection();
+      let inquirerSpy = resetAndReimportUrlUpdator({ c: "__test__/url_replacer_test/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "__test__/url_replacer_test/collection/output/new_collection.json", p: undefined, i: true });
+      await require('../../src/indexUrlReplacer.js').createNewCollection();
       expect(inquirerSpy).toHaveBeenCalled()
     });
 
     it('Should not call inquirer if i not provided', async () => {
-      let inquirerSpy = resetAndReimportUrlUpdator({ c: "__test__/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "__test__/collection/output/new_collection.json", p: undefined, i: false });
-      await require('../src/index.js').createNewCollection();
+      let inquirerSpy = resetAndReimportUrlUpdator({ c: "__test__/url_replacer_test/collection/collection.json", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "__test__/url_replacer_test/collection/output/new_collection.json", p: undefined, i: false });
+      await require('../../src/indexUrlReplacer.js').createNewCollection();
       expect(inquirerSpy).not.toHaveBeenCalled()
     });
 
   })
 
   describe('Validate collection changes', () => {
-    let collectionPath = '__test__/collection/collection.json',
-      outputCollectionPath = '__test__/collection/output/new_unit.json';
+    let collectionPath = '__test__/url_replacer_test/collection/collection.json',
+      outputCollectionPath = '__test__/url_replacer_test/collection/output/new_unit.json';
 
     it('validate no changes happens when there is no match', async () => {
       const sourceCollection = new sdk.Collection(JSON.parse(fs.readFileSync(collectionPath).toString())).toJSON();
       resetAndReimportUrlUpdator({ c: collectionPath, r: "https://localhost:23456/api/v1/{{path}}", w: "{{baseURL}}/{{path}}", s: outputCollectionPath, p: undefined, i: undefined });
-      await require('../src/index.js').createNewCollection();
+      await require('../../src/indexUrlReplacer.js').createNewCollection();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
       expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
       expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
@@ -231,7 +231,7 @@ describe('Validate index.js unit tests', () => {
 
       const sourceCollection = new sdk.Collection(JSON.parse(fs.readFileSync(collectionPath).toString())).toJSON();
       resetAndReimportUrlUpdator({ c: collectionPath, r: "https://www.testdomain0.ie", w: "{{baseURL}}/{{path}}", s: outputCollectionPath, p: undefined, i: undefined });
-      await require('../src/index.js').createNewCollection();
+      await require('../../src/indexUrlReplacer.js').createNewCollection();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
@@ -260,7 +260,7 @@ describe('Validate index.js unit tests', () => {
 
       const sourceCollection = new sdk.Collection(JSON.parse(fs.readFileSync(collectionPath).toString())).toJSON();
       resetAndReimportUrlUpdator({ c: collectionPath, r: "www.testdomain0.ie", w: "{{baseURL}}/{{path}}", s: outputCollectionPath, p: undefined, i: undefined });
-      await require('../src/index.js').createNewCollection();
+      await require('../../src/indexUrlReplacer.js').createNewCollection();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
@@ -289,7 +289,7 @@ describe('Validate index.js unit tests', () => {
 
       const sourceCollection = new sdk.Collection(JSON.parse(fs.readFileSync(collectionPath).toString())).toJSON();
       resetAndReimportUrlUpdator({ c: collectionPath, r: "www.testdomain0.ie/testpath/:pathvariable1-1", w: "{{baseURL}}/{{path}}", s: outputCollectionPath, p: undefined, i: undefined });
-      await require('../src/index.js').createNewCollection();
+      await require('../../src/indexUrlReplacer.js').createNewCollection();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
@@ -321,7 +321,7 @@ describe('Validate index.js unit tests', () => {
 
       const sourceCollection = new sdk.Collection(JSON.parse(fs.readFileSync(collectionPath).toString())).toJSON();
       resetAndReimportUrlUpdator({ c: collectionPath, r: "/:pathvariable1-1/path/request1-1?query1-1-0", w: "/:pathvariable1-1/path/request1-1?query1-1-0=queryvalue1-1-0-0&test", s: outputCollectionPath, p: undefined, i: undefined });
-      await require('../src/index.js').createNewCollection();
+      await require('../../src/indexUrlReplacer.js').createNewCollection();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
@@ -354,7 +354,7 @@ describe('Validate index.js unit tests', () => {
         r: "https://www.testdomain0.ie/testpath/:pathvariable1-1/path/request1-1?query1-1-0=queryvalue1-1-0&query1-1-1=queryvalue1-1-1",
         w: "{{protocol}}://{{baseURL}}/v1/{{path}}", s: outputCollectionPath, p: undefined, i: undefined
       });
-      await require('../src/index.js').createNewCollection();
+      await require('../../src/indexUrlReplacer.js').createNewCollection();
 
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
@@ -379,7 +379,7 @@ describe('Validate index.js unit tests', () => {
 
       const sourceCollection = new sdk.Collection(JSON.parse(fs.readFileSync(collectionPath).toString())).toJSON();
       resetAndReimportUrlUpdator({ c: collectionPath, r: "^(.*?)(?:\\?(.*))?$", w: "$1?querynew=valuenew&$2", s: outputCollectionPath, p: true });
-      await require('../src/index.js').createNewCollection();
+      await require('../../src/indexUrlReplacer.js').createNewCollection();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
       //expect that new query parameter is added as first parameter
@@ -406,7 +406,7 @@ describe('Validate index.js unit tests', () => {
 
       const sourceCollection = new sdk.Collection(JSON.parse(fs.readFileSync(collectionPath).toString())).toJSON();
       resetAndReimportUrlUpdator({ c: collectionPath, r: "^(.*?)(?:\\?(.*))?$", w: "$1?querynew=valuenew&$2", s: outputCollectionPath, p: undefined });
-      await require('../src/index.js').createNewCollection();
+      await require('../../src/indexUrlReplacer.js').createNewCollection();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
       //expect source and output are the same
