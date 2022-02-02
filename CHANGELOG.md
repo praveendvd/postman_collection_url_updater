@@ -127,4 +127,10 @@ Added main entry point to the package to allow to be used as a dependency
 
 ### Fixed
 
+## [2.0.7] - 2022-02-02
+ 
+### Added
 
+Added error handling for invalid source collection
+
+### Fixed
