@@ -111,11 +111,19 @@ Updated Read me to add SEO keywords
 
 Updated speling mistakes
 
-## [2.0.4] - 2022-02-01
+## [2.0.5] - 2022-02-01
  
 ### Added
 
 Added ability to reject unrecognized commandline arguments
+
+### Fixed
+
+## [2.0.6] - 2022-02-02
+ 
+### Added
+
+Added main entry point to the package to allow to be used as a dependency
 
 ### Fixed
 
