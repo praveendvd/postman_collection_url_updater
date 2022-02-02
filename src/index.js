@@ -52,8 +52,12 @@ async function startConvert() {
         fs.outputFileSync(DESTINATIONPATH, JSON.stringify(sourceCollection.toJSON(), null, 2))
         console.log(chalk.green('File saved to: ') + chalk.yellowBright(DESTINATIONPATH))
     } catch (e) {
-        if (!(e.code === 'ENOENT')) throw Error(e)
-        console.error(chalk.red(e.message))
+        if (!(e.code === 'ENOENT')
+            &&
+            !(e.stack && e.stack.includes("at JSON.parse"))) throw Error(e);
+
+        console.error(chalk.red((e.stack && e.stack.includes("at JSON.parse")) ? "Invalid/corrupted collection provided. Please provide path to valid source collection"
+         : (e.message)))
         process.exit()
     }
 }

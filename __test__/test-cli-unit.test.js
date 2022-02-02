@@ -164,6 +164,14 @@ describe('Validate index.js unit tests', () => {
       mockConsoleLog.mockImplementation(() => { throw new CustomError(256) });
       await expect(postman_url_updater.createNewCollection).rejects.toThrowErrorMatchingSnapshot()
     });
+
+    it('Should throw invalid collection if a valid collection is not provided', async () => {
+      resetAndReimportUrlUpdator({ c: "__test__/__snapshots__/test-cli-unit.test.js.snap", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "new_collection.json", p: undefined, i: undefined });
+      postman_url_updater = require('../src/index.js')
+      jest.clearAllMocks()
+      await expect(postman_url_updater.createNewCollection).rejects.toThrowErrorMatchingSnapshot()
+    });
+
   })
 
   describe('Validate cli output messages for interactive', () => {

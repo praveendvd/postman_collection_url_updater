@@ -361,3 +361,5 @@ Options:
 exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show help if arguments are missing 7`] = `[MockFunction]`;
 
 exports[`Validate index.js unit tests Validate cli output messages for non interactive Should throw error if exception thrown doesnt contain error code ENOENT 1`] = `"Error: Custom error"`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should throw invalid collection if a valid collection is not provided 1`] = `"exit"`;
