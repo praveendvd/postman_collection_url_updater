@@ -1,3 +1,3 @@
 #! /usr/bin/env node
-let { startConvert } = require('../src/index.js')
-startConvert()
+let { createNewCollection } = require('../src/index.js')
+createNewCollection()

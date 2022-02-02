@@ -72,4 +72,4 @@ function updateCollection(requestItem, variables, newURL) {
     requestItem.request.url.variables.repopulate(variables)
 }
 
-module.exports = { startConvert }
+module.exports = { createNewCollection: startConvert }
