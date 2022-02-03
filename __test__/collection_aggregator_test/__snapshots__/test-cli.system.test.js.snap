@@ -30,12 +30,16 @@ exports[`Validate index.js system test Validate cli output messages Should show 
 
 exports[`Validate index.js system test Validate cli output messages Should show help if arguments are missing 1`] = `
 "
-Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
-\\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+Usage: -n \\"new_collection\\" -l \\"path/collection1.json\\" \\"path/collection1.json\\"
+\\"path/collection1.json\\"
 
 or
 
 Usage: -i
+
+or
+
+Usage: -d \\"./collection_directory\\" -n \\"new_collection\\"
 
 Options:
       --help                  Show help                                [boolean]

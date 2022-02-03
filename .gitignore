@@ -9,3 +9,4 @@ new.collection.json
 output
 __test__\collection_aggregator_test\collection\output
 __test__\url_replacer_test\collection\output
+test.collection.json
