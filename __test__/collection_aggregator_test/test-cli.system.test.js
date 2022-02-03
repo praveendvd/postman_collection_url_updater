@@ -60,6 +60,14 @@ describe('Validate index.js system test', () => {
       expect(commandResponse.stderr).toMatch('');
       expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]output[\\|\/]new.json/g);
     });
+
+    it('Should show -d will be accepted if both -l and -d given', async () => {
+      const commandResponse = exec('npx postman-collection-aggregator -d "__test__\\collection_aggregator_test\\collection" -l "__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection_2.json" -s "output/new.json"', { silent: true });
+      expect(commandResponse.stderr).toMatch('');
+      expect(commandResponse.stdout).toMatch(/\[Warning\] Both -d and -l was provided. Will be using Using -d/g);
+
+      expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]output[\\|\/]new.json/g);
+    });
   })
 
   describe('Validate collection creation', () => {
