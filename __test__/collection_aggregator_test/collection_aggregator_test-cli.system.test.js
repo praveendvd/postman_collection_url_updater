@@ -14,13 +14,13 @@ describe('Validate collection_aggregator system test', () => {
     });
 
     it('Should show error if collection folder is not folder', async () => {
-      const commandResponse = exec('npx postman-collection-aggregator -d "__test__\\collection_aggregator_test\\__snapshots__\\test-cli-unit.test.js.snap" ', { silent: true });
+      const commandResponse = exec('npx postman-collection-aggregator -d "__test__\\collection_aggregator_test\\__snapshots__\\collection_aggregator_test-cli-unit.test.js.snap" ', { silent: true });
       expect(commandResponse.stderr).toMatchSnapshot();
       expect(commandResponse.stdout).toMatchSnapshot();
     });
 
     it('Should show error if collection file is not valid', async () => {
-      const commandResponse = exec('npx postman-collection-aggregator -l "__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\__snapshots__\\test-cli-unit.test.js.snap"  ', { silent: true });
+      const commandResponse = exec('npx postman-collection-aggregator -l "__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\__snapshots__\\collection_aggregator_test-cli-unit.test.js.snap"  ', { silent: true });
       expect(commandResponse.stderr).toMatchSnapshot();
       expect(commandResponse.stdout).toMatchSnapshot();
     });
@@ -32,7 +32,7 @@ describe('Validate collection_aggregator system test', () => {
     });
 
     it('Should show error if collection file is non existing', async () => {
-      const commandResponse = exec('npx postman-collection-aggregator -l "__test__\\collection_aggregator_test\\collection\\collection5.json" "__test__\\collection_aggregator_test\\__snapshots__\\test-cli-unit.test.js.snap"  ', { silent: true });
+      const commandResponse = exec('npx postman-collection-aggregator -l "__test__\\collection_aggregator_test\\collection\\collection5.json" "__test__\\collection_aggregator_test\\__snapshots__\\collection_aggregator_test-cli-unit.test.js.snap"  ', { silent: true });
       expect(commandResponse.stderr).toMatchSnapshot();
       expect(commandResponse.stdout).toMatchSnapshot();
     });

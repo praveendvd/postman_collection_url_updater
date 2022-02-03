@@ -258,7 +258,7 @@ describe('Validate collection_aggregator index.js unit tests', () => {
     });
 
     it('Should throw invalid collection if a valid collection is not provided in -l', async () => {
-      resetAndReimportUrlUpdator({ n: "new", l: '"__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\__snapshots__\\test-cli-unit.test.js.snap"', d: undefined, s: 'output/new_collection.json', i: undefined });
+      resetAndReimportUrlUpdator({ n: "new", l: '"__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\__snapshots__\\collection_aggregator_test-cli-unit.test.js.snap"', d: undefined, s: 'output/new_collection.json', i: undefined });
       postman_url_updater = require('../../src/indexAggregator.js')
       jest.clearAllMocks()
       await expect(postman_url_updater.createNewCollection).rejects.toThrowErrorMatchingSnapshot()
