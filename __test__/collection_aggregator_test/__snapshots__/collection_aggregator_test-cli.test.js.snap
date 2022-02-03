@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection file is non existing 1`] = `
-"ENOENT: no such file or directory, open '__test__\\\\collection_aggregator_test\\\\collection\\\\collection5.json'
+"ENOENT: no such file or directory, open '__test__/collection_aggregator_test/collection/collection5.json'
 "
 `;
 
@@ -15,14 +15,14 @@ exports[`Validate collection_aggregator main.js test Validate cli output message
 exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection file is not valid 2`] = `""`;
 
 exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection folder is not folder 1`] = `
-"ENOTDIR: not a directory, scandir '__test__\\\\collection_aggregator_test\\\\__snapshots__\\\\collection_aggregator_test-cli-unit.test.js.snap'
+"ENOTDIR: not a directory, scandir '__test__/collection_aggregator_test/__snapshots__/collection_aggregator_test-cli-unit.test.js.snap'
 "
 `;
 
 exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection folder is not folder 2`] = `""`;
 
 exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection folder is not found 1`] = `
-"ENOENT: no such file or directory, scandir '__test__\\\\collection_aggregator_test\\\\nonexisting'
+"ENOENT: no such file or directory, scandir '__test__/collection_aggregator_test/nonexisting'
 "
 `;
 

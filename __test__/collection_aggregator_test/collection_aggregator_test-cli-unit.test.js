@@ -87,7 +87,7 @@ describe('Validate collection_aggregator index.js unit tests', () => {
     });
 
     it('Should show file/folder not found error if collection directory doesnt exists', async () => {
-      resetAndReimportUrlUpdator({ n: "new", l: undefined, d: '__test__\\collection_aggregator_test\\collections', s: undefined, i: undefined });
+      resetAndReimportUrlUpdator({ n: "new", l: undefined, d: '__test__/collection_aggregator_test/collections', s: undefined, i: undefined });
       postman_url_updater = require('../../src/indexAggregator.js')
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
@@ -106,7 +106,7 @@ describe('Validate collection_aggregator index.js unit tests', () => {
     });
 
     it('Should show file/folder not found error if collection list file doesnt exists', async () => {
-      resetAndReimportUrlUpdator({ n: "new", l: '__test__\\collection_aggregator_test\\collection\\collection.json __test__\\collection_aggregator_test\\collection\\collections.json', d: undefined, s: undefined, i: undefined });
+      resetAndReimportUrlUpdator({ n: "new", l: '__test__/collection_aggregator_test/collection/collection.json __test__/collection_aggregator_test/collection/collections.json', d: undefined, s: undefined, i: undefined });
       postman_url_updater = require('../../src/indexAggregator.js')
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
@@ -125,7 +125,7 @@ describe('Validate collection_aggregator index.js unit tests', () => {
     });
 
     it('Should show file saved message correctly with default path for -l', async () => {
-      resetAndReimportUrlUpdator({ n: "new", l: '"__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection.json"', d: undefined, s: undefined, i: undefined });
+      resetAndReimportUrlUpdator({ n: "new", l: '"__test__/collection_aggregator_test/collection/collection.json" "__test__/collection_aggregator_test/collection/collection.json"', d: undefined, s: undefined, i: undefined });
       postman_url_updater = require('../../src/indexAggregator.js')
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
@@ -143,7 +143,7 @@ describe('Validate collection_aggregator index.js unit tests', () => {
     });
 
     it('Should show file saved message correctly with default path for -d', async () => {
-      resetAndReimportUrlUpdator({ n: "new", l: undefined, d: "__test__\\collection_aggregator_test\\collection", s: undefined, i: undefined });
+      resetAndReimportUrlUpdator({ n: "new", l: undefined, d: "__test__/collection_aggregator_test/collection", s: undefined, i: undefined });
       postman_url_updater = require('../../src/indexAggregator.js')
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
@@ -161,7 +161,7 @@ describe('Validate collection_aggregator index.js unit tests', () => {
     });
 
     it('Should show file saved message correctly with default name and path if n not provided', async () => {
-      resetAndReimportUrlUpdator({ n: undefined, l: undefined, d: "__test__\\collection_aggregator_test\\collection", s: undefined, i: undefined });
+      resetAndReimportUrlUpdator({ n: undefined, l: undefined, d: "__test__/collection_aggregator_test/collection", s: undefined, i: undefined });
       postman_url_updater = require('../../src/indexAggregator.js')
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
@@ -179,7 +179,7 @@ describe('Validate collection_aggregator index.js unit tests', () => {
     });
 
     it('Should show file saved message correctly with default path for -d', async () => {
-      resetAndReimportUrlUpdator({ n: "new", l: undefined, d: "__test__\\collection_aggregator_test\\collection", s: undefined, i: undefined });
+      resetAndReimportUrlUpdator({ n: "new", l: undefined, d: "__test__/collection_aggregator_test/collection", s: undefined, i: undefined });
       postman_url_updater = require('../../src/indexAggregator.js')
       expect(mockProcessExit).not.toBeCalled();
       expect(mockConsoleError).not.toBeCalled();
@@ -199,9 +199,9 @@ describe('Validate collection_aggregator index.js unit tests', () => {
     it('Should show file saved message correctly with custom path -1', async () => {
       resetAndReimportUrlUpdator({
         n: "new",
-        l: '"__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection.json"',
+        l: '"__test__/collection_aggregator_test/collection/collection.json" "__test__/collection_aggregator_test/collection/collection.json"',
         d: undefined,
-        s: '__test__\\collection_aggregator_test\\collection\\output\\test_collection.json',
+        s: '__test__/collection_aggregator_test/collection/output/test_collection.json',
         i: undefined
       });
       postman_url_updater = require('../../src/indexAggregator.js')
@@ -223,8 +223,8 @@ describe('Validate collection_aggregator index.js unit tests', () => {
     it('Should show file saved message correctly with custom path -d', async () => {
       resetAndReimportUrlUpdator({
         n: "new",
-        l: undefined, d: "__test__\\collection_aggregator_test\\collection",
-        s: "__test__\\collection_aggregator_test\\collection\\output\\new_collection.json",
+        l: undefined, d: "__test__/collection_aggregator_test/collection",
+        s: "__test__/collection_aggregator_test/collection/output/new_collection.json",
         i: undefined
       });
       postman_url_updater = require('../../src/indexAggregator.js')
@@ -246,8 +246,8 @@ describe('Validate collection_aggregator index.js unit tests', () => {
     it('Should throw error if exception thrown doesnt contain error code ENOENT', async () => {
       resetAndReimportUrlUpdator({
         n: "new",
-        l: undefined, d: "__test__\\collection_aggregator_test\\collection",
-        s: "__test__\\collection_aggregator_test\\collection\\output\\new_collection.json",
+        l: undefined, d: "__test__/collection_aggregator_test/collection",
+        s: "__test__/collection_aggregator_test/collection/output/new_collection.json",
         i: undefined
       });
       postman_url_updater = require('../../src/indexAggregator.js')
@@ -258,7 +258,7 @@ describe('Validate collection_aggregator index.js unit tests', () => {
     });
 
     it('Should throw invalid collection if a valid collection is not provided in -l', async () => {
-      resetAndReimportUrlUpdator({ n: "new", l: '"__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\__snapshots__\\collection_aggregator_test-cli-unit.test.js.snap"', d: undefined, s: 'output/new_collection.json', i: undefined });
+      resetAndReimportUrlUpdator({ n: "new", l: '"__test__/collection_aggregator_test/collection/collection.json" "__test__/collection_aggregator_test/__snapshots__/collection_aggregator_test-cli-unit.test.js.snap"', d: undefined, s: 'output/new_collection.json', i: undefined });
       postman_url_updater = require('../../src/indexAggregator.js')
       jest.clearAllMocks()
       await expect(postman_url_updater.createNewCollection).rejects.toThrowErrorMatchingSnapshot()
@@ -267,18 +267,18 @@ describe('Validate collection_aggregator index.js unit tests', () => {
 
 
     it('Should throw invalid collection if a valid collection directory is not provided', async () => {
-      resetAndReimportUrlUpdator({ n: "new", l: undefined, d: "__test__\\collection_aggregator_test\\collection\\collection.json", s: 'output/new_collection.json', i: undefined });
+      resetAndReimportUrlUpdator({ n: "new", l: undefined, d: "__test__/collection_aggregator_test/collection/collection.json", s: 'output/new_collection.json', i: undefined });
       postman_url_updater = require('../../src/indexAggregator.js')
       jest.clearAllMocks()
       await expect(postman_url_updater.createNewCollection).rejects.toThrowErrorMatchingSnapshot()
-      expect(console.error).toBeCalledWith(`ENOTDIR: not a directory, scandir '__test__\\collection_aggregator_test\\collection\\collection.json'`);
+      expect(console.error).toBeCalledWith(`ENOTDIR: not a directory, scandir '__test__/collection_aggregator_test/collection/collection.json'`);
     });
 
     it('Should show -d will be used if both -d and -l provided', async () => {
       resetAndReimportUrlUpdator({
         n: "new",
-        l: '"__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection.json"',
-        d: "__test__\\collection_aggregator_test\\collection",
+        l: '"__test__/collection_aggregator_test/collection/collection.json" "__test__/collection_aggregator_test/collection/collection.json"',
+        d: "__test__/collection_aggregator_test/collection",
         s: undefined,
         i: undefined
       });
@@ -292,7 +292,7 @@ describe('Validate collection_aggregator index.js unit tests', () => {
       jest.clearAllMocks()
       await postman_url_updater.createNewCollection()
       //await expect(postman_url_updater.createNewCollection).rejects.toThrowErrorMatchingSnapshot()
-      expect(fsDirReaderMock).toBeCalledWith('__test__\\collection_aggregator_test\\collection');
+      expect(fsDirReaderMock).toBeCalledWith('__test__/collection_aggregator_test/collection');
       expect(mockConsoleLog).toHaveBeenNthCalledWith(1, `[Warning] Both -d and -l was provided. Will be using Using -d`);
       expect(mockConsoleLog).toHaveBeenNthCalledWith(2, `File saved to: ${path.resolve('./new.collection.json')}`);
 
@@ -311,13 +311,13 @@ describe('Validate collection_aggregator index.js unit tests', () => {
     })
 
     it('Should call inquirer if i provided', async () => {
-      let inquirerSpy = resetAndReimportUrlUpdator({ n: "new", l: '"__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection.json', d: undefined, s: 'output/new_collection.json', i: true });
+      let inquirerSpy = resetAndReimportUrlUpdator({ n: "new", l: '"__test__/collection_aggregator_test/collection/collection.json" "__test__/collection_aggregator_test/collection/collection.json', d: undefined, s: 'output/new_collection.json', i: true });
       await require('../../src/indexAggregator.js').createNewCollection();
       expect(inquirerSpy).toHaveBeenCalled()
     });
 
     it('Should not call inquirer if i not provided', async () => {
-      let inquirerSpy = resetAndReimportUrlUpdator({ n: "new", l: '"__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection.json"', d: undefined, s: 'output/new_collection.json', i: undefined });
+      let inquirerSpy = resetAndReimportUrlUpdator({ n: "new", l: '"__test__/collection_aggregator_test/collection/collection.json" "__test__/collection_aggregator_test/collection/collection.json"', d: undefined, s: 'output/new_collection.json', i: undefined });
       await require('../../src/indexAggregator.js').createNewCollection();
       expect(inquirerSpy).not.toHaveBeenCalled()
     });
@@ -325,8 +325,8 @@ describe('Validate collection_aggregator index.js unit tests', () => {
     it('Should not show -d will be used message if -i is used with -d and -l', async () => {
       resetAndReimportUrlUpdator({
         n: "new",
-        l: '"__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection.json"',
-        d: "__test__\\collection_aggregator_test\\collection",
+        l: '"__test__/collection_aggregator_test/collection/collection.json" "__test__/collection_aggregator_test/collection/collection.json"',
+        d: "__test__/collection_aggregator_test/collection",
         s: 'output/new_collection.json',
         i: true
       });
@@ -343,7 +343,7 @@ describe('Validate collection_aggregator index.js unit tests', () => {
       jest.clearAllMocks()
       await postman_url_updater.createNewCollection()
      
-      expect(fsDirReaderMock).toBeCalledWith('__test__\\collection_aggregator_test\\collection');
+      expect(fsDirReaderMock).toBeCalledWith('__test__/collection_aggregator_test/collection');
       expect(mockConsoleLog).toHaveBeenCalledTimes(1)
       expect(mockConsoleLog).toHaveBeenNthCalledWith(1, `File saved to: ${path.resolve('output/new_collection.json')}`);
 
@@ -357,7 +357,7 @@ describe('Validate collection_aggregator index.js unit tests', () => {
 
       let inquirerSpy = resetAndReimportUrlUpdator({
         n: "new",
-        l: '"__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection_2.json"',
+        l: '"__test__/collection_aggregator_test/collection/collection.json" "__test__/collection_aggregator_test/collection/collection_2.json"',
         d: undefined,
         s: 'output/new_collection.json',
         i: undefined

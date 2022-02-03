@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1643918463539" clover="3.2.0">
+  <project timestamp="1643918463539" name="All files">
+    <metrics statements="64" coveredstatements="64" conditionals="51" coveredconditionals="51" methods="10" coveredmethods="10" elements="125" coveredelements="125" complexity="0" loc="64" ncloc="64" packages="1" files="2" classes="2"/>
+    <file name="indexAggregator.js" path="D:\MyProjects\collection_updater\postman_collection_url_updater\src\indexAggregator.js">
+      <metrics statements="28" coveredstatements="28" conditionals="31" coveredconditionals="31" methods="5" coveredmethods="5"/>
+      <line num="3" count="19" type="stmt"/>
+      <line num="4" count="19" type="stmt"/>
+      <line num="5" count="19" type="stmt"/>
+      <line num="6" count="19" type="stmt"/>
+      <line num="7" count="19" type="stmt"/>
+      <line num="8" count="19" type="stmt"/>
+      <line num="9" count="19" type="stmt"/>
+      <line num="13" count="19" type="stmt"/>
+      <line num="15" count="19" type="stmt"/>
+      <line num="31" count="19" type="stmt"/>
+      <line num="32" count="16" type="stmt"/>
+      <line num="34" count="16" type="stmt"/>
+      <line num="35" count="17" type="cond" truecount="2" falsecount="0"/>
+      <line num="37" count="13" type="stmt"/>
+      <line num="38" count="23" type="cond" truecount="2" falsecount="0"/>
+      <line num="44" count="12" type="cond" truecount="2" falsecount="0"/>
+      <line num="45" count="12" type="stmt"/>
+      <line num="46" count="12" type="stmt"/>
+      <line num="48" count="5" type="cond" truecount="6" falsecount="0"/>
+      <line num="50" count="1" type="cond" truecount="2" falsecount="0"/>
+      <line num="52" count="4" type="cond" truecount="4" falsecount="0"/>
+      <line num="54" count="4" type="stmt"/>
+      <line num="59" count="19" type="stmt"/>
+      <line num="60" count="59" type="cond" truecount="6" falsecount="0"/>
+      <line num="62" count="56" type="stmt"/>
+      <line num="65" count="19" type="cond" truecount="5" falsecount="0"/>
+      <line num="66" count="16" type="cond" truecount="2" falsecount="0"/>
+      <line num="69" count="19" type="stmt"/>
+    </file>
+    <file name="indexUrlReplacer.js" path="D:\MyProjects\collection_updater\postman_collection_url_updater\src\indexUrlReplacer.js">
+      <metrics statements="36" coveredstatements="36" conditionals="20" coveredconditionals="20" methods="5" coveredmethods="5"/>
+      <line num="3" count="19" type="stmt"/>
+      <line num="4" count="19" type="stmt"/>
+      <line num="5" count="19" type="stmt"/>
+      <line num="6" count="19" type="stmt"/>
+      <line num="7" count="19" type="stmt"/>
+      <line num="8" count="19" type="stmt"/>
+      <line num="9" count="19" type="stmt"/>
+      <line num="14" count="19" type="stmt"/>
+      <line num="16" count="19" type="stmt"/>
+      <line num="27" count="19" type="cond" truecount="2" falsecount="0"/>
+      <line num="28" count="17" type="stmt"/>
+      <line num="33" count="19" type="cond" truecount="2" falsecount="0"/>
+      <line num="35" count="15" type="stmt"/>
+      <line num="36" count="15" type="stmt"/>
+      <line num="37" count="15" type="cond" truecount="2" falsecount="0"/>
+      <line num="38" count="15" type="stmt"/>
+      <line num="39" count="15" type="stmt"/>
+      <line num="41" count="13" type="stmt"/>
+      <line num="43" count="65" type="stmt"/>
+      <line num="44" count="65" type="stmt"/>
+      <line num="45" count="65" type="stmt"/>
+      <line num="47" count="65" type="stmt"/>
+      <line num="50" count="65" type="stmt"/>
+      <line num="52" count="13" type="stmt"/>
+      <line num="53" count="13" type="stmt"/>
+      <line num="55" count="3" type="cond" truecount="4" falsecount="0"/>
+      <line num="57" count="1" type="cond" truecount="2" falsecount="0"/>
+      <line num="59" count="2" type="cond" truecount="4" falsecount="0"/>
+      <line num="61" count="2" type="stmt"/>
+      <line num="66" count="65" type="cond" truecount="2" falsecount="0"/>
+      <line num="71" count="65" type="stmt"/>
+      <line num="72" count="65" type="stmt"/>
+      <line num="73" count="65" type="stmt"/>
+      <line num="74" count="65" type="cond" truecount="2" falsecount="0"/>
+      <line num="76" count="65" type="stmt"/>
+      <line num="79" count="19" type="stmt"/>
+    </file>
+  </project>
+</coverage>

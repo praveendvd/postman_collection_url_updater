@@ -14,55 +14,55 @@ describe('Validate collection_aggregator system test', () => {
     });
 
     it('Should show error if collection folder is not folder', async () => {
-      const commandResponse = exec('npx postman-collection-aggregator -d "__test__\\collection_aggregator_test\\__snapshots__\\collection_aggregator_test-cli-unit.test.js.snap" ', { silent: true });
+      const commandResponse = exec('npx postman-collection-aggregator -d "__test__/collection_aggregator_test/__snapshots__/collection_aggregator_test-cli-unit.test.js.snap" ', { silent: true });
       expect(commandResponse.stderr).toMatchSnapshot();
       expect(commandResponse.stdout).toMatchSnapshot();
     });
 
     it('Should show error if collection file is not valid', async () => {
-      const commandResponse = exec('npx postman-collection-aggregator -l "__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\__snapshots__\\collection_aggregator_test-cli-unit.test.js.snap"  ', { silent: true });
+      const commandResponse = exec('npx postman-collection-aggregator -l "__test__/collection_aggregator_test/collection/collection.json" "__test__/collection_aggregator_test/__snapshots__/collection_aggregator_test-cli-unit.test.js.snap"  ', { silent: true });
       expect(commandResponse.stderr).toMatchSnapshot();
       expect(commandResponse.stdout).toMatchSnapshot();
     });
 
     it('Should show error if collection folder is not found', async () => {
-      const commandResponse = exec('npx postman-collection-aggregator -d "__test__\\collection_aggregator_test\\nonexisting" ', { silent: true });
+      const commandResponse = exec('npx postman-collection-aggregator -d "__test__/collection_aggregator_test/nonexisting" ', { silent: true });
       expect(commandResponse.stderr).toMatchSnapshot();
       expect(commandResponse.stdout).toMatchSnapshot();
     });
 
     it('Should show error if collection file is non existing', async () => {
-      const commandResponse = exec('npx postman-collection-aggregator -l "__test__\\collection_aggregator_test\\collection\\collection5.json" "__test__\\collection_aggregator_test\\__snapshots__\\collection_aggregator_test-cli-unit.test.js.snap"  ', { silent: true });
+      const commandResponse = exec('npx postman-collection-aggregator -l "__test__/collection_aggregator_test/collection/collection5.json" "__test__/collection_aggregator_test/__snapshots__/collection_aggregator_test-cli-unit.test.js.snap"  ', { silent: true });
       expect(commandResponse.stderr).toMatchSnapshot();
       expect(commandResponse.stdout).toMatchSnapshot();
     });
 
     it('Should not show help if -d argument is provided', async () => {
-      const commandResponse = exec('npx postman-collection-aggregator -d "__test__\\collection_aggregator_test\\collection"', { silent: true });
+      const commandResponse = exec('npx postman-collection-aggregator -d "__test__/collection_aggregator_test/collection"', { silent: true });
       expect(commandResponse.stderr).toMatch('');
       expect(commandResponse.stdout).toMatch(/File saved to: .*Aggregated_collection.collection.json/g);
     });
 
     it('Should not show help if -l argument is provided', async () => {
-      const commandResponse = exec('npx postman-collection-aggregator -n "test" -l "__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection_2.json"', { silent: true });
+      const commandResponse = exec('npx postman-collection-aggregator -n "test" -l "__test__/collection_aggregator_test/collection/collection.json" "__test__/collection_aggregator_test/collection/collection_2.json"', { silent: true });
       expect(commandResponse.stderr).toMatch('');
       expect(commandResponse.stdout).toMatch(/File saved to: .*test.collection.json/g);
     });
 
     it('Should save to custom path if -s argument is provided', async () => {
-      const commandResponse = exec('npx postman-collection-aggregator -l "__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection_2.json" -s "output/new.json"', { silent: true });
+      const commandResponse = exec('npx postman-collection-aggregator -l "__test__/collection_aggregator_test/collection/collection.json" "__test__/collection_aggregator_test/collection/collection_2.json" -s "output/new.json"', { silent: true });
       expect(commandResponse.stderr).toMatch('');
       expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]output[\\|\/]new.json/g);
     });
 
     it('Should save to custom path if -s argument is provided', async () => {
-      const commandResponse = exec('npx postman-collection-aggregator -l "__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection_2.json" -s "output/new.json"', { silent: true });
+      const commandResponse = exec('npx postman-collection-aggregator -l "__test__/collection_aggregator_test/collection/collection.json" "__test__/collection_aggregator_test/collection/collection_2.json" -s "output/new.json"', { silent: true });
       expect(commandResponse.stderr).toMatch('');
       expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]output[\\|\/]new.json/g);
     });
 
     it('Should show -d will be accepted if both -l and -d given', async () => {
-      const commandResponse = exec('npx postman-collection-aggregator -d "__test__\\collection_aggregator_test\\collection" -l "__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection_2.json" -s "output/new.json"', { silent: true });
+      const commandResponse = exec('npx postman-collection-aggregator -d "__test__/collection_aggregator_test/collection" -l "__test__/collection_aggregator_test/collection/collection.json" "__test__/collection_aggregator_test/collection/collection_2.json" -s "output/new.json"', { silent: true });
       expect(commandResponse.stderr).toMatch('');
       expect(commandResponse.stdout).toMatch(/\[Warning\] Both -d and -l was provided. Will be using Using -d/g);
 
@@ -74,7 +74,7 @@ describe('Validate collection_aggregator system test', () => {
 
     it('validate collection aggregated without modifiying source content ', async () => {
 
-      const commandResponse = exec('npx postman-collection-aggregator -n "new" -l "__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection_2.json" -s "output/new_collection.json"', { silent: true });
+      const commandResponse = exec('npx postman-collection-aggregator -n "new" -l "__test__/collection_aggregator_test/collection/collection.json" "__test__/collection_aggregator_test/collection/collection_2.json" -s "output/new_collection.json"', { silent: true });
 
       const aggregatedCollection = new sdk.Collection(JSON.parse(fs.readFileSync('output/new_collection.json').toString())).toJSON();
       const sourceCollection1 = new sdk.Collection(JSON.parse(fs.readFileSync('__test__/collection_aggregator_test/collection/collection.json').toString())).toJSON();

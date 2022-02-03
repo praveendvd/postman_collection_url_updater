@@ -86,7 +86,7 @@ exports[`Validate collection_aggregator index.js unit tests Validate cli output 
 [MockFunction] {
   "calls": Array [
     Array [
-      "ENOENT: no such file or directory, scandir '__test__\\\\collection_aggregator_test\\\\collections'",
+      ENOENT: no such file or directory, scandir '__test__/collection_aggregator_test/collections'",
     ],
   ],
   "results": Array [
@@ -296,7 +296,7 @@ exports[`Validate collection_aggregator index.js unit tests Validate cli output 
 [MockFunction] {
   "calls": Array [
     Array [
-      "ENOENT: no such file or directory, scandir 'undefined'",
+      ENOENT: no such file or directory, scandir 'undefined'",
     ],
   ],
   "results": Array [
