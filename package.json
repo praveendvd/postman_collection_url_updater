@@ -1,7 +1,7 @@
 {
   "name": "postman-collection-url-updater",
-  "version": "2.0.7",
-  "description": "Postman collection url updater is a command line utility project that can update urls across multiple postman requests in your postman collection. It allows to update postman request urls in bulk inside the postman collection",
+  "version": "3.0.0",
+  "description": "Postman collection url updater is a command line utility project that can update urls across multiple postman requests in your postman collection. It allows to update postman request urls in bulk inside the postman collection. it also support migrating multiple collection into single collection",
   "scripts": {
     "test": "jest"
   },
@@ -13,7 +13,6 @@
     "fs-extra": "^10.0.0",
     "inquirer": "^8.2.0",
     "postman-collection": "^4.1.1",
-    "postman-collection-url-updater": "file:postman-collection-url-updater-2.0.7.tgz",
     "yargs": "^17.3.1"
   },
   "bin": {
