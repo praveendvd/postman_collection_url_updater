@@ -1,8 +1,10 @@
+const { removeID } = require('./utils/helperMethods');
+
 const exec = require('shelljs').exec,
   SDK = require('postman-collection'),
   FS = require('fs');
 
-describe('Validate index.js system test', () => {
+describe('Validate url_updator system test', () => {
   describe('Validate cli output messages', () => {
     it('Should show help if arguments are missing', async () => {
       const commandResponse = exec('npx postman-collection-url-updater ', { silent: true });
@@ -34,32 +36,30 @@ describe('Validate index.js system test', () => {
     });
 
     it('Should show file saved message correctly with default path', async () => {
-      const commandResponse = exec('npx postman-collection-url-updater -c "__test__/collection/collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}"', { silent: true });
+      const commandResponse = exec('npx postman-collection-url-updater -c "__test__/url_replacer_test/collection/collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}"', { silent: true });
       expect(commandResponse.stderr).toMatch('');
-      expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]__test__[\\|\/]collection[\\|\/]new_collection.json/g);
+      expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]__test__[\\|\/]url_replacer_test[\\|\/]collection[\\|\/]new_collection.json/g);
     });
 
     it('Should show file saved message correctly with custom path', async () => {
-      const commandResponse = exec('npx postman-collection-url-updater -c "__test__/collection/collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}" -s "__test__/collection/output/new.json"', { silent: true });
+      const commandResponse = exec('npx postman-collection-url-updater -c "__test__/url_replacer_test/collection/collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}" -s "__test__/url_replacer_test/collection/output/new.json"', { silent: true });
       expect(commandResponse.stderr).toMatch('');
-      expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]__test__[\\|\/]collection[\\|\/]output[\\|\/]new\.json/g);
+      expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]__test__[\\|\/]url_replacer_test[\\|\/]collection[\\|\/]output[\\|\/]new\.json/g);
     });
   })
 
   describe('Validate collection changes', () => {
-    let collectionPath = '__test__/collection/collection.json',
-      outputCollectionPath = '__test__/collection/output/new.json';
+    let collectionPath = '__test__/url_replacer_test/collection/collection.json',
+      outputCollectionPath = '__test__/url_replacer_test/collection/output/new.json';
 
     it('validate no changes happens when there is no match', async () => {
 
       const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
       const commandResponse = exec(`npx postman-collection-url-updater -c "${collectionPath}" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
       const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      removeID(sourceCollection);
+      removeID(outputCollection);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
     it('validate change happens only for urls other properties remains the same', async () => {
@@ -80,15 +80,14 @@ describe('Validate index.js system test', () => {
       const commandResponse = exec(`npx postman-collection-url-updater -c "${collectionPath}" -r "https://www.testdomain0.ie" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
       const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
 
+      removeID(sourceCollection);
+      removeID(outputCollection);
+      
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
       updatedRequestObject(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0], 'n', 1);
       updatedRequestObject(sourceCollection.item[2], 0, 1);
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
     it('validate change protocol is shown if not removed', async () => {
@@ -107,16 +106,15 @@ describe('Validate index.js system test', () => {
       const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
       const commandResponse = exec(`npx postman-collection-url-updater -c "${collectionPath}" -r "www.testdomain0.ie" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
       const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
+      
+      removeID(sourceCollection);
+      removeID(outputCollection);
 
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
       updatedRequestObject(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0], 'n', 1);
       updatedRequestObject(sourceCollection.item[2], 0, 1);
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
 
@@ -136,13 +134,12 @@ describe('Validate index.js system test', () => {
       const commandResponse = exec(`npx postman-collection-url-updater -c "${collectionPath}" -r "www.testdomain0.ie/testpath/:pathvariable1-1" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
       const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
 
+      removeID(sourceCollection);
+      removeID(outputCollection);
+
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
 
@@ -167,13 +164,12 @@ describe('Validate index.js system test', () => {
       const commandResponse = exec(`npx postman-collection-url-updater -c "${collectionPath}" -r "/:pathvariable1-1/path/request1-1?query1-1-0" -w "/:pathvariable1-1/path/request1-1?query1-1-0=queryvalue1-1-0-0&test" -s "${outputCollectionPath}"`, { silent: true });
       const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
 
+      removeID(sourceCollection);
+      removeID(outputCollection);
+      
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
 
@@ -195,13 +191,12 @@ describe('Validate index.js system test', () => {
       const commandResponse = exec(`npx postman-collection-url-updater -c "${collectionPath}" -r "https://www.testdomain0.ie/testpath/:pathvariable1-1/path/request1-1?query1-1-0=queryvalue1-1-0&query1-1-1=queryvalue1-1-1" -w "{{protocol}}://{{baseURL}}/v1/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
       const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
 
+      removeID(sourceCollection);
+      removeID(outputCollection);
+
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
   })

@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Validate index.js system test Validate cli output messages Should show file not found error if collection doesnt exists 1`] = `
+exports[`Validate url_updator main.js test Validate cli output messages Should show file not found error if collection doesnt exists 1`] = `
 "ENOENT: no such file or directory, open 'test/collection/collection.json'
 "
 `;
 
-exports[`Validate index.js system test Validate cli output messages Should show file not found error if collection doesnt exists 2`] = `""`;
+exports[`Validate url_updator main.js test Validate cli output messages Should show file not found error if collection doesnt exists 2`] = `""`;
 
-exports[`Validate index.js system test Validate cli output messages Should show help if -c argument is missing 1`] = `
+exports[`Validate url_updator main.js test Validate cli output messages Should show help if -c argument is missing 1`] = `
 "
 Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
@@ -35,9 +35,9 @@ Missing required argument: c
 "
 `;
 
-exports[`Validate index.js system test Validate cli output messages Should show help if -c argument is missing 2`] = `""`;
+exports[`Validate url_updator main.js test Validate cli output messages Should show help if -c argument is missing 2`] = `""`;
 
-exports[`Validate index.js system test Validate cli output messages Should show help if -r argument is missing 1`] = `
+exports[`Validate url_updator main.js test Validate cli output messages Should show help if -r argument is missing 1`] = `
 "
 Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
@@ -65,9 +65,9 @@ Missing required argument: r
 "
 `;
 
-exports[`Validate index.js system test Validate cli output messages Should show help if -r argument is missing 2`] = `""`;
+exports[`Validate url_updator main.js test Validate cli output messages Should show help if -r argument is missing 2`] = `""`;
 
-exports[`Validate index.js system test Validate cli output messages Should show help if -w argument is missing 1`] = `
+exports[`Validate url_updator main.js test Validate cli output messages Should show help if -w argument is missing 1`] = `
 "
 Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
@@ -95,9 +95,9 @@ Missing required argument: w
 "
 `;
 
-exports[`Validate index.js system test Validate cli output messages Should show help if -w argument is missing 2`] = `""`;
+exports[`Validate url_updator main.js test Validate cli output messages Should show help if -w argument is missing 2`] = `""`;
 
-exports[`Validate index.js system test Validate cli output messages Should show help if arguments are missing 1`] = `
+exports[`Validate url_updator main.js test Validate cli output messages Should show help if arguments are missing 1`] = `
 "
 Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
 \\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"

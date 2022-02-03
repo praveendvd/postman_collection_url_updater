@@ -1,8 +1,2 @@
 node_modules
-package-lock.json
-__test__/collection/output
-__test__/collection/new_collection.json
-__test__/*copy*
-coverage
-new_collection.json
-*.tgz
+

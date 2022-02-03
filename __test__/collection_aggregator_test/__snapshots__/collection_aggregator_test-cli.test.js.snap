@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection file is non existing 1`] = `
+"ENOENT: no such file or directory, open '__test__/collection_aggregator_test/collection/collection5.json'
+"
+`;
+
+exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection file is non existing 2`] = `""`;
+
+exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection file is not valid 1`] = `
+"Invalid/corrupted collection provided. Please provide path to valid source collection
+"
+`;
+
+exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection file is not valid 2`] = `""`;
+
+exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection folder is not folder 1`] = `
+"ENOTDIR: not a directory, scandir '__test__/collection_aggregator_test/__snapshots__/collection_aggregator_test-cli-unit.test.js.snap'
+"
+`;
+
+exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection folder is not folder 2`] = `""`;
+
+exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection folder is not found 1`] = `
+"ENOENT: no such file or directory, scandir '__test__/collection_aggregator_test/nonexisting'
+"
+`;
+
+exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection folder is not found 2`] = `""`;
+
+exports[`Validate collection_aggregator main.js test Validate cli output messages Should show help if arguments are missing 1`] = `
+"
+Usage: -n \\"new_collection\\" -l \\"path/collection1.json\\" \\"path/collection1.json\\"
+\\"path/collection1.json\\"
+
+or
+
+Usage: -i
+
+or
+
+Usage: -d \\"./collection_directory\\" -n \\"new_collection\\"
+
+Options:
+      --help                  Show help                                [boolean]
+      --version               Show version number                      [boolean]
+  -i, --interactive           Pass -i to enter Interactive mode
+                                                      [boolean] [default: false]
+  -n, --new_collection_name   Name of the new collection
+                                     [string] [default: \\"Aggregated_collection\\"]
+  -l, --collection_list       Pass relative or absolute collection file paths
+                                                                         [array]
+  -d, --collection_directory  Directory containing all collection files [string]
+  -s, --save_as               path to save new collection
+      [string] [default: \\"currentDirectory/<newcollectionName>.collection.json\\"]
+
+Examples:
+  postman-collection-aggregator -n          - Using collection list
+  \\"new_collection\\" -l
+  \\"path/collection1.json\\"
+  \\"path/collection1.json\\"
+  \\"path/collection1.json\\"
+  postman-collection-aggregator -d          - Using collection directory
+  \\"./collection_directory\\"
+
+Please provide either collection_directory or collection_list
+[Missing required property -l or -d]
+"
+`;
+
+exports[`Validate collection_aggregator main.js test Validate cli output messages Should show help if arguments are missing 2`] = `""`;
