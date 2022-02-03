@@ -1,7 +1,7 @@
 const path = require('path'),
   sdk = require('postman-collection'),
   fs = require('fs'),
-  { resetAndReimportUrlUpdator, CustomError } = require('./utils/helperMethods.js')
+  { resetAndReimportUrlUpdator, CustomError, removeID } = require('./utils/helperMethods.js')
 
 let postman_url_updater,
   mockProcessExit = jest.spyOn(process, 'exit').mockImplementation(() => { throw new Error("exit"); }),

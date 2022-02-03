@@ -1,3 +1,5 @@
+const { removeID } = require('./utils/helperMethods');
+
 const exec = require('shelljs').exec,
   SDK = require('postman-collection'),
   FS = require('fs');
