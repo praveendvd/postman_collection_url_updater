@@ -25,4 +25,13 @@ class CustomError extends Error {
 };
 
 
-module.exports = { resetAndReimportUrlUpdator, CustomError };
+function removeID(obj) {
+    for (prop in obj) {
+        if (prop === 'id' || prop === '_id')
+            delete obj[prop];
+        else if (typeof obj[prop] === 'object')
+            removeID(obj[prop]);
+    }
+}
+
+module.exports = { resetAndReimportUrlUpdator, CustomError, removeID };
