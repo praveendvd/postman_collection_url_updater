@@ -1,0 +1,12 @@
+node_modules
+package-lock.json
+__test__/*copy*
+coverage
+new_collection.json
+*.tgz
+Aggregated_collection.collection.json
+new.collection.json
+output
+__test__\collection_aggregator_test\collection\output
+__test__\url_replacer_test\collection\output
+test.collection.json

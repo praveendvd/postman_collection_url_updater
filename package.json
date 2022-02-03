@@ -1,0 +1,64 @@
+{
+  "name": "postman-collection-url-updater",
+  "version": "3.0.0",
+  "description": "Postman collection url updater is a command line utility project that can update urls across multiple postman requests in your postman collection. It allows to update postman request urls in bulk inside the postman collection. it also support migrating multiple collection into single collection",
+  "scripts": {
+    "test": "jest"
+  },
+  "main": "./src/index.js",
+  "author": "Praveen David Mathew",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^8.2.0",
+    "postman-collection": "^4.1.1",
+    "yargs": "^17.3.1"
+  },
+  "bin": {
+    "postman-collection-url-updater": "./bin/mainUrlUpdater.js",
+    "postman-collection-aggregator": "./bin/mainCollectionAggregator.js"
+  },
+  "files": [
+    "src",
+    "READMe.md",
+    "bin",
+    "logo",
+    "CHANGELOG.md"
+  ],
+  "keywords": [
+    "postman",
+    "collection",
+    "updater",
+    "url",
+    "bulk",
+    "update",
+    "newman"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/praveendvd/postman_collection_url_updater"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "@types/postman-collection": "^3.5.7",
+    "jest": "^27.4.7",
+    "shelljs": "^0.8.5"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": -10
+      }
+    },
+    "rootDir": "./",
+    "verbose": true,
+    "maxWorkers": 1,
+    "collectCoverageFrom": [
+      "src/**/indexAggregator.js"
+    ]
+  }
+}

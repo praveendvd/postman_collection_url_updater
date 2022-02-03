@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "a9d0be8e-da2a-41ba-83b5-5694fc207086",
+		"name": "zebra_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "zebra_folder1",
+			"item": [
+				{
+					"name": "zebra_request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Some test name zebra', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "zebra1",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "zebra",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.testdomainzebra.ie/testpath/:pathvariablezebra-1/path/requestzebra?queryzebra=queryvaluezebra",
+							"protocol": "https",
+							"host": [
+								"www",
+								"testdomainzebra",
+								"ie"
+							],
+							"path": [
+								"testpath",
+								":pathvariablezebra-1",
+								"path",
+								"requestzebra"
+							],
+							"query": [
+								{
+									"key": "queryzebra",
+									"value": "queryvaluezebra"
+								}
+							],
+							"variable": [
+								{
+									"key": "pathvariablezebra-1",
+									"value": "zebra",
+									"description": "zebra"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "ntlm",
+		"ntlm": [
+			{
+				"key": "workstation",
+				"value": "testworkstation",
+				"type": "string"
+			},
+			{
+				"key": "domain",
+				"value": "testdomain",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "testpassword",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "testuser",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pre-request script collection level"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"test script collection level"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "collectionvariable1",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "collectionvariable2",
+			"value": "2",
+			"type": "string"
+		}
+	]
+}
