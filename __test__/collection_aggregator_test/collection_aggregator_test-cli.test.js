@@ -90,8 +90,14 @@ describe('Validate collection_aggregator main.js test', () => {
       expect(aggregatedCollection.item[1].event).toStrictEqual(sourceCollection2.event);
       expect(aggregatedCollection.item[0].name).toStrictEqual(sourceCollection1.info.name);
       expect(aggregatedCollection.item[1].name).toStrictEqual(sourceCollection2.info.name);
+      expect(aggregatedCollection.item[0].auth).toStrictEqual(sourceCollection1.auth);
+      expect(aggregatedCollection.item[1].auth).toStrictEqual(sourceCollection2.auth);
       expect(aggregatedCollection.item[0].varible).toBeUndefined();
       expect(aggregatedCollection.item[1].variable).toBeUndefined();
+
+      expect(aggregatedCollection.variable.slice(0, sourceCollection1.variable.length)).toStrictEqual(sourceCollection1.variable);
+      expect(aggregatedCollection.variable.slice(sourceCollection1.variable.length, sourceCollection1.variable.length + sourceCollection2.variable.length)).toStrictEqual(sourceCollection2.variable);
+
     });
 
   })

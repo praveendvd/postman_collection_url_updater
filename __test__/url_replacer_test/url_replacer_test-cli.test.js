@@ -1,3 +1,5 @@
+const { removeID } = require('./utils/helperMethods.js');
+
 const exec = require('shelljs').exec,
   SDK = require('postman-collection'),
   FS = require('fs');
@@ -55,11 +57,9 @@ describe('Validate url_updator main.js test', () => {
       const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
       const commandResponse = exec(`node "bin/mainUrlUpdater.js" -c "${collectionPath}" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
       const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      removeID(sourceCollection);
+      removeID(outputCollection);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
     it('validate change happens only for urls other properties remains the same', async () => {
@@ -80,15 +80,14 @@ describe('Validate url_updator main.js test', () => {
       const commandResponse = exec(`node "bin/mainUrlUpdater.js" -c "${collectionPath}" -r "https://www.testdomain0.ie" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
       const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
 
+      removeID(sourceCollection);
+      removeID(outputCollection);
+
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
       updatedRequestObject(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0], 'n', 1);
       updatedRequestObject(sourceCollection.item[2], 0, 1);
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
     it('validate change protocol is shown if not removed', async () => {
@@ -108,15 +107,14 @@ describe('Validate url_updator main.js test', () => {
       const commandResponse = exec(`node "bin/mainUrlUpdater.js" -c "${collectionPath}" -r "www.testdomain0.ie" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
       const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
 
+      removeID(sourceCollection);
+      removeID(outputCollection);
+
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
       updatedRequestObject(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0], 'n', 1);
       updatedRequestObject(sourceCollection.item[2], 0, 1);
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
 
@@ -136,13 +134,12 @@ describe('Validate url_updator main.js test', () => {
       const commandResponse = exec(`node "bin/mainUrlUpdater.js" -c "${collectionPath}" -r "www.testdomain0.ie/testpath/:pathvariable1-1" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
       const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
 
+      removeID(sourceCollection);
+      removeID(outputCollection);
+
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
 
@@ -166,14 +163,13 @@ describe('Validate url_updator main.js test', () => {
       const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
       const commandResponse = exec(`node "bin/mainUrlUpdater.js" -c "${collectionPath}" -r "/:pathvariable1-1/path/request1-1?query1-1-0" -w "/:pathvariable1-1/path/request1-1?query1-1-0=queryvalue1-1-0-0&test" -s "${outputCollectionPath}"`, { silent: true });
       const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
+      
+      removeID(sourceCollection);
+      removeID(outputCollection);
 
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
 
@@ -195,13 +191,13 @@ describe('Validate url_updator main.js test', () => {
       const commandResponse = exec(`node "bin/mainUrlUpdater.js" -c "${collectionPath}" -r "https://www.testdomain0.ie/testpath/:pathvariable1-1/path/request1-1?query1-1-0=queryvalue1-1-0&query1-1-1=queryvalue1-1-1" -w "{{protocol}}://{{baseURL}}/v1/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
       const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
 
+      removeID(sourceCollection);
+      removeID(outputCollection);
+
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
+
     });
 
   })

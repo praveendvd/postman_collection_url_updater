@@ -39,6 +39,15 @@ async function startConvert() {
                 OPTIONS.collection_directory + '/' + filePath :
                 filePath).toString()
             )))
+
+            new sdk.Collection(JSON.parse(fs.readFileSync(OPTIONS.collection_directory ?
+                OPTIONS.collection_directory + '/' + filePath :
+                filePath).toString()
+            )).variables.each(variable => {
+                sourceCollection.variables.append(
+                    variable.toJSON()
+                );
+            })
         })
 
         DESTINATIONPATH = path.resolve(OPTIONS.save_as === DEFAULTS.save_as ? `${OPTIONS.new_collection_name}.collection.json` : OPTIONS.save_as);

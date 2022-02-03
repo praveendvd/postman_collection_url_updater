@@ -209,11 +209,9 @@ describe('Validate url_updator index.js unit tests', () => {
       resetAndReimportUrlUpdator({ c: collectionPath, r: "https://localhost:23456/api/v1/{{path}}", w: "{{baseURL}}/{{path}}", s: outputCollectionPath, p: undefined, i: undefined });
       await require('../../src/indexUrlReplacer.js').createNewCollection();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      removeID(sourceCollection);
+      removeID(outputCollection);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
     it('validate change happens only for urls other properties remains the same', async () => {
@@ -234,15 +232,16 @@ describe('Validate url_updator index.js unit tests', () => {
       await require('../../src/indexUrlReplacer.js').createNewCollection();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
+
+
+      removeID(sourceCollection);
+      removeID(outputCollection);
+
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
       updatedRequestObject(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0], 'n', 1);
       updatedRequestObject(sourceCollection.item[2], 0, 1);
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
     it('validate change protocol is shown if not removed', async () => {
@@ -263,15 +262,14 @@ describe('Validate url_updator index.js unit tests', () => {
       await require('../../src/indexUrlReplacer.js').createNewCollection();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
+      removeID(sourceCollection);
+      removeID(outputCollection);
+
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
       updatedRequestObject(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0], 'n', 1);
       updatedRequestObject(sourceCollection.item[2], 0, 1);
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
 
@@ -292,13 +290,12 @@ describe('Validate url_updator index.js unit tests', () => {
       await require('../../src/indexUrlReplacer.js').createNewCollection();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
+      removeID(sourceCollection);
+      removeID(outputCollection);
+
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
 
@@ -324,13 +321,12 @@ describe('Validate url_updator index.js unit tests', () => {
       await require('../../src/indexUrlReplacer.js').createNewCollection();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
+      removeID(sourceCollection);
+      removeID(outputCollection);
+
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
 
@@ -358,14 +354,12 @@ describe('Validate url_updator index.js unit tests', () => {
 
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
+      removeID(sourceCollection);
+      removeID(outputCollection);
       //expect only first request is modified 
       updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
     it('validate query parameters are updated using regex if p flag used ', async () => {
@@ -382,6 +376,8 @@ describe('Validate url_updator index.js unit tests', () => {
       await require('../../src/indexUrlReplacer.js').createNewCollection();
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
+      removeID(sourceCollection);
+      removeID(outputCollection);
       //expect that new query parameter is added as first parameter
       updatedRequestObject(sourceCollection.item[0].item[0]);
       updatedRequestObject(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0]);
@@ -394,12 +390,7 @@ describe('Validate url_updator index.js unit tests', () => {
         "value": null,
       })
 
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
-      expect(outputCollection.item[4].request).toStrictEqual(sourceCollection.item[4].request);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
     it('validate regex have no effect if p flag is not used ', async () => {
@@ -410,12 +401,9 @@ describe('Validate url_updator index.js unit tests', () => {
       const outputCollection = new sdk.Collection(JSON.parse(fs.readFileSync(outputCollectionPath).toString())).toJSON();
 
       //expect source and output are the same
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
-      expect(outputCollection.item[4].request).toStrictEqual(sourceCollection.item[4].request);
+      removeID(sourceCollection);
+      removeID(outputCollection);
+      expect(outputCollection).toStrictEqual(sourceCollection);
     });
 
   })
