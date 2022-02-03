@@ -26,7 +26,7 @@ exports[`Validate url_updator index.js unit tests Validate cli output messages f
 [MockFunction] {
   "calls": Array [
     Array [
-      ENOENT: no such file or directory, open 'test/collection/collection.json'",
+      "ENOENT: no such file or directory, open 'test/collection/collection.json'",
     ],
   ],
   "results": Array [
