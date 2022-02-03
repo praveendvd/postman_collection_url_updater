@@ -134,3 +134,11 @@ Added main entry point to the package to allow to be used as a dependency
 Added error handling for invalid source collection
 
 ### Fixed
+
+## [3.0.0] - 2022-02-03
+ 
+### Added
+
+Added ability to move multiple collection into single collection
+
+### Fixed
