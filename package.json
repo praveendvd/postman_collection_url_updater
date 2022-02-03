@@ -58,7 +58,8 @@
     "verbose": true,
     "maxWorkers": 1,
     "collectCoverageFrom": [
-      "src/**/indexAggregator.js"
+      "src/**/indexAggregator.js",
+      "src/**/indexUrlReplacer.js"
     ]
   }
 }

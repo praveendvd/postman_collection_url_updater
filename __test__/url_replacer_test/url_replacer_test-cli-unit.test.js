@@ -167,7 +167,7 @@ describe('Validate url_updator index.js unit tests', () => {
     });
 
     it('Should throw invalid collection if a valid collection is not provided', async () => {
-      resetAndReimportUrlUpdator({ c: "__test__/url_replacer_test/__snapshots__/test-cli-unit.test.js.snap", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "new_collection.json", p: undefined, i: undefined });
+      resetAndReimportUrlUpdator({ c: "__test__\\collection_aggregator_test\\__snapshots__\\collection_aggregator_test-cli-unit.test.js.snap", r: "{{baseURL}}/{{path}}", w: "{{baseURL}}/{{path}}", s: "new_collection.json", p: undefined, i: undefined });
       postman_url_updater = require('../../src/indexUrlReplacer.js')
       jest.clearAllMocks()
       await expect(postman_url_updater.createNewCollection).rejects.toThrowErrorMatchingSnapshot()

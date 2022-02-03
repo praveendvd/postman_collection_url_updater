@@ -8,14 +8,14 @@ exports[`Validate collection_aggregator main.js test Validate cli output message
 exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection file is non existing 2`] = `""`;
 
 exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection file is not valid 1`] = `
-"ENOENT: no such file or directory, open '__test__\\\\collection_aggregator_test\\\\__snapshots__\\\\test-cli-unit.test.js.snap'
+"Invalid/corrupted collection provided. Please provide path to valid source collection
 "
 `;
 
 exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection file is not valid 2`] = `""`;
 
 exports[`Validate collection_aggregator main.js test Validate cli output messages Should show error if collection folder is not folder 1`] = `
-"ENOENT: no such file or directory, scandir '__test__\\\\collection_aggregator_test\\\\__snapshots__\\\\test-cli-unit.test.js.snap'
+"ENOTDIR: not a directory, scandir '__test__\\\\collection_aggregator_test\\\\__snapshots__\\\\collection_aggregator_test-cli-unit.test.js.snap'
 "
 `;
 
