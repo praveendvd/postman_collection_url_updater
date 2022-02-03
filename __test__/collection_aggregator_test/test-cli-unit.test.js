@@ -6,7 +6,7 @@ const path = require('path'),
 
 let postman_url_updater, mockProcessExit, mockConsoleLog, mockConsoleError;
 
-describe('Validate index.js unit tests', () => {
+describe('Validate collection_aggregator index.js unit tests', () => {
   describe('Validate cli output messages for non interactive', () => {
     beforeAll(() => {
       mockProcessExit = jest.spyOn(process, 'exit').mockImplementation((error) => {

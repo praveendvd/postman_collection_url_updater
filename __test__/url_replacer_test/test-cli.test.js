@@ -2,7 +2,7 @@ const exec = require('shelljs').exec,
   SDK = require('postman-collection'),
   FS = require('fs');
 
-describe('Validate main.js test', () => {
+describe('Validate url_updator main.js test', () => {
   describe('Validate cli output messages', () => {
     it('Should show help if arguments are missing', async () => {
       const commandResponse = exec('node "bin/mainUrlUpdater.js"', { silent: true });

@@ -8,7 +8,7 @@ let postman_url_updater,
   mockConsoleError = jest.spyOn(console, 'error').mockImplementation(() => { }),
   mockConsoleLog = jest.spyOn(console, 'log').mockImplementation(() => { });
 
-describe('Validate index.js unit tests', () => {
+describe('Validate url_updator index.js unit tests', () => {
   describe('Validate cli output messages for non interactive', () => {
 
     afterEach(() => {

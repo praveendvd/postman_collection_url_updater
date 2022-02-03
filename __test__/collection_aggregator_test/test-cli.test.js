@@ -3,7 +3,7 @@ const exec = require('shelljs').exec,
   fs = require('fs-extra'),
   { removeID } = require('./utils/helperMethods.js');
 
-describe('Validate main.js test', () => {
+describe('Validate collection_aggregator main.js test', () => {
 
   describe('Validate cli output messages', () => {
 
