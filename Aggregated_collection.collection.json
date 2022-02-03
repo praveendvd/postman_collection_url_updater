@@ -8,11 +8,11 @@
       "name": "collection",
       "item": [
         {
-          "id": "97c386a0-3789-4795-9da4-9b5ed854807f",
+          "id": "2e601ac5-f706-4b7c-b48b-4dcfd24f5f60",
           "name": "folder1",
           "item": [
             {
-              "id": "5bbf00e7-35af-4ef0-bd7a-6c8aff0a2c1f",
+              "id": "fafd20a8-5109-46d8-b0ed-92bdc4b903c4",
               "name": "request1-1",
               "request": {
                 "url": {
@@ -88,7 +88,7 @@
                 {
                   "listen": "prerequest",
                   "script": {
-                    "id": "c2fa6def-99c7-446c-9301-be7b2067ccc0",
+                    "id": "d12c61ec-a25e-4434-8af6-e1f24360493e",
                     "type": "text/javascript",
                     "exec": [
                       "pre-request script content 1-1"
@@ -98,7 +98,7 @@
                 {
                   "listen": "test",
                   "script": {
-                    "id": "245dffd4-03a5-4beb-bef4-3ef68aae84ef",
+                    "id": "c24329c8-6d47-47e7-b77a-1d52b93363ff",
                     "type": "text/javascript",
                     "exec": [
                       "test script content 1-1"
@@ -114,35 +114,35 @@
           "event": []
         },
         {
-          "id": "a4bb0b88-f699-4e56-a579-c777c76fe1fe",
+          "id": "08d1938e-9ffb-4ee3-9642-9788348564f5",
           "name": "folder2",
           "item": [
             {
-              "id": "f9cd5406-8973-4fcd-8c53-c25fb05c16a5",
+              "id": "89ac581d-2aa7-4384-a1e1-4ec668dbcd71",
               "name": "New Folder",
               "item": [
                 {
-                  "id": "e7214614-e7f4-4953-a895-84a7f53cb37e",
+                  "id": "c3ba6a7b-1e37-4f3f-a4d4-19991a0b3395",
                   "name": "New Folder",
                   "item": [
                     {
-                      "id": "0145e42c-4fed-4ac8-9b0e-85cc7828367b",
+                      "id": "4d9648d1-3c05-4be3-a27c-aed2f939770c",
                       "name": "New Folder",
                       "item": [
                         {
-                          "id": "9bae39a7-8eab-4de2-a9a4-cc2f4d876131",
+                          "id": "6871f842-3760-40b2-a483-186bd7e0bcba",
                           "name": "New Folder",
                           "item": [
                             {
-                              "id": "31c434ec-e9c1-4720-ae38-5967e6c960da",
+                              "id": "28827fb5-a51f-4b35-995e-eecc15b734a4",
                               "name": "New Folder",
                               "item": [
                                 {
-                                  "id": "9e31676c-0088-4cad-97ca-183592dfc75a",
+                                  "id": "4dfaaa0a-2926-4593-aa3b-b79c898a45d5",
                                   "name": "final",
                                   "item": [
                                     {
-                                      "id": "cb8e6ba5-bbc0-4835-a701-1483c5714505",
+                                      "id": "20a2e821-bbde-4e8c-925c-e31fc98af6e0",
                                       "name": "requestn-1",
                                       "request": {
                                         "url": {
@@ -209,7 +209,7 @@
                                         {
                                           "listen": "prerequest",
                                           "script": {
-                                            "id": "b1eb2e33-9962-4e97-9c6b-41333a077def",
+                                            "id": "36c217e4-4c6a-45c5-a88c-beab6cf8a589",
                                             "type": "text/javascript",
                                             "exec": [
                                               "pre-request script content n-1"
@@ -219,7 +219,7 @@
                                         {
                                           "listen": "test",
                                           "script": {
-                                            "id": "e313194f-7ca1-4a97-a1b7-8de15f5c56dc",
+                                            "id": "5217c491-58db-4f8c-8cd8-aae3a113b2d4",
                                             "type": "text/javascript",
                                             "exec": [
                                               "test script content n-1"
@@ -253,7 +253,7 @@
           "event": []
         },
         {
-          "id": "f4cea43c-2e23-4920-b612-e2624b1d5924",
+          "id": "ae7531ad-685e-4e90-b915-9b2f47f21dc3",
           "name": "request0-1",
           "request": {
             "url": {
@@ -320,7 +320,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "9967c1e3-9f2a-42f8-9eed-e506ad583fed",
+                "id": "b35cb75e-bad0-452f-829f-a59686a0f335",
                 "type": "text/javascript",
                 "exec": [
                   "pre-request script content 0-1"
@@ -330,7 +330,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "80614594-e456-4539-8a1a-3f158b764204",
+                "id": "026432a0-ae59-4e1c-98f8-ab8a73e1303f",
                 "type": "text/javascript",
                 "exec": [
                   "test script content 0-1"
@@ -343,7 +343,7 @@
           }
         },
         {
-          "id": "9111c525-c967-4c45-8819-674c3859adc1",
+          "id": "2a599aaf-2381-4cd7-942a-8832179eb7da",
           "name": "request0-2",
           "request": {
             "url": {
@@ -410,7 +410,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "b79d4093-2d36-4b13-bef5-c17e052deba5",
+                "id": "f56149ae-0de2-4a4d-8ffd-8820385dd464",
                 "type": "text/javascript",
                 "exec": [
                   "pre-request script content 0-2"
@@ -420,7 +420,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "18fd6e32-0511-40ed-bc2a-051fcbee7d7f",
+                "id": "7c0a861a-5fa6-4a27-af26-13ead364cf0d",
                 "type": "text/javascript",
                 "exec": [
                   "test script content 0-2"
@@ -433,7 +433,7 @@
           }
         },
         {
-          "id": "b44341cd-a1c9-473b-8f83-cd7d00d3e389",
+          "id": "3da97cb6-a618-42bc-b628-42d669047562",
           "name": "request0-3",
           "request": {
             "url": {
@@ -495,7 +495,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "37ec9072-b6e1-46a7-afb7-584fa887f00d",
+                "id": "a37dc85b-76d1-4370-aff0-70085c97ba0c",
                 "type": "text/javascript",
                 "exec": [
                   "pre-request script content 0-2"
@@ -505,7 +505,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "3df63b92-4978-4cb6-a020-9f14387c0812",
+                "id": "aeeef039-a226-491a-a453-da2defac1c23",
                 "type": "text/javascript",
                 "exec": [
                   "test script content 0-2"
@@ -537,7 +537,7 @@
         {
           "listen": "prerequest",
           "script": {
-            "id": "2bff8a41-e57c-4e36-8f48-77d2e1f68016",
+            "id": "c9dedaba-6334-482b-bf43-3c2882a71825",
             "type": "text/javascript",
             "exec": [
               "collection level pre-request - collection named \"collection\""
@@ -547,10 +547,142 @@
         {
           "listen": "test",
           "script": {
-            "id": "e80050b6-f07f-47bd-a8cf-f9d1a0341e13",
+            "id": "139d7c2e-289a-41ea-a7ce-ed9712f8344e",
             "type": "text/javascript",
             "exec": [
               "collection level test script - collection named \"collection\""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_": {
+        "postman_id": "a9d0be8e-da2a-41ba-83b5-5694fc207086"
+      },
+      "id": "a9d0be8e-da2a-41ba-83b5-5694fc207086",
+      "name": "zebra_collection",
+      "item": [
+        {
+          "id": "26ea8b94-90cd-468c-88c4-3ab1f867c7d9",
+          "name": "zebra_folder1",
+          "item": [
+            {
+              "id": "8e2bb322-9a9a-460f-be06-fd7948fcd79c",
+              "name": "zebra_request",
+              "request": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "testpath",
+                    ":pathvariablezebra-1",
+                    "path",
+                    "requestzebra"
+                  ],
+                  "host": [
+                    "www",
+                    "testdomainzebra",
+                    "ie"
+                  ],
+                  "query": [
+                    {
+                      "key": "queryzebra",
+                      "value": "queryvaluezebra"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "zebra",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "zebra",
+                      "key": "pathvariablezebra-1"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "type": "string",
+                      "value": "zebra1",
+                      "key": "value"
+                    },
+                    {
+                      "type": "string",
+                      "value": "zebra",
+                      "key": "key"
+                    }
+                  ]
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "5a0ed84d-8f76-46e8-86be-c20cc91aa1ed",
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test('Some test name zebra', function () {",
+                      "\tpm.response.to.have.status(200);",
+                      "\tpm.expect(pm.response.responseTime).to.be.below(400);",
+                      "})"
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "event": []
+        }
+      ],
+      "auth": {
+        "type": "ntlm",
+        "ntlm": [
+          {
+            "type": "string",
+            "value": "testworkstation",
+            "key": "workstation"
+          },
+          {
+            "type": "string",
+            "value": "testdomain",
+            "key": "domain"
+          },
+          {
+            "type": "string",
+            "value": "testpassword",
+            "key": "password"
+          },
+          {
+            "type": "string",
+            "value": "testuser",
+            "key": "username"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "bb7032c4-85f3-4dd9-966b-7ca4a39e9e63",
+            "type": "text/javascript",
+            "exec": [
+              "pre-request script collection level"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "9c6f6be5-db89-45c5-96d9-7de5c07f1698",
+            "type": "text/javascript",
+            "exec": [
+              "test script collection level"
             ]
           }
         }
@@ -560,8 +692,8 @@
   "event": [],
   "variable": [],
   "info": {
-    "_postman_id": "fe606787-9fc2-4126-8ccf-9ece3e4e827a",
-    "name": "new",
+    "_postman_id": "bdb60ce2-553b-4f3a-afc4-ee1fd6f81b9f",
+    "name": "Aggregated_collection",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   }
 }

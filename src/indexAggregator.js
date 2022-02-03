@@ -8,7 +8,7 @@ const yargs = require('yargs'),
     chalk = require('chalk'),
     DEFAULTS = {
         save_as: 'currentDirectory/<newcollectionName>.collection.json',
-        new_collection_name: "Aggregated collection"
+        new_collection_name: "Aggregated_collection"
     },
     COLLECTION_AGGREGATOR_QUESTIONS = require('./helper/constant').collectionAggregatorQuestionaire(DEFAULTS);
 

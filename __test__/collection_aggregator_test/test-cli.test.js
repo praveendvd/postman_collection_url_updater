@@ -1,207 +1,90 @@
 const exec = require('shelljs').exec,
-  SDK = require('postman-collection'),
-  FS = require('fs');
+  sdk = require('postman-collection'),
+  fs = require('fs-extra'),
+  { removeID } = require('./utils/helperMethods.js');
 
 describe('Validate main.js test', () => {
+
   describe('Validate cli output messages', () => {
+
     it('Should show help if arguments are missing', async () => {
-      const commandResponse = exec('node "bin/mainCollectionAggregator.js"', { silent: true });
-      expect(commandResponse.stderr).toMatchSnapshot();
-    });
-
-    it('Should show help if -c argument is missing', async () => {
-      const commandResponse = exec('node "bin/mainCollectionAggregator.js" -r "test" -w "{{baseURL}}/{{path}}" -s "new_collection.json"', { silent: true });
+      const commandResponse = exec('node ".\\bin\\mainCollectionAggregator.js"', { silent: true });
       expect(commandResponse.stderr).toMatchSnapshot();
       expect(commandResponse.stdout).toMatchSnapshot();
     });
 
-    it('Should show help if -r argument is missing', async () => {
-      const commandResponse = exec('node "bin/mainCollectionAggregator.js" -c "test/collection/collection.json" -w "{{baseURL}}/{{path}}" -s "new_collection.json"', { silent: true });
+    it('Should show error if collection folder is not folder', async () => {
+      const commandResponse = exec('node ".\\bin\\mainCollectionAggregator.js" -d "__test__\\collection_aggregator_test\\__snapshots__\\test-cli-unit.test.js.snap" ', { silent: true });
       expect(commandResponse.stderr).toMatchSnapshot();
       expect(commandResponse.stdout).toMatchSnapshot();
     });
 
-    it('Should show help if -w argument is missing', async () => {
-      const commandResponse = exec('node "bin/mainCollectionAggregator.js" -c "test/collection/collection.json" -r "{{baseURL}}/{{path}}" -s "new_collection.json"', { silent: true });
+    it('Should show error if collection file is not valid', async () => {
+      const commandResponse = exec('node ".\\bin\\mainCollectionAggregator.js" -l "__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\__snapshots__\\test-cli-unit.test.js.snap"  ', { silent: true });
       expect(commandResponse.stderr).toMatchSnapshot();
       expect(commandResponse.stdout).toMatchSnapshot();
     });
 
-    it('Should show file not found error if collection doesnt exists', async () => {
-      const commandResponse = exec('node "bin/mainCollectionAggregator.js" -c "test/collection/collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}" -s "new_collection.json"', { silent: true });
+    it('Should show error if collection folder is not found', async () => {
+      const commandResponse = exec('node ".\\bin\\mainCollectionAggregator.js" -d "__test__\\collection_aggregator_test\\nonexisting" ', { silent: true });
       expect(commandResponse.stderr).toMatchSnapshot();
       expect(commandResponse.stdout).toMatchSnapshot();
     });
 
-    it('Should show file saved message correctly with default path', async () => {
-      const commandResponse = exec('node "bin/mainCollectionAggregator.js" -c "__test__/url_replacer_test/collection/collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}"', { silent: true });
+    it('Should show error if collection file is non existing', async () => {
+      const commandResponse = exec('node ".\\bin\\mainCollectionAggregator.js" -l "__test__\\collection_aggregator_test\\collection\\collection5.json" "__test__\\collection_aggregator_test\\__snapshots__\\test-cli-unit.test.js.snap"  ', { silent: true });
+      expect(commandResponse.stderr).toMatchSnapshot();
+      expect(commandResponse.stdout).toMatchSnapshot();
+    });
+
+    it('Should not show help if -d argument is provided', async () => {
+      const commandResponse = exec('node ".\\bin\\mainCollectionAggregator.js" -d "__test__\\collection_aggregator_test\\collection"', { silent: true });
       expect(commandResponse.stderr).toMatch('');
-      expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]__test__[\\|\/]url_replacer_test[\\|\/]collection[\\|\/]new_collection.json/g);
+      expect(commandResponse.stdout).toMatch(/File saved to: .*Aggregated_collection.collection.json/g);
     });
 
-    it('Should show file saved message correctly with custom path', async () => {
-      const commandResponse = exec('node "bin/mainCollectionAggregator.js" -c "__test__/url_replacer_test/collection/collection.json" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}" -s "__test__/url_replacer_test/collection/output/new.json"', { silent: true });
+    it('Should not show help if -l argument is provided', async () => {
+      const commandResponse = exec('node ".\\bin\\mainCollectionAggregator.js" -n "test" -l "__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection_2.json"', { silent: true });
       expect(commandResponse.stderr).toMatch('');
-      expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]__test__[\\|\/]url_replacer_test[\\|\/]collection[\\|\/]output[\\|\/]new\.json/g);
+      expect(commandResponse.stdout).toMatch(/File saved to: .*test.collection.json/g);
+    });
+
+    it('Should save to custom path if -s argument is provided', async () => {
+      const commandResponse = exec('node ".\\bin\\mainCollectionAggregator.js" -l "__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection_2.json" -s "output/new.json"', { silent: true });
+      expect(commandResponse.stderr).toMatch('');
+      expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]output[\\|\/]new.json/g);
+    });
+
+    it('Should save to custom path if -s argument is provided', async () => {
+      const commandResponse = exec('node ".\\bin\\mainCollectionAggregator.js" -l "__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection_2.json" -s "output/new.json"', { silent: true });
+      expect(commandResponse.stderr).toMatch('');
+      expect(commandResponse.stdout).toMatch(/File saved to: .*[\\|\/]output[\\|\/]new.json/g);
     });
   })
 
-  describe('Validate collection changes', () => {
-    let collectionPath = '__test__/url_replacer_test/collection/collection.json',
-      outputCollectionPath = '__test__/url_replacer_test/collection/output/new.json';
+  describe('Validate collection creation', () => {
 
-    it('validate no changes happens when there is no match', async () => {
+    it('validate collection aggregated without modifiying source content ', async () => {
 
-      const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
-      const commandResponse = exec(`node "bin/mainCollectionAggregator.js" -c "${collectionPath}" -r "https://localhost:23456/api/v1/{{path}}" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
-      const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
-    });
+      const commandResponse = exec('node ".\\bin\\mainCollectionAggregator.js" -n "new" -l "__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection_2.json" -s "output/new_collection.json"', { silent: true });
 
-    it('validate change happens only for urls other properties remains the same', async () => {
+      const aggregatedCollection = new sdk.Collection(JSON.parse(fs.readFileSync('output/new_collection.json').toString())).toJSON();
+      const sourceCollection1 = new sdk.Collection(JSON.parse(fs.readFileSync('__test__/collection_aggregator_test/collection/collection.json').toString())).toJSON();
+      const sourceCollection2 = new sdk.Collection(JSON.parse(fs.readFileSync('__test__/collection_aggregator_test/collection/collection_2.json').toString())).toJSON();
 
-      function updatedRequestObject(source, depthID, postionID) {
-        source.request.url.host = ["{{baseURL}}"];
-        source.request.url.path = [
-          "{{path}}",
-          "testpath",
-          `:pathvariable${depthID}-${postionID}`,
-          "path",
-          `request${depthID}-${postionID}`,
-        ];
-        delete source.request.url.protocol
-      }
+      removeID(sourceCollection1);
+      removeID(sourceCollection2);
+      removeID(aggregatedCollection);
 
-      const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
-      const commandResponse = exec(`node "bin/mainCollectionAggregator.js" -c "${collectionPath}" -r "https://www.testdomain0.ie" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
-      const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
-
-      updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
-      updatedRequestObject(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0], 'n', 1);
-      updatedRequestObject(sourceCollection.item[2], 0, 1);
-
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
-    });
-
-    it('validate change protocol is shown if not removed', async () => {
-
-      function updatedRequestObject(source, depthID, postionID) {
-        source.request.url.host = ["{{baseURL}}"];
-        source.request.url.path = [
-          "{{path}}",
-          "testpath",
-          `:pathvariable${depthID}-${postionID}`,
-          "path",
-          `request${depthID}-${postionID}`,
-        ];
-      }
-
-      const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
-      const commandResponse = exec(`node "bin/mainCollectionAggregator.js" -c "${collectionPath}" -r "www.testdomain0.ie" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
-      const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
-
-      updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
-      updatedRequestObject(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0], 'n', 1);
-      updatedRequestObject(sourceCollection.item[2], 0, 1);
-
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
-    });
-
-
-    it('validate path varaible is removed if replaced', async () => {
-
-      function updatedRequestObject(source, depthID, postionID) {
-        source.request.url.host = ["{{baseURL}}"];
-        source.request.url.path = [
-          "{{path}}",
-          "path",
-          `request${depthID}-${postionID}`,
-        ];
-        source.request.url.variable = []
-      }
-
-      const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
-      const commandResponse = exec(`node "bin/mainCollectionAggregator.js" -c "${collectionPath}" -r "www.testdomain0.ie/testpath/:pathvariable1-1" -w "{{baseURL}}/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
-      const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
-
-      updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
-
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
-    });
-
-
-    it('validate query parameters are updated', async () => {
-
-      function updatedRequestObject(source, depthID, postionID) {
-        source.request.url.path = [
-          "testpath",
-          `:pathvariable${depthID}-${postionID}`,
-          "path",
-          `request${depthID}-${postionID}`,
-        ];
-        source.request.url.query = [
-          { key: 'query1-1-0', value: 'queryvalue1-1-0-0' },
-          { key: 'test', value: 'queryvalue1-1-0' },
-          { key: 'query1-1-1', value: 'queryvalue1-1-1' }
-        ]
-
-      }
-
-      const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
-      const commandResponse = exec(`node "bin/mainCollectionAggregator.js" -c "${collectionPath}" -r "/:pathvariable1-1/path/request1-1?query1-1-0" -w "/:pathvariable1-1/path/request1-1?query1-1-0=queryvalue1-1-0-0&test" -s "${outputCollectionPath}"`, { silent: true });
-      const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
-
-      updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
-
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
-    });
-
-
-    it('validate query and path variables are removed if replaced completely', async () => {
-
-      function updatedRequestObject(source, depthID, postionID) {
-        source.request.url.path = [
-          'v1',
-          '{{path}}'
-        ];
-        source.request.url.variable = [];
-        source.request.url.query = [];
-        source.request.url.host = ["{{baseURL}}"];
-        source.request.url.protocol = "{{protocol}}";
-
-      }
-
-      const sourceCollection = new SDK.Collection(JSON.parse(FS.readFileSync(collectionPath).toString())).toJSON();
-      const commandResponse = exec(`node "bin/mainCollectionAggregator.js" -c "${collectionPath}" -r "https://www.testdomain0.ie/testpath/:pathvariable1-1/path/request1-1?query1-1-0=queryvalue1-1-0&query1-1-1=queryvalue1-1-1" -w "{{protocol}}://{{baseURL}}/v1/{{path}}" -s "${outputCollectionPath}"`, { silent: true });
-      const outputCollection = new SDK.Collection(JSON.parse(FS.readFileSync(outputCollectionPath).toString())).toJSON();
-
-      updatedRequestObject(sourceCollection.item[0].item[0], 1, 1);
-
-      expect(outputCollection.item[0].item[0].request).toStrictEqual(sourceCollection.item[0].item[0].request);
-      expect(outputCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request)
-        .toStrictEqual(sourceCollection.item[1].item[0].item[0].item[0].item[0].item[0].item[0].item[0].request);
-      expect(outputCollection.item[2].request).toStrictEqual(sourceCollection.item[2].request);
-      expect(outputCollection.item[3].request).toStrictEqual(sourceCollection.item[3].request);
+      //expect source and output have same collection level settings
+      expect(aggregatedCollection.item[0].item).toStrictEqual(sourceCollection1.item);
+      expect(aggregatedCollection.item[1].item).toStrictEqual(sourceCollection2.item);
+      expect(aggregatedCollection.item[0].event).toStrictEqual(sourceCollection1.event);
+      expect(aggregatedCollection.item[1].event).toStrictEqual(sourceCollection2.event);
+      expect(aggregatedCollection.item[0].name).toStrictEqual(sourceCollection1.info.name);
+      expect(aggregatedCollection.item[1].name).toStrictEqual(sourceCollection2.info.name);
+      expect(aggregatedCollection.item[0].varible).toBeUndefined();
+      expect(aggregatedCollection.item[1].variable).toBeUndefined();
     });
 
   })

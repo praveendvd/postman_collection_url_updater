@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Validate index.js system test Validate cli output messages Should show error if collection file is non existing 1`] = `
+"ENOENT: no such file or directory, open '__test__\\\\\\\\collection_aggregator_test\\\\\\\\collection\\\\\\\\collection5.json'
+"
+`;
+
+exports[`Validate index.js system test Validate cli output messages Should show error if collection file is non existing 2`] = `""`;
+
+exports[`Validate index.js system test Validate cli output messages Should show error if collection file is not valid 1`] = `
+"Invalid/corrupted collection provided. Please provide path to valid source collection
+"
+`;
+
+exports[`Validate index.js system test Validate cli output messages Should show error if collection file is not valid 2`] = `""`;
+
+exports[`Validate index.js system test Validate cli output messages Should show error if collection folder is not folder 1`] = `
+"ENOTDIR: not a directory, scandir '__test__\\\\\\\\collection_aggregator_test\\\\\\\\__snapshots__\\\\\\\\test-cli-unit.test.js.snap'
+"
+`;
+
+exports[`Validate index.js system test Validate cli output messages Should show error if collection folder is not folder 2`] = `""`;
+
+exports[`Validate index.js system test Validate cli output messages Should show error if collection folder is not found 1`] = `
+"ENOENT: no such file or directory, scandir '__test__\\\\\\\\collection_aggregator_test\\\\\\\\nonexisting'
+"
+`;
+
+exports[`Validate index.js system test Validate cli output messages Should show error if collection folder is not found 2`] = `""`;
+
+exports[`Validate index.js system test Validate cli output messages Should show help if arguments are missing 1`] = `
+"
+Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
+\\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+
+or
+
+Usage: -i
+
+Options:
+      --help                  Show help                                [boolean]
+      --version               Show version number                      [boolean]
+  -i, --interactive           Pass -i to enter Interactive mode
+                                                      [boolean] [default: false]
+  -n, --new_collection_name   Name of the new collection
+                                     [string] [default: \\"Aggregated_collection\\"]
+  -l, --collection_list       Pass relative or absolute collection file paths
+                                                                         [array]
+  -d, --collection_directory  Directory containing all collection files [string]
+  -s, --save_as               path to save new collection
+      [string] [default: \\"currentDirectory/<newcollectionName>.collection.json\\"]
+
+Examples:
+  mainCollectionAggregator.js -n            - Using collection list
+  \\"new_collection\\" -l
+  \\"path/collection1.json\\"
+  \\"path/collection1.json\\"
+  \\"path/collection1.json\\"
+  mainCollectionAggregator.js -d            - Using collection directory
+  \\"./collection_directory\\"
+
+Please provide either collection_directory or collection_list
+[Missing required property -l or -d]
+"
+`;
+
+exports[`Validate index.js system test Validate cli output messages Should show help if arguments are missing 2`] = `""`;

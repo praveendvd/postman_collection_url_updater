@@ -160,12 +160,48 @@ describe('Validate index.js unit tests', () => {
       expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./new.collection.json')}`);
     });
 
+    it('Should show file saved message correctly with default name and path if n not provided', async () => {
+      resetAndReimportUrlUpdator({ n: undefined, l: undefined, d: "__test__\\collection_aggregator_test\\collection", s: undefined, i: undefined });
+      postman_url_updater = require('../../src/indexAggregator.js')
+      expect(mockProcessExit).not.toBeCalled();
+      expect(mockConsoleError).not.toBeCalled();
+      expect(mockProcessExit).toMatchSnapshot();
+      expect(mockConsoleError).toMatchSnapshot();
+      expect(mockConsoleLog).not.toBeCalled();
+      expect(mockConsoleLog).toMatchSnapshot();
+      jest.clearAllMocks()
+      await postman_url_updater.createNewCollection();
+      expect(mockProcessExit).not.toBeCalled();
+      expect(mockConsoleError).not.toBeCalled();
+      expect(mockProcessExit).toMatchSnapshot();
+      expect(mockConsoleError).toMatchSnapshot();
+      expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./Aggregated_collection.collection.json')}`);
+    });
+
+    it('Should show file saved message correctly with default path for -d', async () => {
+      resetAndReimportUrlUpdator({ n: "new", l: undefined, d: "__test__\\collection_aggregator_test\\collection", s: undefined, i: undefined });
+      postman_url_updater = require('../../src/indexAggregator.js')
+      expect(mockProcessExit).not.toBeCalled();
+      expect(mockConsoleError).not.toBeCalled();
+      expect(mockProcessExit).toMatchSnapshot();
+      expect(mockConsoleError).toMatchSnapshot();
+      expect(mockConsoleLog).not.toBeCalled();
+      expect(mockConsoleLog).toMatchSnapshot();
+      jest.clearAllMocks()
+      await postman_url_updater.createNewCollection();
+      expect(mockProcessExit).not.toBeCalled();
+      expect(mockConsoleError).not.toBeCalled();
+      expect(mockProcessExit).toMatchSnapshot();
+      expect(mockConsoleError).toMatchSnapshot();
+      expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./new.collection.json')}`);
+    });
+
     it('Should show file saved message correctly with custom path -1', async () => {
       resetAndReimportUrlUpdator({
         n: "new",
         l: '"__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection.json"',
         d: undefined,
-        s: '__test__\\collection_aggregator_test\\collection\\output\\new_collection.json',
+        s: '__test__\\collection_aggregator_test\\collection\\output\\test_collection.json',
         i: undefined
       });
       postman_url_updater = require('../../src/indexAggregator.js')
@@ -181,7 +217,7 @@ describe('Validate index.js unit tests', () => {
       expect(mockConsoleError).not.toBeCalled();
       expect(mockProcessExit).toMatchSnapshot();
       expect(mockConsoleError).toMatchSnapshot();
-      expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./__test__/collection_aggregator_test/collection/output/new_collection.json')}`);
+      expect(mockConsoleLog).toBeCalledWith(`File saved to: ${path.resolve('./__test__/collection_aggregator_test/collection/output/test_collection.json')}`);
     });
 
     it('Should show file saved message correctly with custom path -d', async () => {

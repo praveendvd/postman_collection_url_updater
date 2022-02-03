@@ -8,11 +8,11 @@
       "name": "collection",
       "item": [
         {
-          "id": "28b845ae-311e-47f1-86b8-93cdf09e8d59",
+          "id": "19e5b94f-6813-4675-b3a3-ca1489fe07d8",
           "name": "folder1",
           "item": [
             {
-              "id": "f0da88d3-0f89-4561-b568-e45c84b2e109",
+              "id": "9cd271aa-ad5f-4960-9811-88237a5800f3",
               "name": "request1-1",
               "request": {
                 "url": {
@@ -88,7 +88,7 @@
                 {
                   "listen": "prerequest",
                   "script": {
-                    "id": "a586b730-cede-4b30-962f-d9b094859ce2",
+                    "id": "c0c8d28a-0281-4c24-8742-87134567cc7a",
                     "type": "text/javascript",
                     "exec": [
                       "pre-request script content 1-1"
@@ -98,7 +98,7 @@
                 {
                   "listen": "test",
                   "script": {
-                    "id": "c28fffc2-ff4d-4c9d-af15-391fa95e3fbe",
+                    "id": "0ff26fc6-2b26-4e92-bf17-d9fc9c8c6cae",
                     "type": "text/javascript",
                     "exec": [
                       "test script content 1-1"
@@ -114,35 +114,35 @@
           "event": []
         },
         {
-          "id": "b18040b0-79a9-47cc-b9b4-725f854f04dd",
+          "id": "598895fb-aa38-4c24-a0d1-d235253b72be",
           "name": "folder2",
           "item": [
             {
-              "id": "ccd518e9-ad74-4356-9f1b-336593a00252",
+              "id": "0b756288-111c-4e66-b522-bf85f46777fd",
               "name": "New Folder",
               "item": [
                 {
-                  "id": "92c927d5-490d-421b-95ba-abd5d236d8c8",
+                  "id": "9d0951d1-bfba-4a16-b821-b9afe8ea3b74",
                   "name": "New Folder",
                   "item": [
                     {
-                      "id": "285f27cc-6626-41c0-8a23-6393f1253fae",
+                      "id": "b97e51b4-8a3f-46bd-ad85-30213785552f",
                       "name": "New Folder",
                       "item": [
                         {
-                          "id": "dc8335e6-54d2-483f-9959-4bb584d02376",
+                          "id": "e96ed73e-baf7-4e57-8982-c94c77b05105",
                           "name": "New Folder",
                           "item": [
                             {
-                              "id": "f7c7d439-f1f1-4aeb-b772-9bd1aa8800d1",
+                              "id": "60747635-3227-46ae-8b21-c746d9d63c60",
                               "name": "New Folder",
                               "item": [
                                 {
-                                  "id": "5da505fb-6a79-4323-96ae-d2dc7cb8c304",
+                                  "id": "995249f7-1935-4de3-b993-1c88b95f384a",
                                   "name": "final",
                                   "item": [
                                     {
-                                      "id": "780b3d95-8459-4c6f-a516-2da0bc838803",
+                                      "id": "a1aaab53-2e4e-4e65-9301-f4a92722917e",
                                       "name": "requestn-1",
                                       "request": {
                                         "url": {
@@ -209,7 +209,7 @@
                                         {
                                           "listen": "prerequest",
                                           "script": {
-                                            "id": "da914f14-2e88-4ca9-bee1-3e8670a32744",
+                                            "id": "11c825a9-a5cb-4ce7-8b8b-7657f4ccfd37",
                                             "type": "text/javascript",
                                             "exec": [
                                               "pre-request script content n-1"
@@ -219,7 +219,7 @@
                                         {
                                           "listen": "test",
                                           "script": {
-                                            "id": "c3b987ef-13d0-4157-983d-e8916b660638",
+                                            "id": "05ada87a-bbca-4555-8e9b-88f6dbdccab5",
                                             "type": "text/javascript",
                                             "exec": [
                                               "test script content n-1"
@@ -253,7 +253,7 @@
           "event": []
         },
         {
-          "id": "1dd41b82-5977-4ffc-be38-ec573c12bff7",
+          "id": "8e800e14-cb00-4814-8cd9-fff68e532f1c",
           "name": "request0-1",
           "request": {
             "url": {
@@ -320,7 +320,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "607fc4ec-ab36-460e-b868-8e381f01a26f",
+                "id": "1be46413-7b80-4f1d-abb6-510cc1f5b0e1",
                 "type": "text/javascript",
                 "exec": [
                   "pre-request script content 0-1"
@@ -330,7 +330,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "cc96628d-e8e5-4dc7-ae79-71d4aa0050d3",
+                "id": "dd46b4fa-e7c0-45db-9b64-3f4d32cb93b9",
                 "type": "text/javascript",
                 "exec": [
                   "test script content 0-1"
@@ -343,7 +343,7 @@
           }
         },
         {
-          "id": "392c306a-7357-4c0d-bc38-bb23d6d385d2",
+          "id": "e0c64344-2605-438d-a732-02dbdc21540a",
           "name": "request0-2",
           "request": {
             "url": {
@@ -410,7 +410,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "c0e55216-43a6-4495-b189-47259bccd3a0",
+                "id": "2418dadc-8639-48fa-b242-ce647c2af740",
                 "type": "text/javascript",
                 "exec": [
                   "pre-request script content 0-2"
@@ -420,7 +420,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "8adcf68c-aa31-4524-a5f6-dd86d5f6056f",
+                "id": "88ca1b54-ea20-4cf1-9ca2-87ca6dbba774",
                 "type": "text/javascript",
                 "exec": [
                   "test script content 0-2"
@@ -433,7 +433,7 @@
           }
         },
         {
-          "id": "d9334d38-8d6c-45e6-a659-8611d1dc6f8b",
+          "id": "dc95d9ea-3c9f-445c-8343-4bc53fecf0e1",
           "name": "request0-3",
           "request": {
             "url": {
@@ -495,7 +495,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "id": "5b3c7d59-df0d-4213-9ada-e54b7c5e8471",
+                "id": "a7e3038c-a519-4508-bad9-90535aa011b9",
                 "type": "text/javascript",
                 "exec": [
                   "pre-request script content 0-2"
@@ -505,7 +505,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "86dbe131-1461-4109-b88c-6f0785264fc6",
+                "id": "9dbe971c-0d93-4d22-b413-a4ac84b14a78",
                 "type": "text/javascript",
                 "exec": [
                   "test script content 0-2"
@@ -518,24 +518,171 @@
           }
         }
       ],
+      "auth": {
+        "type": "apikey",
+        "apikey": [
+          {
+            "type": "string",
+            "value": "collectionvalue",
+            "key": "value"
+          },
+          {
+            "type": "string",
+            "value": "collectionkey",
+            "key": "key"
+          }
+        ]
+      },
       "event": [
         {
           "listen": "prerequest",
           "script": {
-            "id": "faaaf7f8-f89e-4e34-894a-68e08c09f855",
+            "id": "a2ef2452-592f-41ee-8007-85b2a52b0222",
             "type": "text/javascript",
             "exec": [
-              ""
+              "collection level pre-request - collection named \"collection\""
             ]
           }
         },
         {
           "listen": "test",
           "script": {
-            "id": "0b7e9420-8354-429d-9003-fc8407bc93bb",
+            "id": "e23c535b-ec7c-4454-9a0c-e3925262f481",
             "type": "text/javascript",
             "exec": [
-              ""
+              "collection level test script - collection named \"collection\""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_": {
+        "postman_id": "a9d0be8e-da2a-41ba-83b5-5694fc207086"
+      },
+      "id": "a9d0be8e-da2a-41ba-83b5-5694fc207086",
+      "name": "zebra_collection",
+      "item": [
+        {
+          "id": "b241e45d-896b-4149-bec0-9aad2a1fa504",
+          "name": "zebra_folder1",
+          "item": [
+            {
+              "id": "d38d781d-8891-42dc-a7a5-fdabcc5a1f81",
+              "name": "zebra_request",
+              "request": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "testpath",
+                    ":pathvariablezebra-1",
+                    "path",
+                    "requestzebra"
+                  ],
+                  "host": [
+                    "www",
+                    "testdomainzebra",
+                    "ie"
+                  ],
+                  "query": [
+                    {
+                      "key": "queryzebra",
+                      "value": "queryvaluezebra"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "zebra",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "zebra",
+                      "key": "pathvariablezebra-1"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "type": "string",
+                      "value": "zebra1",
+                      "key": "value"
+                    },
+                    {
+                      "type": "string",
+                      "value": "zebra",
+                      "key": "key"
+                    }
+                  ]
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "99ede63b-b0af-4ad6-9aaa-308d90dc76af",
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test('Some test name zebra', function () {",
+                      "\tpm.response.to.have.status(200);",
+                      "\tpm.expect(pm.response.responseTime).to.be.below(400);",
+                      "})"
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "event": []
+        }
+      ],
+      "auth": {
+        "type": "ntlm",
+        "ntlm": [
+          {
+            "type": "string",
+            "value": "testworkstation",
+            "key": "workstation"
+          },
+          {
+            "type": "string",
+            "value": "testdomain",
+            "key": "domain"
+          },
+          {
+            "type": "string",
+            "value": "testpassword",
+            "key": "password"
+          },
+          {
+            "type": "string",
+            "value": "testuser",
+            "key": "username"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "4a5376ef-c0b2-4990-86da-d71bbb5b6beb",
+            "type": "text/javascript",
+            "exec": [
+              "pre-request script collection level"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "eeaaf1bd-c0a7-4559-84c3-9ea31ef19dee",
+            "type": "text/javascript",
+            "exec": [
+              "test script collection level"
             ]
           }
         }
@@ -545,8 +692,8 @@
   "event": [],
   "variable": [],
   "info": {
-    "_postman_id": "c5868951-3297-44e6-8265-edfc1b504ba9",
-    "name": "rer",
+    "_postman_id": "7548f9b6-e6c3-4305-9cde-01fb8549fdc4",
+    "name": "Aggregated collection",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   }
 }

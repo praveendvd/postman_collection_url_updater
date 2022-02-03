@@ -22,6 +22,16 @@ exports[`Validate index.js unit tests Validate cli output messages for non inter
 
 exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with custom path -d 5`] = `[MockFunction]`;
 
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default name and path if n not provided 1`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default name and path if n not provided 2`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default name and path if n not provided 3`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default name and path if n not provided 4`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default name and path if n not provided 5`] = `[MockFunction]`;
+
 exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default path for -d 1`] = `[MockFunction]`;
 
 exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default path for -d 2`] = `[MockFunction]`;
@@ -31,6 +41,16 @@ exports[`Validate index.js unit tests Validate cli output messages for non inter
 exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default path for -d 4`] = `[MockFunction]`;
 
 exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default path for -d 5`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default path for -d 6`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default path for -d 7`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default path for -d 8`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default path for -d 9`] = `[MockFunction]`;
+
+exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default path for -d 10`] = `[MockFunction]`;
 
 exports[`Validate index.js unit tests Validate cli output messages for non interactive Should show file saved message correctly with default path for -l 1`] = `[MockFunction]`;
 
@@ -68,7 +88,7 @@ exports[`Validate index.js unit tests Validate cli output messages for non inter
 [MockFunction] {
   "calls": Array [
     Array [
-      "[31mENOENT: no such file or directory, scandir '__test__\\\\collection_aggregator_test\\\\collections'[39m",
+      "ENOENT: no such file or directory, scandir '__test__\\\\collection_aggregator_test\\\\collections'",
     ],
   ],
   "results": Array [
@@ -124,7 +144,7 @@ Options:
   -i, --interactive           Pass -i to enter Interactive mode
                                                       [boolean] [default: false]
   -n, --new_collection_name   Name of the new collection
-                                     [string] [default: \\"Aggregated collection\\"]
+                                     [string] [default: \\"Aggregated_collection\\"]
   -l, --collection_list       Pass relative or absolute collection file paths
                                                                          [array]
   -d, --collection_directory  Directory containing all collection files [string]
@@ -205,7 +225,7 @@ Options:
   -i, --interactive           Pass -i to enter Interactive mode
                                                       [boolean] [default: false]
   -n, --new_collection_name   Name of the new collection
-                                     [string] [default: \\"Aggregated collection\\"]
+                                     [string] [default: \\"Aggregated_collection\\"]
   -l, --collection_list       Pass relative or absolute collection file paths
                                                                          [array]
   -d, --collection_directory  Directory containing all collection files [string]
@@ -270,7 +290,7 @@ exports[`Validate index.js unit tests Validate cli output messages for non inter
 [MockFunction] {
   "calls": Array [
     Array [
-      "[31mENOENT: no such file or directory, scandir 'undefined'[39m",
+      "ENOENT: no such file or directory, scandir 'undefined'",
     ],
   ],
   "results": Array [
@@ -326,7 +346,7 @@ Options:
   -i, --interactive           Pass -i to enter Interactive mode
                                                       [boolean] [default: false]
   -n, --new_collection_name   Name of the new collection
-                                     [string] [default: \\"Aggregated collection\\"]
+                                     [string] [default: \\"Aggregated_collection\\"]
   -l, --collection_list       Pass relative or absolute collection file paths
                                                                          [array]
   -d, --collection_directory  Directory containing all collection files [string]
