@@ -1,10 +1,6 @@
-function resetAndReimportUrlUpdator(processArgvObj) {
-    for (key in processArgvObj) {
-
-    }
-
+function resetAndReimportUrlUpdator({ c, r, w, s, i, p }) {
     jest.resetModules()
-    let { c: mockc, r: mockr, w: mockw, s: mocks, i: mocki, p: mockp } = processArgvObj
+    let { c: mockc, r: mockr, w: mockw, s: mocks, i: mocki, p: mockp } = { c, r, w, s, i, p }
     while (process.argv.length > 2) {
         process.argv.pop();
     }

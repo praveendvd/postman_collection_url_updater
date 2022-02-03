@@ -131,12 +131,16 @@ exports[`Validate index.js unit tests Validate cli output messages for non inter
   "calls": Array [
     Array [
       "
-Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
-\\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+Usage: -n \\"new_collection\\" -l \\"path/collection1.json\\" \\"path/collection1.json\\"
+\\"path/collection1.json\\"
 
 or
 
 Usage: -i
+
+or
+
+Usage: -d \\"./collection_directory\\" -n \\"new_collection\\"
 
 Options:
       --help                  Show help                                [boolean]
@@ -212,12 +216,16 @@ exports[`Validate index.js unit tests Validate cli output messages for non inter
   "calls": Array [
     Array [
       "
-Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
-\\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+Usage: -n \\"new_collection\\" -l \\"path/collection1.json\\" \\"path/collection1.json\\"
+\\"path/collection1.json\\"
 
 or
 
 Usage: -i
+
+or
+
+Usage: -d \\"./collection_directory\\" -n \\"new_collection\\"
 
 Options:
       --help                  Show help                                [boolean]
@@ -333,12 +341,16 @@ exports[`Validate index.js unit tests Validate cli output messages for non inter
   "calls": Array [
     Array [
       "
-Usage: -c \\"root/collection_name.json\\" -r \\"{{Baseurl}}/path1/path2\\" -w
-\\"{{Baseurl}}/{{path}}\\" -s \\"root/new_collection_name.json\\"
+Usage: -n \\"new_collection\\" -l \\"path/collection1.json\\" \\"path/collection1.json\\"
+\\"path/collection1.json\\"
 
 or
 
 Usage: -i
+
+or
+
+Usage: -d \\"./collection_directory\\" -n \\"new_collection\\"
 
 Options:
       --help                  Show help                                [boolean]

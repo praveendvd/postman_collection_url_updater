@@ -13,8 +13,9 @@ const yargs = require('yargs'),
     COLLECTION_AGGREGATOR_QUESTIONS = require('./helper/constant').collectionAggregatorQuestionaire(DEFAULTS);
 
 let OPTIONS = yargs
-    .usage('\nUsage: -c "root/collection_name.json" -r "{{Baseurl}}/path1/path2" -w "{{Baseurl}}/{{path}}" -s "root/new_collection_name.json"')
+    .usage('\nUsage: -n "new_collection" -l "path/collection1.json" "path/collection1.json" "path/collection1.json"')
     .usage('\nor\n\nUsage: -i')
+    .usage('\nor\n\nUsage: -d "./collection_directory" -n "new_collection" ')
     .strict()
     .option('i', { alias: 'interactive', describe: 'Pass -i to enter Interactive mode', type: 'boolean', default: false })
     .option('n', { alias: 'new_collection_name', describe: 'Name of the new collection', type: 'string', default: DEFAULTS.new_collection_name })
