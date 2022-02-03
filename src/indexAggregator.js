@@ -31,7 +31,7 @@ async function startConvert() {
     sourceCollection = new sdk.Collection({ "name": OPTIONS.new_collection_name });
 
     try {
-        let collection_list = fs.readdirSync(OPTIONS.collection_directory).filter(file => file.endsWith('.json'))
+        let collection_list = OPTIONS.collection_directory ? fs.readdirSync(OPTIONS.collection_directory).filter(file => file.endsWith('.json')) : OPTIONS.collection_list;
 
         collection_list.map(filePath => {
             sourceCollection.items.add(new sdk.ItemGroup(JSON.parse(fs.readFileSync(OPTIONS.collection_directory ?
@@ -46,7 +46,7 @@ async function startConvert() {
     } catch (e) {
         if (!(e.code === 'ENOENT' || e.code === 'ENOTDIR')
             &&
-            !(e.stack && e.stack.includes("at JSON.parse"))) throw Error(e);
+            !(e.stack && e.stack.includes("at JSON.parse"))) throw e;
 
         console.error(chalk.red((e.stack && e.stack.includes("at JSON.parse")) ? "Invalid/corrupted collection provided. Please provide path to valid source collection"
             : (e.message)))

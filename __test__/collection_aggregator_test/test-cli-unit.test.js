@@ -4,17 +4,18 @@ const path = require('path'),
   { resetAndReimportUrlUpdator, CustomError, removeID } = require('./utils/helperMethods.js');
 
 
-let postman_url_updater,
-  mockProcessExit = jest.spyOn(process, 'exit').mockImplementation((error) => {
-    console.info('process.exit called with error:', error);
-    throw new Error("exit");
-  }),
-  mockConsoleLog = jest.spyOn(console, 'log').mockImplementation((log) => { console.info('console.log called with:', log); }),
-  mockConsoleError = jest.spyOn(console, 'error').mockImplementation((error) => { console.info('console.error called with:', error); });
+let postman_url_updater, mockProcessExit, mockConsoleLog, mockConsoleError;
 
 describe('Validate index.js unit tests', () => {
   describe('Validate cli output messages for non interactive', () => {
-
+    beforeAll(() => {
+      mockProcessExit = jest.spyOn(process, 'exit').mockImplementation((error) => {
+        console.info('process.exit called with error:', error);
+        throw new Error("exit");
+      }),
+        mockConsoleLog = jest.spyOn(console, 'log').mockImplementation((log) => { console.info('console.log called with:', log); }),
+        mockConsoleError = jest.spyOn(console, 'error').mockImplementation((error) => { console.info('console.error called with:', error); });
+    })
     afterEach(() => {
       jest.clearAllMocks();
     });
@@ -215,7 +216,7 @@ describe('Validate index.js unit tests', () => {
       });
       postman_url_updater = require('../../src/indexAggregator.js')
       jest.clearAllMocks()
-      mockConsoleLog.mockImplementation(() => { throw new CustomError(256) });
+      mockConsoleLog.mockImplementationOnce(() => { throw new CustomError(256) });
       await expect(postman_url_updater.createNewCollection).rejects.toThrowErrorMatchingSnapshot()
       expect(process.exit).not.toBeCalled()
     });
@@ -242,19 +243,25 @@ describe('Validate index.js unit tests', () => {
         n: "new",
         l: '"__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection.json"',
         d: "__test__\\collection_aggregator_test\\collection",
-        s: 'output/new_collection.json',
+        s: undefined,
         i: undefined
       });
-      let fsDirReaderMock = jest.mock('fs-extra').requireMock('fs-extra').readdirSync = jest.fn(() =>  ['collection.json']);
+
+      let fsDirReaderMock = jest.mock('fs-extra', () => ({
+        ...jest.requireActual('fs-extra'),
+        readdirSync: jest.fn(function () { return ['collection.json'] })
+      })).requireMock('fs-extra').readdirSync;
+
       postman_url_updater = require('../../src/indexAggregator.js')
       jest.clearAllMocks()
+      await postman_url_updater.createNewCollection()
+      //await expect(postman_url_updater.createNewCollection).rejects.toThrowErrorMatchingSnapshot()
+      expect(fsDirReaderMock).toBeCalledWith('__test__\\collection_aggregator_test\\collection');
+      expect(mockConsoleLog).toHaveBeenNthCalledWith(1, `[Warning] Both -d and -l was provided. Will be using Using -d`);
+      expect(mockConsoleLog).toHaveBeenNthCalledWith(2, `File saved to: ${path.resolve('./new.collection.json')}`);
 
-      await expect(postman_url_updater.createNewCollection).rejects.toThrowErrorMatchingSnapshot()
-      expect(fsDirReaderMock).toBeCalledWith(path.resolve('./__test__/collection_aggregator_test/collection'));
-      expect(console.log).toBeCalledWith(`[Warning] Both -d and -l was provided. Will be using Using -d`);
-
+      fsDirReaderMock.mockRestore();
     });
-
   })
 
   describe('Validate cli output messages for interactive', () => {
@@ -279,6 +286,33 @@ describe('Validate index.js unit tests', () => {
       expect(inquirerSpy).not.toHaveBeenCalled()
     });
 
+    it('Should not show -d will be used message if -i is used with -d and -l', async () => {
+      resetAndReimportUrlUpdator({
+        n: "new",
+        l: '"__test__\\collection_aggregator_test\\collection\\collection.json" "__test__\\collection_aggregator_test\\collection\\collection.json"',
+        d: "__test__\\collection_aggregator_test\\collection",
+        s: 'output/new_collection.json',
+        i: true
+      });
+
+      let fsDirReaderMock = jest.mock('fs-extra', () => ({
+        ...jest.requireActual('fs-extra'),
+        readdirSync: jest.fn(function () { return ['collection.json'] })
+      })).requireMock('fs-extra').readdirSync;
+
+      mockConsoleLog = jest.spyOn(console, 'log').mockImplementationOnce((log) => { console.info('console.log called with:', log); }),
+     
+      postman_url_updater = require('../../src/indexAggregator.js')
+     
+      jest.clearAllMocks()
+      await postman_url_updater.createNewCollection()
+     
+      expect(fsDirReaderMock).toBeCalledWith('__test__\\collection_aggregator_test\\collection');
+      expect(mockConsoleLog).toHaveBeenCalledTimes(1)
+      expect(mockConsoleLog).toHaveBeenNthCalledWith(1, `File saved to: ${path.resolve('output/new_collection.json')}`);
+
+      fsDirReaderMock.mockRestore();
+    });
   })
 
   describe('Validate collection creation', () => {
