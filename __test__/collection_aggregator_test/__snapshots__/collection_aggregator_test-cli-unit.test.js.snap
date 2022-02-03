@@ -154,11 +154,13 @@ Options:
       [string] [default: \\"currentDirectory/<newcollectionName>.collection.json\\"]
 
 Examples:
-  jest.js -n \\"new_collection\\" -l            - Using collection list
+  postman-collection-aggregator -n          - Using collection list
+  \\"new_collection\\" -l
   \\"path/collection1.json\\"
   \\"path/collection1.json\\"
   \\"path/collection1.json\\"
-  jest.js -d \\"./collection_directory\\"       - Using collection directory",
+  postman-collection-aggregator -d          - Using collection directory
+  \\"./collection_directory\\"",
     ],
     Array [],
     Array [
@@ -239,11 +241,13 @@ Options:
       [string] [default: \\"currentDirectory/<newcollectionName>.collection.json\\"]
 
 Examples:
-  jest.js -n \\"new_collection\\" -l            - Using collection list
+  postman-collection-aggregator -n          - Using collection list
+  \\"new_collection\\" -l
   \\"path/collection1.json\\"
   \\"path/collection1.json\\"
   \\"path/collection1.json\\"
-  jest.js -d \\"./collection_directory\\"       - Using collection directory",
+  postman-collection-aggregator -d          - Using collection directory
+  \\"./collection_directory\\"",
     ],
     Array [],
     Array [
@@ -364,11 +368,13 @@ Options:
       [string] [default: \\"currentDirectory/<newcollectionName>.collection.json\\"]
 
 Examples:
-  jest.js -n \\"new_collection\\" -l            - Using collection list
+  postman-collection-aggregator -n          - Using collection list
+  \\"new_collection\\" -l
   \\"path/collection1.json\\"
   \\"path/collection1.json\\"
   \\"path/collection1.json\\"
-  jest.js -d \\"./collection_directory\\"       - Using collection directory",
+  postman-collection-aggregator -d          - Using collection directory
+  \\"./collection_directory\\"",
     ],
     Array [],
     Array [

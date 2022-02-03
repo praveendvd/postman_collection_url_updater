@@ -55,12 +55,12 @@ Options:
       [string] [default: \\"currentDirectory/<newcollectionName>.collection.json\\"]
 
 Examples:
-  mainCollectionAggregator.js -n            - Using collection list
+  postman-collection-aggregator -n          - Using collection list
   \\"new_collection\\" -l
   \\"path/collection1.json\\"
   \\"path/collection1.json\\"
   \\"path/collection1.json\\"
-  mainCollectionAggregator.js -d            - Using collection directory
+  postman-collection-aggregator -d          - Using collection directory
   \\"./collection_directory\\"
 
 Please provide either collection_directory or collection_list

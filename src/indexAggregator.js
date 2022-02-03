@@ -23,8 +23,8 @@ let OPTIONS = yargs
     .option('d', { alias: 'collection_directory', describe: 'Directory containing all collection files', type: 'string' })
     .option('s', { alias: 'save_as', describe: 'path to save new collection', type: 'string', default: DEFAULTS.save_as })
     .example([
-        ['$0 -n "new_collection" -l "path/collection1.json" "path/collection1.json" "path/collection1.json"', '- Using collection list'],
-        ['$0 -d "./collection_directory"', '- Using collection directory']
+        ['postman-collection-aggregator -n "new_collection" -l "path/collection1.json" "path/collection1.json" "path/collection1.json"', '- Using collection list'],
+        ['postman-collection-aggregator -d "./collection_directory"', '- Using collection directory']
     ])
 
 async function startConvert() {
