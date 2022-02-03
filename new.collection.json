@@ -1,0 +1,699 @@
+{
+  "item": [
+    {
+      "_": {
+        "postman_id": "71900852-b0b1-4329-9120-bb0a2a4340b5"
+      },
+      "id": "71900852-b0b1-4329-9120-bb0a2a4340b5",
+      "name": "collection",
+      "item": [
+        {
+          "id": "a189e07f-a1fa-4865-b8d3-621713d8fd3b",
+          "name": "folder1",
+          "item": [
+            {
+              "id": "c6176081-4092-4bc9-8773-0b3f71fe7ecd",
+              "name": "request1-1",
+              "request": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "testpath",
+                    ":pathvariable1-1",
+                    "path",
+                    "request1-1"
+                  ],
+                  "host": [
+                    "www",
+                    "testdomain0",
+                    "ie"
+                  ],
+                  "query": [
+                    {
+                      "key": "query1-1-0",
+                      "value": "queryvalue1-1-0"
+                    },
+                    {
+                      "key": "query1-1-1",
+                      "value": "queryvalue1-1-1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "type": "any",
+                      "value": "{{testpathvalue}}",
+                      "key": "pathvariable1-1"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "header",
+                    "value": "headervalue1"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"key1-1\": \"value1-1\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "type": "string",
+                      "value": "query",
+                      "key": "in"
+                    },
+                    {
+                      "type": "string",
+                      "value": "123451-1",
+                      "key": "value"
+                    },
+                    {
+                      "type": "string",
+                      "value": "X-API-Key-1-1",
+                      "key": "key"
+                    }
+                  ]
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "e2360d9f-2f8b-4d2f-9a8f-c8488a3633f7",
+                    "type": "text/javascript",
+                    "exec": [
+                      "pre-request script content 1-1"
+                    ]
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e57a1f6e-a1f0-43f9-b750-0d02f22c687d",
+                    "type": "text/javascript",
+                    "exec": [
+                      "test script content 1-1"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "2b3c4290-1e9f-45fa-ab0f-32bc362defd9",
+          "name": "folder2",
+          "item": [
+            {
+              "id": "239ab5a6-e2c7-4433-b1e5-527fbf8649f1",
+              "name": "New Folder",
+              "item": [
+                {
+                  "id": "f026ec4f-c7d6-452a-855c-a967a3c732d7",
+                  "name": "New Folder",
+                  "item": [
+                    {
+                      "id": "968211e1-e034-456d-9d83-af944b2e48de",
+                      "name": "New Folder",
+                      "item": [
+                        {
+                          "id": "e74d0e22-1ecc-44d7-8d46-5dd74a6cb28f",
+                          "name": "New Folder",
+                          "item": [
+                            {
+                              "id": "982498a6-9f81-461c-8871-6509e666c98f",
+                              "name": "New Folder",
+                              "item": [
+                                {
+                                  "id": "bec0b753-9994-44f0-9226-b85800c0abd1",
+                                  "name": "final",
+                                  "item": [
+                                    {
+                                      "id": "0da49c4f-d1ce-479f-8e08-c3a1308677e5",
+                                      "name": "requestn-1",
+                                      "request": {
+                                        "url": {
+                                          "protocol": "https",
+                                          "path": [
+                                            "testpath",
+                                            ":pathvariablen-1",
+                                            "path",
+                                            "requestn-1"
+                                          ],
+                                          "host": [
+                                            "www",
+                                            "testdomain0",
+                                            "ie"
+                                          ],
+                                          "query": [
+                                            {
+                                              "key": "queryn-1",
+                                              "value": "queryvaluen-1"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "type": "any",
+                                              "value": "{{testpathvalue}}",
+                                              "key": "pathvariablen-1"
+                                            }
+                                          ]
+                                        },
+                                        "header": [
+                                          {
+                                            "key": "header",
+                                            "value": "headervalue1"
+                                          }
+                                        ],
+                                        "method": "GET",
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\r\n    \"keyn-1\": \"valuen-1\"\r\n}",
+                                          "options": {
+                                            "raw": {
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "auth": {
+                                          "type": "apikey",
+                                          "apikey": [
+                                            {
+                                              "type": "string",
+                                              "value": "12345n-1",
+                                              "key": "value"
+                                            },
+                                            {
+                                              "type": "string",
+                                              "value": "X-API-Key-n-1",
+                                              "key": "key"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "response": [],
+                                      "event": [
+                                        {
+                                          "listen": "prerequest",
+                                          "script": {
+                                            "id": "20b724f5-baf4-4410-ad40-1ce9781383ba",
+                                            "type": "text/javascript",
+                                            "exec": [
+                                              "pre-request script content n-1"
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "listen": "test",
+                                          "script": {
+                                            "id": "8e11ab1b-7b24-436a-9e46-af2e282922bb",
+                                            "type": "text/javascript",
+                                            "exec": [
+                                              "test script content n-1"
+                                            ]
+                                          }
+                                        }
+                                      ],
+                                      "protocolProfileBehavior": {
+                                        "disableBodyPruning": true
+                                      }
+                                    }
+                                  ],
+                                  "event": []
+                                }
+                              ],
+                              "event": []
+                            }
+                          ],
+                          "event": []
+                        }
+                      ],
+                      "event": []
+                    }
+                  ],
+                  "event": []
+                }
+              ],
+              "event": []
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "c3201a09-fd86-4683-96dd-e0eb0b2de5ec",
+          "name": "request0-1",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "testpath",
+                ":pathvariable0-1",
+                "path",
+                "request0-1"
+              ],
+              "host": [
+                "www",
+                "testdomain0",
+                "ie"
+              ],
+              "query": [
+                {
+                  "key": "query0-1",
+                  "value": "queryvalue0-1"
+                }
+              ],
+              "variable": [
+                {
+                  "type": "any",
+                  "value": "{{testpathvalue}}",
+                  "key": "pathvariable0-1"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "header0-1",
+                "value": "headervalue0-1"
+              }
+            ],
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"key0-1\": \"value0-1\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "type": "string",
+                  "value": "X-API-Key-0-1",
+                  "key": "key"
+                },
+                {
+                  "type": "string",
+                  "value": "123450-1",
+                  "key": "value"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "543bd033-4b85-4ef5-a72f-1086cb6efc7c",
+                "type": "text/javascript",
+                "exec": [
+                  "pre-request script content 0-1"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "640feae5-2cb9-4cf2-acda-54c20ccd5086",
+                "type": "text/javascript",
+                "exec": [
+                  "test script content 0-1"
+                ]
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe3e9b7f-df2c-426c-b9c3-c864d27adf9a",
+          "name": "request0-2",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "testpath",
+                ":pathvariable0-2",
+                "path",
+                "request0-2"
+              ],
+              "host": [
+                "www",
+                "testdomain0-",
+                "ie"
+              ],
+              "query": [
+                {
+                  "key": "query0-2",
+                  "value": "queryvalue0-2"
+                }
+              ],
+              "variable": [
+                {
+                  "type": "any",
+                  "value": "pathvalue0-2",
+                  "key": "pathvariable0-2"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "header0-2",
+                "value": "headervalue0-2"
+              }
+            ],
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"key0-2\": \"value0-2\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "type": "string",
+                  "value": "X-API-Key-0-2",
+                  "key": "key"
+                },
+                {
+                  "type": "string",
+                  "value": "123450-2",
+                  "key": "value"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "fcb553ef-1578-44b1-ae4e-77c3223502ba",
+                "type": "text/javascript",
+                "exec": [
+                  "pre-request script content 0-2"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "5ada0c1b-b973-47ec-b42e-c56d3cf37237",
+                "type": "text/javascript",
+                "exec": [
+                  "test script content 0-2"
+                ]
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ba74547-0c6e-4b32-a749-cdd83417c7f6",
+          "name": "request0-3",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "path": [
+                "testpath",
+                ":pathvariable0-2",
+                "path",
+                "request0-2"
+              ],
+              "host": [
+                "www",
+                "testdomain0-",
+                "ie"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "type": "any",
+                  "value": "pathvalue0-2",
+                  "key": "pathvariable0-2"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "header0-2",
+                "value": "headervalue0-2"
+              }
+            ],
+            "method": "GET",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"key0-2\": \"value0-2\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "type": "string",
+                  "value": "X-API-Key-0-2",
+                  "key": "key"
+                },
+                {
+                  "type": "string",
+                  "value": "123450-2",
+                  "key": "value"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "85fa6542-bcdb-413b-9f55-b60ef3b6575b",
+                "type": "text/javascript",
+                "exec": [
+                  "pre-request script content 0-2"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "ec215014-e6dd-4192-89bf-13f439ba88b3",
+                "type": "text/javascript",
+                "exec": [
+                  "test script content 0-2"
+                ]
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "auth": {
+        "type": "apikey",
+        "apikey": [
+          {
+            "type": "string",
+            "value": "collectionvalue",
+            "key": "value"
+          },
+          {
+            "type": "string",
+            "value": "collectionkey",
+            "key": "key"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "74c58e91-d0e8-4ba6-9b7d-2866db5af0a5",
+            "type": "text/javascript",
+            "exec": [
+              "collection level pre-request - collection named \"collection\""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "fa9e742c-aa4b-4d68-972f-542816120451",
+            "type": "text/javascript",
+            "exec": [
+              "collection level test script - collection named \"collection\""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_": {
+        "postman_id": "a9d0be8e-da2a-41ba-83b5-5694fc207086"
+      },
+      "id": "a9d0be8e-da2a-41ba-83b5-5694fc207086",
+      "name": "zebra_collection",
+      "item": [
+        {
+          "id": "1b40318f-97cd-4374-b517-213ae057e2cf",
+          "name": "zebra_folder1",
+          "item": [
+            {
+              "id": "5b9f7db5-6587-44ce-9968-36c3bdec0d8c",
+              "name": "zebra_request",
+              "request": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "testpath",
+                    ":pathvariablezebra-1",
+                    "path",
+                    "requestzebra"
+                  ],
+                  "host": [
+                    "www",
+                    "testdomainzebra",
+                    "ie"
+                  ],
+                  "query": [
+                    {
+                      "key": "queryzebra",
+                      "value": "queryvaluezebra"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "zebra",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "zebra",
+                      "key": "pathvariablezebra-1"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "type": "string",
+                      "value": "zebra1",
+                      "key": "value"
+                    },
+                    {
+                      "type": "string",
+                      "value": "zebra",
+                      "key": "key"
+                    }
+                  ]
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "511b0562-e291-49b7-9f7b-d4f04c4b5d9d",
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test('Some test name zebra', function () {",
+                      "\tpm.response.to.have.status(200);",
+                      "\tpm.expect(pm.response.responseTime).to.be.below(400);",
+                      "})"
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "event": []
+        }
+      ],
+      "auth": {
+        "type": "ntlm",
+        "ntlm": [
+          {
+            "type": "string",
+            "value": "testworkstation",
+            "key": "workstation"
+          },
+          {
+            "type": "string",
+            "value": "testdomain",
+            "key": "domain"
+          },
+          {
+            "type": "string",
+            "value": "testpassword",
+            "key": "password"
+          },
+          {
+            "type": "string",
+            "value": "testuser",
+            "key": "username"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "ef03f65c-dc57-4a13-b29b-d50ea19172bd",
+            "type": "text/javascript",
+            "exec": [
+              "pre-request script collection level"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "6e35f2ab-04a8-4553-8f0f-647299c7705a",
+            "type": "text/javascript",
+            "exec": [
+              "test script collection level"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "event": [],
+  "variable": [],
+  "info": {
+    "_postman_id": "d80a8285-9bc7-446e-a6ac-ba87fdc1e7c0",
+    "name": "new",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  }
+}

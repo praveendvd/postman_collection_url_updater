@@ -489,13 +489,28 @@
 			"response": []
 		}
 	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "collectionvalue",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "collectionkey",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					""
+					"collection level pre-request - collection named \"collection\""
 				]
 			}
 		},
@@ -504,7 +519,7 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					""
+					"collection level test script - collection named \"collection\""
 				]
 			}
 		}
