@@ -1,7 +1,9 @@
 
 ![logo](https://github.com/praveendvd/postman_collection_url_updater/raw/master/logo/logo.png)
 
-npm link: https://www.npmjs.com/package/postman-collection-url-updater
+Install at : https://www.npmjs.com/package/postman-collection-url-updater
+
+# Content
 
 - [Introduction](#introduction)
 - [Getting started](#getting-started)
