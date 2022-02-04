@@ -1,7 +1,7 @@
 
 ![logo](https://github.com/praveendvd/postman_collection_url_updater/raw/master/logo/logo.png)
 
-Github page: https://praveendvd.github.io/postman_collection_url_updater/
+npm link: https://www.npmjs.com/package/postman-collection-url-updater
 
 - [Introduction](#introduction)
 - [Getting started](#getting-started)
